@@ -1,0 +1,4 @@
+com/example/ouluapp/MainActivity.java
+ com.example.ouluapp.MainActivity
+com/example/ouluapp/BuildConfig.java
+ com.example.ouluapp.BuildConfig
