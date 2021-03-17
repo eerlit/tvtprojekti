@@ -31,14 +31,20 @@
     <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"Teilen mit"</string>
     <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"Mit <ns1:g id="APPLICATION_NAME">%s</ns1:g> teilen"</string>
     <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"Minimieren"</string>
+    <string name="about">Über</string>
+    <string name="about_message">Diese Software benutzt Kartenmaterial von OpenStreetMap.org</string>
+    <string name="base">OSM Basislayer</string>
     <string name="bottomsheet_action_expand_halfway">Zur Hälfte maximieren</string>
     <string name="character_counter_content_description">Eingegebene Zeichen: %1$d von %2$d</string>
     <string name="character_counter_overflowed_content_description">Zeichenbeschränkung überschritten: %1$d/%2$d</string>
     <string name="clear_text_end_icon_content_description">Text löschen</string>
+    <string name="cyclemap">Fahrradkarte</string>
     <string name="error_icon_content_description">Fehler</string>
     <string name="exposed_dropdown_menu_content_description">Drop-down-Menü anzeigen</string>
+    <string name="hills">Relief</string>
     <string name="icon_content_description">Dialogfeldsymbol</string>
     <string name="item_view_role_description">Tab</string>
+    <string name="map_mode">Kartenmodus</string>
     <string name="material_clock_toggle_content_description">Vormittags oder Nachmittags auswählen</string>
     <string name="material_hour_selection">Stunde auswählen</string>
     <string name="material_hour_suffix">%1$s Uhr</string>
@@ -84,7 +90,10 @@
     <string name="mtrl_picker_toggle_to_day_selection">Tippen, um zur Tagesauswahl zu wechseln</string>
     <string name="mtrl_picker_toggle_to_text_input_mode">In den Texteingabemodus wechseln</string>
     <string name="mtrl_picker_toggle_to_year_selection">Tippen, um zur Jahresauswahl zu wechseln</string>
+    <string name="my_location">Standort</string>
     <string name="password_toggle_content_description">Passwort anzeigen</string>
     <string msgid="6264217191555673260" name="search_menu_title">"Suche"</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="topo">Topographisch</string>
+    <string name="unknown">Unbekannt</string>
 </resources>
