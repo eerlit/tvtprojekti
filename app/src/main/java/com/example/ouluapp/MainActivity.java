@@ -26,22 +26,16 @@ import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 import java.util.ArrayList;
 
-import static java.security.AccessController.getContext;
-
 public class MainActivity extends AppCompatActivity{
     private final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;
     private MapView map = null;
-    private MyLocationNewOverlay mLocationOverlay;
-
-
+    private  MyLocationNewOverlay mLocationOverlay = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //handle permissions first, before map is created. not depicted here
-
-
 
         //load/initialize the osmdroid configuration, this can be done
         Context ctx = getApplicationContext();
@@ -56,18 +50,25 @@ public class MainActivity extends AppCompatActivity{
         //inflate and create the map
         setContentView(R.layout.activity_main);
 
-
         map = (MapView) findViewById(R.id.map);
         map.setTileSource(TileSourceFactory.MAPNIK);
+        map.setBuiltInZoomControls(true);
+        map.setMultiTouchControls(true);
         IMapController mapController = map.getController();
         mapController.setZoom(14);
-        GeoPoint startPoint = new GeoPoint(65.0158377521294, 25.470374591550694);
+        GeoPoint startPoint = new GeoPoint(65.012615, 25.471453);
         mapController.setCenter(startPoint);
 
 
-        //your items
+        requestPermissionsIfNecessary(new String[] {
+                // if you need to show the current location, uncomment the line below
+                // Manifest.permission.ACCESS_FINE_LOCATION,
+                // WRITE_EXTERNAL_STORAGE is required in order to show the map
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+        });
+
         ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
-        items.add(new OverlayItem("Title", "Description", new GeoPoint(65.0158377521294,25.470374591550694))); // Lat/Lon decimal degrees
+        items.add(new OverlayItem("Title", "Description", new GeoPoint(65.041960d,25.457597d))); // Lat/Lon decimal degrees
 
 //the overlay
         ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items,
@@ -81,24 +82,16 @@ public class MainActivity extends AppCompatActivity{
                     public boolean onItemLongPress(final int index, final OverlayItem item) {
                         return false;
                     }
-                }, ctx);
+                }, this);
         mOverlay.setFocusItemsOnTap(true);
 
         map.getOverlays().add(mOverlay);
 
-        requestPermissionsIfNecessary(new String[] {
-                // if you need to show the current location, uncomment the line below
-                // Manifest.permission.ACCESS_FINE_LOCATION,
-                // WRITE_EXTERNAL_STORAGE is required in order to show the map
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-        });
     }
-
 
     @Override
     public void onResume() {
         super.onResume();
-
         //this will refresh the osmdroid configuration on resuming.
         //if you make changes to the configuration, use
         //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -146,5 +139,4 @@ public class MainActivity extends AppCompatActivity{
                     REQUEST_PERMISSIONS_REQUEST_CODE);
         }
     }
-
 }
