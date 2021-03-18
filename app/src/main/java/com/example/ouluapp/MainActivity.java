@@ -1,10 +1,12 @@
 package com.example.ouluapp;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,15 +23,19 @@ import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.ItemizedIconOverlay;
 import org.osmdroid.views.overlay.ItemizedOverlayWithFocus;
 import org.osmdroid.views.overlay.OverlayItem;
+import org.osmdroid.views.overlay.ScaleBarOverlay;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 import java.util.ArrayList;
 
+import static java.security.AccessController.getContext;
+
 public class MainActivity extends AppCompatActivity{
     private final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;
     private MapView map = null;
-    private  MyLocationNewOverlay mLocationOverlay = null;
+    private  MyLocationNewOverlay mLocationOverlay;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,21 +60,32 @@ public class MainActivity extends AppCompatActivity{
         map.setTileSource(TileSourceFactory.MAPNIK);
         map.setBuiltInZoomControls(true);
         map.setMultiTouchControls(true);
+
+
         IMapController mapController = map.getController();
         mapController.setZoom(14);
         GeoPoint startPoint = new GeoPoint(65.012615, 25.471453);
         mapController.setCenter(startPoint);
 
+        //laitteen paikannus
+        this.mLocationOverlay = new MyLocationNewOverlay(new GpsMyLocationProvider(ctx),map);
+        this.mLocationOverlay.enableMyLocation();
+        map.getOverlays().add(this.mLocationOverlay);
 
         requestPermissionsIfNecessary(new String[] {
                 // if you need to show the current location, uncomment the line below
-                // Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
                 // WRITE_EXTERNAL_STORAGE is required in order to show the map
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
+
         });
 
+
+
+
         ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
-        items.add(new OverlayItem("Title", "Description", new GeoPoint(65.041960d,25.457597d))); // Lat/Lon decimal degrees
+        items.add(new OverlayItem("Title", "Description", new GeoPoint(65.015837d, 25.470374d))); // Lat/Lon decimal degrees
 
 //the overlay
         ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items,
@@ -89,6 +106,7 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
+
     @Override
     public void onResume() {
         super.onResume();
@@ -107,6 +125,7 @@ public class MainActivity extends AppCompatActivity{
         //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         //Configuration.getInstance().save(this, prefs);
         map.onPause();  //needed for compass, my location overlays, v6.0.0 and up
+
     }
 
     @Override
