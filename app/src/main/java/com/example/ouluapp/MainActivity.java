@@ -54,21 +54,26 @@ public class MainActivity extends AppCompatActivity{
         map.setTileSource(TileSourceFactory.MAPNIK);
         map.setBuiltInZoomControls(true);
         map.setMultiTouchControls(true);
+
         IMapController mapController = map.getController();
         mapController.setZoom(14);
         GeoPoint startPoint = new GeoPoint(65.012615, 25.471453);
         mapController.setCenter(startPoint);
 
+        this.mLocationOverlay = new MyLocationNewOverlay(new GpsMyLocationProvider(ctx),map);
+        this.mLocationOverlay.enableMyLocation();
+        map.getOverlays().add(this.mLocationOverlay);
 
         requestPermissionsIfNecessary(new String[] {
                 // if you need to show the current location, uncomment the line below
-                // Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
                 // WRITE_EXTERNAL_STORAGE is required in order to show the map
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
         });
 
         ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
-        items.add(new OverlayItem("Title", "Description", new GeoPoint(65.041960d,25.457597d))); // Lat/Lon decimal degrees
+        items.add(new OverlayItem("testiPaikka", "Description", new GeoPoint(65.029906d, 25.412060d))); // Lat/Lon decimal degrees
 
 //the overlay
         ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items,
