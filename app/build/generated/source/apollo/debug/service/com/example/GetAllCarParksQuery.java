@@ -172,6 +172,9 @@ public final class GetAllCarParksQuery implements Query<GetAllCarParksQuery.Data
       this.carParks = carParks;
     }
 
+    /**
+     * Get all car parks
+     */
     public @Nullable List<CarPark> carParks() {
       return this.carParks;
     }
@@ -286,18 +289,30 @@ public final class GetAllCarParksQuery implements Query<GetAllCarParksQuery.Data
       return this.__typename;
     }
 
+    /**
+     * Name of the car park
+     */
     public @NotNull String name() {
       return this.name;
     }
 
+    /**
+     * Latitude of the car park (WGS 84)
+     */
     public @Nullable Double lat() {
       return this.lat;
     }
 
+    /**
+     * Longitude of the car park (WGS 84)
+     */
     public @Nullable Double lon() {
       return this.lon;
     }
 
+    /**
+     * Number of currently available parking spaces at the car park
+     */
     public @Nullable Integer spacesAvailable() {
       return this.spacesAvailable;
     }
