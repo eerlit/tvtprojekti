@@ -5,13 +5,13 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
+import com.apollographql.apollo.ApolloClient;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
@@ -25,18 +25,33 @@ import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 import java.util.ArrayList;
+import java.util.List;
+import com.apollographql.apollo.ApolloCall;
+import com.apollographql.apollo.api.Response;
+import com.apollographql.apollo.exception.ApolloException;
+import org.jetbrains.annotations.NotNull;
+
+
 
 public class MainActivity extends AppCompatActivity{
     private final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;
     private MapView map = null;
     private  MyLocationNewOverlay mLocationOverlay = null;
+    public PlaceholderAPI placeholderAPI;
+
+    List<GetAllCamerasQuery.Camera> cameras = new ArrayList<>();
+    ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
+
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //handle permissions first, before map is created. not depicted here
-
+        Log.d("Testi", "TESTI");
+        getAllCameras();
         //load/initialize the osmdroid configuration, this can be done
         Context ctx = getApplicationContext();
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
@@ -72,10 +87,24 @@ public class MainActivity extends AppCompatActivity{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
         });
 
-        ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
-        items.add(new OverlayItem("testiPaikka", "Description", new GeoPoint(65.029906d, 25.412060d))); // Lat/Lon decimal degrees
 
-//the overlay
+
+
+
+
+
+    }
+
+    private  void updatemap(){
+        items.add(new OverlayItem("testiPaikka", "Description", new GeoPoint(65.029906d, 25.412060d))); // Lat/Lon decimal degrees
+        System.out.println("UpdateMap"+ cameras.size());
+        for (int i = 0; i < cameras.size(); i++){
+            System.out.println("forloop");
+            items.add(new OverlayItem( cameras.get(i).name, "Kamera",new GeoPoint(cameras.get(i).lat.doubleValue(), cameras.get(i).lon.doubleValue())));
+
+        }
+
+
         ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items,
                 new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
                     @Override
@@ -88,11 +117,39 @@ public class MainActivity extends AppCompatActivity{
                         return false;
                     }
                 }, this);
+
         mOverlay.setFocusItemsOnTap(true);
 
         map.getOverlays().add(mOverlay);
+    }
+    private void getAllCameras(){
+        Log.d("MainAcitvity", "GetAllCameras");
+        ApolloConnector.setupApollo().query(
+                GetAllCamerasQuery
+                .builder()
+                .build())
+                .enqueue(new ApolloCall.Callback<GetAllCamerasQuery.Data>() {
+                    @Override
+                    public void onResponse(@NotNull Response<GetAllCamerasQuery.Data> response) {
+                        Log.d("MainActivity", "Response: " + response.data().cameras);
+
+                        cameras = response.data().cameras;
+                        List<GetAllCamerasQuery.Camera> firstCam = cameras.subList(0,1);
+                        String lat = cameras.get(0).lat.toString();
+                        updatemap();
+
+                    }
+
+                    @Override
+                    public void onFailure(@NotNull ApolloException e) {
+                        Log.d("MAINACTIVITY", "Exception " + e.getMessage(), e);
+                    }
+                });
+
 
     }
+
+
 
     @Override
     public void onResume() {
