@@ -1,5 +1,9 @@
+com/example/ouluapp/PlaceholderAPI.java
+ com.example.ouluapp.PlaceholderAPI
 com/example/ouluapp/BuildConfig.java
  com.example.ouluapp.BuildConfig
+com/example/ouluapp/PlaceholderPost.java
+ com.example.ouluapp.PlaceholderPost
 com/example/ouluapp/MainActivity.java
  com.example.ouluapp.MainActivity
  com.example.ouluapp.MainActivity$1

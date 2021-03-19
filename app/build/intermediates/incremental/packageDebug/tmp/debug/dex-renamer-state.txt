@@ -1,4 +1,4 @@
-#Fri Mar 19 07:47:17 EET 2021
+#Fri Mar 19 09:07:08 EET 2021
 base.0=C\:\\Users\\Yuki\\AndroidStudioProjects\\tvtprojekti\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

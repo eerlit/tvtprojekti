@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -26,12 +28,17 @@ import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity{
     private final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;
     private MapView map = null;
     private  MyLocationNewOverlay mLocationOverlay = null;
-    String data ="";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,7 +68,6 @@ public class MainActivity extends AppCompatActivity{
         GeoPoint startPoint = new GeoPoint(65.012615, 25.471453);
         mapController.setCenter(startPoint);
 
-
         requestPermissionsIfNecessary(new String[] {
                 // if you need to show the current location, uncomment the line below
                 //Manifest.permission.ACCESS_FINE_LOCATION,
@@ -69,10 +75,41 @@ public class MainActivity extends AppCompatActivity{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
         });
 
+        //api
+        /*Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.oulunliikenne.fi/proxy/graphql")
+                .build();
+
+        PlaceholderAPI placeholderAPI = new PlaceholderAPI();
+
+        Call<List> call = placeholderAPI.getPosts();
+
+        call.enqueue(new Callback<List>() {
+            @Override
+            public void onResponse(Call<List> call, Response<List> response) {
+
+                if (response.isSuccessful()) {
+                    List posts = response.body();
+                    Log.d("Success", posts.get(0).getName().toString());
+                } else {
+                    Log.d("Yo", "Boo!");
+                    return;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List> call, Throwable t) {
+                Log.d("Yo", "Errror!");
+            }
+
+        });
+
+        Log.d("Yo","Hello!");*/
+
         ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
         items.add(new OverlayItem("Title", "Description", new GeoPoint(65.041960d,25.457597d))); // Lat/Lon decimal degrees
 
-//the overlay
+        //the overlay
         ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items,
                 new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
                     @Override
@@ -142,3 +179,4 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 }
+
