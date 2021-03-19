@@ -1,0 +1,8 @@
+query GetAllCarParks {
+  carParks {
+    name
+    lat
+    lon
+    spacesAvailable
+  }
+}

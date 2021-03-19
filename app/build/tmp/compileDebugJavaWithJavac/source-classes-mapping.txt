@@ -1,9 +1,22 @@
-com/example/ouluapp/PlaceholderAPI.java
- com.example.ouluapp.PlaceholderAPI
-com/example/ouluapp/BuildConfig.java
- com.example.ouluapp.BuildConfig
-com/example/ouluapp/PlaceholderPost.java
- com.example.ouluapp.PlaceholderPost
 com/example/ouluapp/MainActivity.java
  com.example.ouluapp.MainActivity
  com.example.ouluapp.MainActivity$1
+ com.example.ouluapp.MainActivity$2
+com/example/ouluapp/BuildConfig.java
+ com.example.ouluapp.BuildConfig
+com/example/type/CustomType.java
+ com.example.type.CustomType
+ com.example.type.CustomType$1
+com/example/GetAllCarParksQuery.java
+ com.example.GetAllCarParksQuery
+ com.example.GetAllCarParksQuery$1
+ com.example.GetAllCarParksQuery$Builder
+ com.example.GetAllCarParksQuery$CarPark
+ com.example.GetAllCarParksQuery$CarPark$1
+ com.example.GetAllCarParksQuery$CarPark$Mapper
+ com.example.GetAllCarParksQuery$Data
+ com.example.GetAllCarParksQuery$Data$1
+ com.example.GetAllCarParksQuery$Data$1$1
+ com.example.GetAllCarParksQuery$Data$Mapper
+ com.example.GetAllCarParksQuery$Data$Mapper$1
+ com.example.GetAllCarParksQuery$Data$Mapper$1$1

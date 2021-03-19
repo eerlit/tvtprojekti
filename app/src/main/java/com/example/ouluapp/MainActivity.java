@@ -6,15 +6,18 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.apollographql.apollo.ApolloCall;
+import com.apollographql.apollo.ApolloClient;
+import com.apollographql.apollo.api.Response;
+import com.apollographql.apollo.exception.ApolloException;
+import com.example.GetAllCarParksQuery;
+
+import org.jetbrains.annotations.NotNull;
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
@@ -26,19 +29,14 @@ import org.osmdroid.views.overlay.OverlayItem;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity{
     private final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;
     private MapView map = null;
     private  MyLocationNewOverlay mLocationOverlay = null;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,36 +73,25 @@ public class MainActivity extends AppCompatActivity{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
         });
 
-        //api
-        /*Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.oulunliikenne.fi/proxy/graphql")
+        // First, create an `ApolloClient`
+        // Replace the serverUrl with your GraphQL endpoint
+        ApolloClient apolloClient = ApolloClient.builder()
+                .serverUrl("https://api.oulunliikenne.fi/proxy/graphql")
                 .build();
 
-        PlaceholderAPI placeholderAPI = new PlaceholderAPI();
+// Then enqueue your query
+        apolloClient.query(new GetAllCarParksQuery())
+                .enqueue(new ApolloCall.Callback<GetAllCarParksQuery.Data>() {
+                    @Override
+                    public void onResponse(@NotNull Response<GetAllCarParksQuery.Data> response) {
+                        Log.e("Apollo", "Launch site: " + response.getData().carParks());
+                    }
 
-        Call<List> call = placeholderAPI.getPosts();
-
-        call.enqueue(new Callback<List>() {
-            @Override
-            public void onResponse(Call<List> call, Response<List> response) {
-
-                if (response.isSuccessful()) {
-                    List posts = response.body();
-                    Log.d("Success", posts.get(0).getName().toString());
-                } else {
-                    Log.d("Yo", "Boo!");
-                    return;
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List> call, Throwable t) {
-                Log.d("Yo", "Errror!");
-            }
-
-        });
-
-        Log.d("Yo","Hello!");*/
+                    @Override
+                    public void onFailure(@NotNull ApolloException e) {
+                        Log.e("Apollo", "Error", e);
+                    }
+                });
 
         ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
         items.add(new OverlayItem("Title", "Description", new GeoPoint(65.041960d,25.457597d))); // Lat/Lon decimal degrees
