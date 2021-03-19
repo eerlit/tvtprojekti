@@ -76,6 +76,10 @@
         "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_cameraphoto.xml.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\layout\\activity_cameraphoto.xml"
+    },
+    {
         "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
         "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
     },

@@ -2,6 +2,7 @@ package com.example.ouluapp;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -41,7 +42,9 @@ public class MainActivity extends AppCompatActivity{
 
     List<GetAllCamerasQuery.Camera> cameras = new ArrayList<>();
     ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
-
+    Context ctx;
+    String[] cameraURL;
+    String[] cameraName;
 
 
 
@@ -50,10 +53,9 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
 
         //handle permissions first, before map is created. not depicted here
-        Log.d("Testi", "TESTI");
         getAllCameras();
         //load/initialize the osmdroid configuration, this can be done
-        Context ctx = getApplicationContext();
+        ctx = getApplicationContext();
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
         //setting this before the layout is inflated is a good idea
         //it 'should' ensure that the map has a writable location for the map cache, even without permissions
@@ -87,16 +89,9 @@ public class MainActivity extends AppCompatActivity{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
         });
 
-
-
-
-
-
-
     }
 
     private  void updatemap(){
-        items.add(new OverlayItem("testiPaikka", "Description", new GeoPoint(65.029906d, 25.412060d))); // Lat/Lon decimal degrees
         System.out.println("UpdateMap"+ cameras.size());
         for (int i = 0; i < cameras.size(); i++){
             System.out.println("forloop");
@@ -109,7 +104,19 @@ public class MainActivity extends AppCompatActivity{
                 new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
                     @Override
                     public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
-                        //do something
+                        Intent intent = new Intent(ctx, CameraPhoto.class);
+                        cameraURL = new String[cameras.get(index).presets.size()];
+                        cameraName = new String[cameras.get(index).presets.size()];
+
+                        for(int i = 0; i < cameras.get(index).presets.size(); i++){
+                            Log.d("kamerat", cameras.get(index).presets.get(i).imageUrl);
+                            cameraName[i] = cameras.get(index).presets.get(i).presentationName;
+                            cameraURL[i] = cameras.get(index).presets.get(i).imageUrl;
+
+                        }
+                        intent.putExtra("CAMERA_NAME", cameraName);
+                        intent.putExtra("CAMERA", cameraURL);
+                        startActivity(intent);
                         return true;
                     }
                     @Override
@@ -134,8 +141,7 @@ public class MainActivity extends AppCompatActivity{
                         Log.d("MainActivity", "Response: " + response.data().cameras);
 
                         cameras = response.data().cameras;
-                        List<GetAllCamerasQuery.Camera> firstCam = cameras.subList(0,1);
-                        String lat = cameras.get(0).lat.toString();
+
                         updatemap();
 
                     }

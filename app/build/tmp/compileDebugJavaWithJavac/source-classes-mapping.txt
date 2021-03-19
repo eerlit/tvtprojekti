@@ -1,14 +1,7 @@
-com/example/ouluapp/ApolloConnector.java
- com.example.ouluapp.ApolloConnector
 com/example/ouluapp/PlaceholderAPI.java
  com.example.ouluapp.PlaceholderAPI
-com/example/ouluapp/BuildConfig.java
- com.example.ouluapp.BuildConfig
-com/example/ouluapp/type/CustomType.java
- com.example.ouluapp.type.CustomType
- com.example.ouluapp.type.CustomType$1
-com/example/ouluapp/PlaceholderPost.java
- com.example.ouluapp.PlaceholderPost
+com/example/ouluapp/ApolloConnector.java
+ com.example.ouluapp.ApolloConnector
 com/example/ouluapp/GetAllCamerasQuery.java
  com.example.ouluapp.GetAllCamerasQuery
  com.example.ouluapp.GetAllCamerasQuery$1
@@ -28,6 +21,16 @@ com/example/ouluapp/GetAllCamerasQuery.java
  com.example.ouluapp.GetAllCamerasQuery$Preset
  com.example.ouluapp.GetAllCamerasQuery$Preset$1
  com.example.ouluapp.GetAllCamerasQuery$Preset$Mapper
+com/example/ouluapp/BuildConfig.java
+ com.example.ouluapp.BuildConfig
+com/example/ouluapp/type/CustomType.java
+ com.example.ouluapp.type.CustomType
+ com.example.ouluapp.type.CustomType$1
+com/example/ouluapp/PlaceholderPost.java
+ com.example.ouluapp.PlaceholderPost
+com/example/ouluapp/CameraPhoto.java
+ com.example.ouluapp.CameraPhoto
+ com.example.ouluapp.CameraPhoto$1
 com/example/ouluapp/MainActivity.java
  com.example.ouluapp.MainActivity
  com.example.ouluapp.MainActivity$1
