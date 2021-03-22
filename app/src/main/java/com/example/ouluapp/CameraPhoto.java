@@ -30,8 +30,10 @@ public class CameraPhoto extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cameraphoto);
+
         imageView = (ImageView)findViewById(R.id.imageView);
         textView = (TextView)findViewById(R.id.textView);
+
         Intent intent = getIntent();
         context = getApplicationContext();
 
@@ -74,16 +76,19 @@ public class CameraPhoto extends AppCompatActivity {
     public void switchPhoto(int id){
         Picasso.with(context).load(cameraPhoto[photoID]).into(imageView);
         String[] dateParts = time[photoID].split("T");
-        String[] timeParts = dateParts[1].split("z");
-        String[] finalTimeParts = timeParts[0].split("\\.");
+        String[] timeParts = dateParts[1].split("Z");
 
+        String[] timeParts2 = timeParts[0].split("\\.");
+        String[] timeHMS = timeParts2[0].split(":");
+        int hour = Integer.parseInt(timeHMS[0]);
+        hour = hour + 2;
+        String finalTimeParts = hour + ":" + timeHMS[1] + ":" + timeHMS[2].split("Z")[0];
 
         String[] dateSplit = dateParts[0].split("-");
         String finaldate = dateSplit[2] + "." + dateSplit[1] + "." + dateSplit[0];
-        
-        String dateTime = finaldate + " " + finalTimeParts[0];
+
+        String dateTime = finaldate + " " + finalTimeParts;
 
         textView.setText(cameraName[id] + "\n" + cameraDirection[id] + "\n" + dateTime);
-        System.out.println(finalTimeParts[0]);
     }
 }

@@ -37,12 +37,12 @@ public class MainActivity extends AppCompatActivity{
     private final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;
     private MapView map = null;
     private  MyLocationNewOverlay mLocationOverlay = null;
-
+    Context ctx;
 
     List<GetAllCamerasQuery.Camera> cameras = new ArrayList<>();
-    ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
-    Context ctx;
-    private String[] cameraURL, cameraDirection, cameraTime, cameraName;
+
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,7 +78,9 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-    private  void updatemap(){
+    private  void updateMap(){
+        ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
+
         for (int i = 0; i < cameras.size(); i++) {
             OverlayItem olItem = new OverlayItem(cameras.get(i).name, "Kamera", new GeoPoint(cameras.get(i).lat.doubleValue(), cameras.get(i).lon.doubleValue()));
             Drawable newMarker = ctx.getResources().getDrawable(R.drawable.ic_baseline_camera_alt_24);
@@ -92,14 +94,16 @@ public class MainActivity extends AppCompatActivity{
 
                     @Override
                     public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
+                        String[] cameraURL, cameraDirection, cameraTime, cameraName;
+
                         Intent intent = new Intent(ctx, CameraPhoto.class);
+
                         cameraURL = new String[cameras.get(index).presets.size()];
                         cameraDirection = new String[cameras.get(index).presets.size()];
                         cameraTime = new String[cameras.get(index).presets.size()];
                         cameraName = new String[cameras.get(index).presets.size()];
 
                         for(int i = 0; i < cameras.get(index).presets.size(); i++){
-                            Log.d("kamerat", cameras.get(index).presets.get(i).imageUrl);
                             cameraDirection[i] = cameras.get(index).presets.get(i).presentationName;
                             cameraURL[i] = cameras.get(index).presets.get(i).imageUrl;
                             cameraTime[i] = cameras.get(index).presets.get(i).measuredTime;
@@ -131,7 +135,7 @@ public class MainActivity extends AppCompatActivity{
                     @Override
                     public void onResponse(@NotNull Response<GetAllCamerasQuery.Data> response) {
                         cameras = response.data().cameras;
-                        updatemap();
+                        updateMap();
                     }
 
                     @Override
