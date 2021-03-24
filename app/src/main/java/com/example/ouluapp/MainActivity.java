@@ -3,11 +3,15 @@ package com.example.ouluapp;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
+import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -26,6 +30,7 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.ItemizedIconOverlay;
 import org.osmdroid.views.overlay.ItemizedOverlayWithFocus;
+import org.osmdroid.views.overlay.Overlay;
 import org.osmdroid.views.overlay.OverlayItem;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
@@ -144,7 +149,21 @@ public class MainActivity extends AppCompatActivity{
                             i=i+5;
                         }
 
-                        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items,
+                        Drawable newMarker = ctx.getResources().getDrawable(R.drawable.mymarker);
+
+                        /*ItemizedIconOverlay<OverlayItem> mOverlay = new ItemizedIconOverlay<OverlayItem>(items,newMarker,new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
+                            @Override
+                            public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
+                                //do something
+                                return true;
+                            }
+                            @Override
+                            public boolean onItemLongPress(final int index, final OverlayItem item) {
+                                return false;
+                            }
+                        },ctx);*/
+
+                        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items,newMarker,newMarker, Color.WHITE,
                                 new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
                                     @Override
                                     public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
@@ -156,8 +175,9 @@ public class MainActivity extends AppCompatActivity{
                                         return false;
                                     }
                                 }, ctx);
-                        mOverlay.setFocusItemsOnTap(true);
 
+
+                        mOverlay.setFocusItemsOnTap(true);
                         map.getOverlays().add(mOverlay);
                         Log.e("Apollo","Testing: "+response.getData().carParks());
                     }

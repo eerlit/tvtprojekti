@@ -1679,6 +1679,7 @@ drawable mtrl_ic_error
 drawable mtrl_popupmenu_background
 drawable mtrl_popupmenu_background_dark
 drawable mtrl_tabs_default_indicator
+drawable mymarker
 drawable navigation_empty_icon
 drawable navto_small
 drawable next

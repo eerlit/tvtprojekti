@@ -64,6 +64,10 @@
         "source": "C:\\Users\\Yuki\\AndroidStudioProjects\\tvtprojekti\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\Yuki\\AndroidStudioProjects\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable_mymarker.png.flat",
+        "source": "C:\\Users\\Yuki\\AndroidStudioProjects\\tvtprojekti\\app\\src\\main\\res\\drawable\\mymarker.png"
+    },
+    {
         "merged": "C:\\Users\\Yuki\\AndroidStudioProjects\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\Yuki\\AndroidStudioProjects\\tvtprojekti\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
