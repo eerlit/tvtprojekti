@@ -3,6 +3,7 @@ package com.example.ouluapp;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -36,24 +37,14 @@ public class MainActivity extends AppCompatActivity{
     private final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;
     private MapView map = null;
     private  MyLocationNewOverlay mLocationOverlay = null;
-
+    Context ctx;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //handle permissions first, before map is created. not depicted here
-
-        //load/initialize the osmdroid configuration, this can be done
-        Context ctx = getApplicationContext();
+        connectToAPI();
+        ctx = getApplicationContext();
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
-        //setting this before the layout is inflated is a good idea
-        //it 'should' ensure that the map has a writable location for the map cache, even without permissions
-        //if no tiles are displayed, you can try overriding the cache path using Configuration.getInstance().setCachePath
-        //see also StorageUtils
-        //note, the load method also sets the HTTP User Agent to your application's package name, abusing osm's
-        //tile servers will get you banned based on this string
-
         //inflate and create the map
         setContentView(R.layout.activity_main);
 
@@ -68,51 +59,11 @@ public class MainActivity extends AppCompatActivity{
 
         requestPermissionsIfNecessary(new String[] {
                 // if you need to show the current location, uncomment the line below
-                //Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
                 // WRITE_EXTERNAL_STORAGE is required in order to show the map
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
         });
-
-        // First, create an `ApolloClient`
-        // Replace the serverUrl with your GraphQL endpoint
-        ApolloClient apolloClient = ApolloClient.builder()
-                .serverUrl("https://api.oulunliikenne.fi/proxy/graphql")
-                .build();
-
-// Then enqueue your query
-        apolloClient.query(new GetAllCarParksQuery())
-                .enqueue(new ApolloCall.Callback<GetAllCarParksQuery.Data>() {
-                    @Override
-                    public void onResponse(@NotNull Response<GetAllCarParksQuery.Data> response) {
-                        Log.e("Apollo", "Launch site: " + response.getData().carParks());
-                    }
-
-                    @Override
-                    public void onFailure(@NotNull ApolloException e) {
-                        Log.e("Apollo", "Error", e);
-                    }
-                });
-
-        ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
-        items.add(new OverlayItem("Title", "Description", new GeoPoint(65.041960d,25.457597d))); // Lat/Lon decimal degrees
-
-        //the overlay
-        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items,
-                new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
-                    @Override
-                    public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
-                        //do something
-                        return true;
-                    }
-                    @Override
-                    public boolean onItemLongPress(final int index, final OverlayItem item) {
-                        return false;
-                    }
-                }, this);
-        mOverlay.setFocusItemsOnTap(true);
-
-        map.getOverlays().add(mOverlay);
-
     }
 
     @Override
@@ -164,6 +115,58 @@ public class MainActivity extends AppCompatActivity{
                     permissionsToRequest.toArray(new String[0]),
                     REQUEST_PERMISSIONS_REQUEST_CODE);
         }
+    }
+
+    private void connectToAPI(){
+        // First, create an `ApolloClient`
+        // Replace the serverUrl with your GraphQL endpoint
+        ApolloClient apolloClient = ApolloClient.builder()
+                .serverUrl("https://api.oulunliikenne.fi/proxy/graphql")
+                .build();
+
+        // Then enqueue your query
+        apolloClient.query(new GetAllCarParksQuery())
+                .enqueue(new ApolloCall.Callback<GetAllCarParksQuery.Data>() {
+                    @Override
+                    public void onResponse(@NotNull Response<GetAllCarParksQuery.Data> response) {
+                        ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
+                        String[] seperated = response.getData().carParks().toString().split(",");
+                        int i = 1;
+                        while(i<seperated.length){
+                            String[] name = seperated[i].split("=");
+                            String[] lat = seperated[i+1].split("=");
+                            String[] lon = seperated[i+2].split("=");
+                            String[] spacesAvailable = seperated[i+3].split("=");
+                            items.add(new OverlayItem(name[1], "Vapaana: "+spacesAvailable[1], new GeoPoint(Double.parseDouble(lat[1]),Double.parseDouble(lon[1])))); // Lat/Lon decimal degrees
+                            if(i==16||i==76){
+                                i=i+5;
+                            }
+                            i=i+5;
+                        }
+
+                        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items,
+                                new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
+                                    @Override
+                                    public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
+                                        //do something
+                                        return true;
+                                    }
+                                    @Override
+                                    public boolean onItemLongPress(final int index, final OverlayItem item) {
+                                        return false;
+                                    }
+                                }, ctx);
+                        mOverlay.setFocusItemsOnTap(true);
+
+                        map.getOverlays().add(mOverlay);
+                        Log.e("Apollo","Testing: "+response.getData().carParks());
+                    }
+
+                    @Override
+                    public void onFailure(@NotNull ApolloException e) {
+                        Log.e("Apollo", "Error", e);
+                    }
+                });
     }
 }
 
