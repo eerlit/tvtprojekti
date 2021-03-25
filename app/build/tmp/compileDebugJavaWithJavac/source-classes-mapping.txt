@@ -19,14 +19,36 @@ com/example/ouluapp/GetAllCamerasQuery.java
  com.example.ouluapp.GetAllCamerasQuery$Preset$Mapper
 com/example/ouluapp/ApolloConnector.java
  com.example.ouluapp.ApolloConnector
+com/example/ouluapp/GetAllWeatherStationsQuery.java
+ com.example.ouluapp.GetAllWeatherStationsQuery
+ com.example.ouluapp.GetAllWeatherStationsQuery$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$Builder
+ com.example.ouluapp.GetAllWeatherStationsQuery$Data
+ com.example.ouluapp.GetAllWeatherStationsQuery$Data$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$Data$1$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$Data$Mapper
+ com.example.ouluapp.GetAllWeatherStationsQuery$Data$Mapper$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$Data$Mapper$1$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$SensorValue
+ com.example.ouluapp.GetAllWeatherStationsQuery$SensorValue$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$SensorValue$Mapper
+ com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation
+ com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$1$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$Mapper
+ com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$Mapper$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$Mapper$1$1
+com/example/ouluapp/BuildConfig.java
+ com.example.ouluapp.BuildConfig
 com/example/ouluapp/type/CustomType.java
  com.example.ouluapp.type.CustomType
  com.example.ouluapp.type.CustomType$1
-com/example/ouluapp/BuildConfig.java
- com.example.ouluapp.BuildConfig
+ com.example.ouluapp.type.CustomType$2
 com/example/ouluapp/CameraPhoto.java
  com.example.ouluapp.CameraPhoto
 com/example/ouluapp/MainActivity.java
  com.example.ouluapp.MainActivity
  com.example.ouluapp.MainActivity$1
  com.example.ouluapp.MainActivity$2
+ com.example.ouluapp.MainActivity$3
+ com.example.ouluapp.MainActivity$4
