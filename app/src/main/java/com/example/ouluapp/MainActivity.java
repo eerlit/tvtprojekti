@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        connectToAPI();
+        getAllCarParks();
         getAllWeatherStations();
         getAllCameras();
 
@@ -359,7 +359,7 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
-    private void connectToAPI(){
+    private void getAllCarParks(){
         // First, create an `ApolloClient`
         // Replace the serverUrl with your GraphQL endpoint
         ApolloClient apolloClient = ApolloClient.builder()
@@ -388,18 +388,6 @@ public class MainActivity extends AppCompatActivity{
 
                         Drawable newMarker = ctx.getResources().getDrawable(R.drawable.mymarker);
 
-                        /*ItemizedIconOverlay<OverlayItem> mOverlay = new ItemizedIconOverlay<OverlayItem>(items,newMarker,new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
-                            @Override
-                            public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
-                                //do something
-                                return true;
-                            }
-                            @Override
-                            public boolean onItemLongPress(final int index, final OverlayItem item) {
-                                return false;
-                            }
-                        },ctx);*/
-
                         ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items,newMarker,newMarker, Color.WHITE,
                                 new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
                                     @Override
@@ -412,7 +400,6 @@ public class MainActivity extends AppCompatActivity{
                                         return false;
                                     }
                                 }, ctx);
-
 
                         mOverlay.setFocusItemsOnTap(true);
                         map.getOverlays().add(mOverlay);
