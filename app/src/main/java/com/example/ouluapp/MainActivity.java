@@ -37,9 +37,15 @@ public class MainActivity extends AppCompatActivity{
     private final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;
     private MapView map = null;
     private  MyLocationNewOverlay mLocationOverlay = null;
+    int inteksi = 0;
     Context ctx;
 
     List<GetAllCamerasQuery.Camera> cameras = new ArrayList<>();
+    List<GetAllWeatherStationsQuery.WeatherStation> weatherStations = new ArrayList<>();
+
+    ArrayList<OverlayItem> cameraItems = new ArrayList<OverlayItem>();
+    ArrayList<OverlayItem> weatherItems = new ArrayList<OverlayItem>();
+    int tet = 0;
 
 
 
@@ -47,7 +53,9 @@ public class MainActivity extends AppCompatActivity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getAllWeatherStations();
         getAllCameras();
+
         ctx = getApplicationContext();
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
 
@@ -78,24 +86,78 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-    private  void updateMap(){
-        ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
+    private  void updateMap(String itemToUpdate){
 
-        for (int i = 0; i < cameras.size(); i++) {
-            OverlayItem olItem = new OverlayItem(cameras.get(i).name, "Kamera", new GeoPoint(cameras.get(i).lat.doubleValue(), cameras.get(i).lon.doubleValue()));
-            Drawable newMarker = ctx.getResources().getDrawable(R.drawable.ic_baseline_camera_alt_24);
-            olItem.setMarker(newMarker);
-            items.add(olItem);
+        if(itemToUpdate == "weather") {
+            for (int i = 0; i < weatherStations.size(); i++) {
+                System.out.println("WeatherNAME else : " + weatherStations.get(i).name + " LAT : " + weatherStations.get(i).lat + " LON : " + weatherStations.get(i).lon);
+                OverlayItem weatherItem = new OverlayItem(weatherStations.get(i).name, "WeatherStation", new GeoPoint(weatherStations.get(i).lat.doubleValue(), weatherStations.get(i).lon.doubleValue()));
+
+                Drawable newMarker = ContextCompat.getDrawable(ctx, R.drawable.ic_baseline_cloud_24);
+                weatherItem.setMarker(newMarker);
+                weatherItems.add(weatherItem);
+            }
+            for (int i = 0; i < weatherStations.size(); i++) {
+
+
+                double wLat = weatherStations.get(i).lat.doubleValue();
+                double wLon = weatherStations.get(i).lon.doubleValue();
+
+
+                for (int j = 0; j <cameras.size(); j++){
+
+                    double cLat = cameras.get(j).lat.doubleValue();
+                    double cLon = cameras.get(j).lon.doubleValue();
+                    double weatherDc = wLat/cLat + wLon/cLon;
+                    if(/*wLat == cLat && cLon == wLon*/1.99995 < weatherDc && weatherDc < 2.00001) {
+                        System.out.println("WEATHERDC" + weatherDc);
+
+
+                        OverlayItem weatherCameraItem = new OverlayItem(cameras.get(j).name, "WeatherCamera", new GeoPoint(cLat,cLon));
+
+                        Drawable weatherCamIcon = ContextCompat.getDrawable(ctx, R.drawable.ic_baseline_weather_camera_24);
+                        weatherCameraItem.setMarker(weatherCamIcon);
+                        //cameraItems.set(j, weatherCameraItem);
+                        weatherItems.set(i, weatherCameraItem);
+
+                        System.out.println("CameraNAME : " +cameras.get(j).name + " LAT : " + cameras.get(j).lat + " LON : " + cameras.get(j).lon + " INDEX J : "+ j);
+                        System.out.println("WeatherNAME : " + weatherStations.get(i).name + " LAT : " + weatherStations.get(i).lat + " LON : " + weatherStations.get(i).lon + " INDEX I : "+ i);
+                        System.out.println(" ");
+                        break;
+
+
+                    }
+
+
+                }
+
+            }
+
+
+        }
+        else if(itemToUpdate == "cameras") {
+            for (int i = 0; i < cameras.size(); i++) {
+                OverlayItem cameraItem = new OverlayItem(cameras.get(i).name, "Camera", new GeoPoint(cameras.get(i).lat.doubleValue(), cameras.get(i).lon.doubleValue()));
+
+                Drawable newMarker = ContextCompat.getDrawable(ctx, R.drawable.ic_baseline_camera_alt_24);
+                cameraItem.setMarker(newMarker);
+                cameraItems.add(cameraItem);
+            }
         }
 
-        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items,
+        ItemizedOverlayWithFocus<OverlayItem> cameraOverlay = new ItemizedOverlayWithFocus<OverlayItem>(cameraItems,
                 new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
 
 
                     @Override
                     public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
+                        System.out.println("Camera");
+                        System.out.println("CameraNAME : " + cameras.get(index).name + " LAT : " + cameras.get(index).lat + " LON : " + cameras.get(index).lon + " INDEX  : "+ index);
                         String[] cameraURL, cameraDirection, cameraTime, cameraName;
-
+                        System.out.println(index);
+                        System.out.println(item);
+                        System.out.println(cameras.get(index).name);
+                        //System.out.println(weatherStations.get(index).name);
                         Intent intent = new Intent(ctx, CameraPhoto.class);
 
                         cameraURL = new String[cameras.get(index).presets.size()];
@@ -108,6 +170,7 @@ public class MainActivity extends AppCompatActivity{
                             cameraURL[i] = cameras.get(index).presets.get(i).imageUrl;
                             cameraTime[i] = cameras.get(index).presets.get(i).measuredTime;
                             cameraName[i] = cameras.get(index).name;
+
 
                         }
                         intent.putExtra("CAMERA_DIRECTION", cameraDirection);
@@ -123,7 +186,77 @@ public class MainActivity extends AppCompatActivity{
                     }
                 }, this);
 
-        map.getOverlays().add(mOverlay);
+        ItemizedOverlayWithFocus<OverlayItem> weatherOverlay = new ItemizedOverlayWithFocus<OverlayItem>(weatherItems,
+                new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
+
+
+                    @Override
+                    public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
+                        int tempIndex = 0;
+                        int cameraIndex = -1;
+                        System.out.println("WeatherStation");
+                        System.out.println("WeatherNAME : " + weatherStations.get(index).name + " LAT : " + weatherStations.get(index).lat + " LON : " + weatherStations.get(index).lon + " INDEX I : "+ index);
+                        for (int i = 0; i < cameras.size(); i++){
+                            double weatherDc = weatherStations.get(index).lat.doubleValue()/cameras.get(i).lat.doubleValue() + weatherStations.get(index).lon.doubleValue()/cameras.get(i).lon.doubleValue();
+                            if (1.99995 < weatherDc && weatherDc < 2.00001 ){
+                                cameraIndex = i;
+                                System.out.println("CAMERAINDEX: "+ cameraIndex);
+                            }
+                        }
+                        if (cameraIndex != -1){
+                            Double temp;
+                            String[] cameraURL, cameraDirection, cameraTime, cameraName;
+                            for (int i = 0; i < weatherStations.get(index).sensorValues.size(); i++){
+                                if (weatherStations.get(index).sensorValues.get(i).name.contains("ILMA") && !weatherStations.get(index).sensorValues.get(i).name.contains("_")){
+                                    tempIndex = i;
+                                    System.out.println("TEMPINDEX: "+ tempIndex);
+                                }
+                            }
+
+
+                            Intent intent = new Intent(ctx, CameraPhoto.class);
+
+                            cameraURL = new String[cameras.get(cameraIndex).presets.size()];
+                            cameraDirection = new String[cameras.get(cameraIndex).presets.size()];
+                            cameraTime = new String[cameras.get(cameraIndex).presets.size()];
+                            cameraName = new String[cameras.get(cameraIndex).presets.size()];
+                            temp = weatherStations.get(index).sensorValues.get(tempIndex).sensorValue;
+
+                            for(int i = 0; i < cameras.get(cameraIndex).presets.size(); i++){
+                                cameraDirection[i] = cameras.get(cameraIndex).presets.get(i).presentationName;
+                                cameraURL[i] = cameras.get(cameraIndex).presets.get(i).imageUrl;
+                                cameraTime[i] = cameras.get(cameraIndex).presets.get(i).measuredTime;
+                                cameraName[i] = cameras.get(cameraIndex).name;
+
+
+                            }
+                            intent.putExtra("TEMP", temp);
+                            intent.putExtra("CAMERA_DIRECTION", cameraDirection);
+                            intent.putExtra("CAMERA_NAME", cameraName);
+                            intent.putExtra("CAMERA", cameraURL);
+                            intent.putExtra("TIME",cameraTime);
+                            startActivity(intent);
+                        }
+                        if (cameraIndex == -1){
+
+                            System.out.println(weatherStations.get(index).name);
+                        }
+
+
+                        return true;
+                    }
+                    @Override
+                    public boolean onItemLongPress(final int index, final OverlayItem item) {
+                        return false;
+                    }
+                }, this);
+
+        weatherOverlay.setFocusItemsOnTap(true);
+
+        map.getOverlays().add(cameraOverlay);
+        map.getOverlays().add(weatherOverlay);
+
+
     }
     private void getAllCameras(){
         Log.d("MainAcitvity", "GetAllCameras");
@@ -135,12 +268,33 @@ public class MainActivity extends AppCompatActivity{
                     @Override
                     public void onResponse(@NotNull Response<GetAllCamerasQuery.Data> response) {
                         cameras = response.data().cameras;
-                        updateMap();
+                        updateMap("cameras");
                     }
 
                     @Override
                     public void onFailure(@NotNull ApolloException e) {
                         Log.d("MainActigetAllCameras", "Exception " + e.getMessage(), e);
+                    }
+                });
+
+
+    }
+
+    private void getAllWeatherStations(){
+        ApolloConnector.setupApollo().query(
+                GetAllWeatherStationsQuery
+                .builder()
+                .build())
+                .enqueue(new ApolloCall.Callback<GetAllWeatherStationsQuery.Data>() {
+                    @Override
+                    public void onResponse(@NotNull Response<GetAllWeatherStationsQuery.Data> response) {
+                        weatherStations = response.data().weatherStations;
+                        updateMap("weather");
+                    }
+
+                    @Override
+                    public void onFailure(@NotNull ApolloException e) {
+
                     }
                 });
 

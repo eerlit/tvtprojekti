@@ -21,6 +21,7 @@ public class CameraPhoto extends AppCompatActivity {
     private ImageView imageView;
     private TextView textView;
     String[] cameraPhoto, cameraName, time, cameraDirection;
+    Double temp;
     Float x1, x2;
     int cameraPhotoLength = 0;
     int photoID = 0;
@@ -37,6 +38,7 @@ public class CameraPhoto extends AppCompatActivity {
         Intent intent = getIntent();
         context = getApplicationContext();
 
+        temp = (Double) intent.getSerializableExtra("TEMP");
         cameraDirection = (String[])intent.getSerializableExtra("CAMERA_DIRECTION");
         cameraPhoto = (String[])intent.getSerializableExtra("CAMERA");
         cameraName = (String[])intent.getSerializableExtra("CAMERA_NAME");
@@ -67,6 +69,7 @@ public class CameraPhoto extends AppCompatActivity {
                     if(photoID == -1){
                         photoID = cameraPhotoLength;
                     }
+
                     switchPhoto(photoID);
                 }
                 break;
@@ -74,21 +77,28 @@ public class CameraPhoto extends AppCompatActivity {
         return false;
     }
     public void switchPhoto(int id){
-        Picasso.with(context).load(cameraPhoto[photoID]).into(imageView);
-        String[] dateParts = time[photoID].split("T");
-        String[] timeParts = dateParts[1].split("Z");
+        String dateTime;
+        Picasso.with(context).load(cameraPhoto[id]).into(imageView);
+        if (time[id] != null){
+            String[] dateParts = time[id].split("T");
+            String[] timeParts = dateParts[1].split("Z");
 
-        String[] timeParts2 = timeParts[0].split("\\.");
-        String[] timeHMS = timeParts2[0].split(":");
-        int hour = Integer.parseInt(timeHMS[0]);
-        hour = hour + 2;
-        String finalTimeParts = hour + ":" + timeHMS[1] + ":" + timeHMS[2].split("Z")[0];
+            String[] timeParts2 = timeParts[0].split("\\.");
+            String[] timeHMS = timeParts2[0].split(":");
+            int hour = Integer.parseInt(timeHMS[0]);
+            hour = hour + 3;
+            String finalTimeParts = hour + ":" + timeHMS[1] + ":" + timeHMS[2].split("Z")[0];
 
-        String[] dateSplit = dateParts[0].split("-");
-        String finaldate = dateSplit[2] + "." + dateSplit[1] + "." + dateSplit[0];
+            String[] dateSplit = dateParts[0].split("-");
+            String finaldate = dateSplit[2] + "." + dateSplit[1] + "." + dateSplit[0];
 
-        String dateTime = finaldate + " " + finalTimeParts;
+            dateTime = finaldate + " " + finalTimeParts;
+        }else {
+            dateTime = "No Time";
+        }
 
-        textView.setText(cameraName[id] + "\n" + cameraDirection[id] + "\n" + dateTime);
+
+        textView.setText(cameraName[id] + "\n" + cameraDirection[id] + "\n" + dateTime + "\n");
+        if (temp!=null) textView.append(temp + "°C");
     }
 }

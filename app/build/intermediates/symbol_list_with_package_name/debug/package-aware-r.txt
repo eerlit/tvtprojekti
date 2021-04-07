@@ -1645,6 +1645,8 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable ic_baseline_camera_alt_24
+drawable ic_baseline_cloud_24
+drawable ic_baseline_weather_camera_24
 drawable ic_clock_black_24dp
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background

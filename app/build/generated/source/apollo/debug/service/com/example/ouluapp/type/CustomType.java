@@ -10,6 +10,18 @@ import java.lang.Override;
 import java.lang.String;
 
 public enum CustomType implements ScalarType {
+  GRAPHQLDATETIME {
+    @Override
+    public String typeName() {
+      return "GraphQLDateTime";
+    }
+
+    @Override
+    public String className() {
+      return "java.lang.Object";
+    }
+  },
+
   ID {
     @Override
     public String typeName() {
