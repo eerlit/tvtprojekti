@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity{
 
     ArrayList<OverlayItem> cameraItems = new ArrayList<OverlayItem>();
     ArrayList<OverlayItem> weatherItems = new ArrayList<OverlayItem>();
+    int tet = 0;
 
 
 
@@ -237,6 +238,7 @@ public class MainActivity extends AppCompatActivity{
                             startActivity(intent);
                         }
                         if (cameraIndex == -1){
+
                             System.out.println(weatherStations.get(index).name);
                         }
 
@@ -249,8 +251,11 @@ public class MainActivity extends AppCompatActivity{
                     }
                 }, this);
 
+        weatherOverlay.setFocusItemsOnTap(true);
+
         map.getOverlays().add(cameraOverlay);
         map.getOverlays().add(weatherOverlay);
+
 
     }
     private void getAllCameras(){

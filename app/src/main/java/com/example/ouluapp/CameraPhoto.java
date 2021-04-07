@@ -86,7 +86,7 @@ public class CameraPhoto extends AppCompatActivity {
             String[] timeParts2 = timeParts[0].split("\\.");
             String[] timeHMS = timeParts2[0].split(":");
             int hour = Integer.parseInt(timeHMS[0]);
-            hour = hour + 2;
+            hour = hour + 3;
             String finalTimeParts = hour + ":" + timeHMS[1] + ":" + timeHMS[2].split("Z")[0];
 
             String[] dateSplit = dateParts[0].split("-");
