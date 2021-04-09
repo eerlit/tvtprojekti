@@ -31,7 +31,6 @@ import java.util.List;
 import com.apollographql.apollo.ApolloCall;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
-import com.example.GetAllCarParksQuery;
 
 import org.jetbrains.annotations.NotNull;
 

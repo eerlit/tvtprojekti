@@ -17,18 +17,18 @@ com/example/ouluapp/type/CustomType.java
  com.example.ouluapp.type.CustomType$1
  com.example.ouluapp.type.CustomType$2
 com/example/ouluapp/GetAllCarParksQuery.java
- com.example.GetAllCarParksQuery
- com.example.GetAllCarParksQuery$1
- com.example.GetAllCarParksQuery$Builder
- com.example.GetAllCarParksQuery$CarPark
- com.example.GetAllCarParksQuery$CarPark$1
- com.example.GetAllCarParksQuery$CarPark$Mapper
- com.example.GetAllCarParksQuery$Data
- com.example.GetAllCarParksQuery$Data$1
- com.example.GetAllCarParksQuery$Data$1$1
- com.example.GetAllCarParksQuery$Data$Mapper
- com.example.GetAllCarParksQuery$Data$Mapper$1
- com.example.GetAllCarParksQuery$Data$Mapper$1$1
+ com.example.ouluapp.GetAllCarParksQuery
+ com.example.ouluapp.GetAllCarParksQuery$1
+ com.example.ouluapp.GetAllCarParksQuery$Builder
+ com.example.ouluapp.GetAllCarParksQuery$CarPark
+ com.example.ouluapp.GetAllCarParksQuery$CarPark$1
+ com.example.ouluapp.GetAllCarParksQuery$CarPark$Mapper
+ com.example.ouluapp.GetAllCarParksQuery$Data
+ com.example.ouluapp.GetAllCarParksQuery$Data$1
+ com.example.ouluapp.GetAllCarParksQuery$Data$1$1
+ com.example.ouluapp.GetAllCarParksQuery$Data$Mapper
+ com.example.ouluapp.GetAllCarParksQuery$Data$Mapper$1
+ com.example.ouluapp.GetAllCarParksQuery$Data$Mapper$1$1
 com/example/ouluapp/GetAllCamerasQuery.java
  com.example.ouluapp.GetAllCamerasQuery
  com.example.ouluapp.GetAllCamerasQuery$1
