@@ -53,6 +53,11 @@
             android:name="com.example.ouluapp.CameraPhoto"
             android:parentActivityName="com.example.ouluapp.MainActivity" >
         </activity>
+
+        <provider
+            android:name="com.squareup.picasso.PicassoProvider"
+            android:authorities="com.example.ouluapp.com.squareup.picasso"
+            android:exported="false" />
     </application>
 
 </manifest>
