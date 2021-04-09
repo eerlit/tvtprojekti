@@ -2,14 +2,19 @@ com/example/ouluapp/CameraPhoto.java
  com.example.ouluapp.CameraPhoto
 com/example/ouluapp/ApolloConnector.java
  com.example.ouluapp.ApolloConnector
-com/example/ouluapp/MainActivity.java
- com.example.ouluapp.MainActivity
- com.example.ouluapp.MainActivity$1
- com.example.ouluapp.MainActivity$2
- com.example.ouluapp.MainActivity$3
- com.example.ouluapp.MainActivity$4
- com.example.ouluapp.MainActivity$5
- com.example.ouluapp.MainActivity$5$1
+com/example/GetAllCarParksQuery.java
+ com.example.GetAllCarParksQuery
+ com.example.GetAllCarParksQuery$1
+ com.example.GetAllCarParksQuery$Builder
+ com.example.GetAllCarParksQuery$CarPark
+ com.example.GetAllCarParksQuery$CarPark$1
+ com.example.GetAllCarParksQuery$CarPark$Mapper
+ com.example.GetAllCarParksQuery$Data
+ com.example.GetAllCarParksQuery$Data$1
+ com.example.GetAllCarParksQuery$Data$1$1
+ com.example.GetAllCarParksQuery$Data$Mapper
+ com.example.GetAllCarParksQuery$Data$Mapper$1
+ com.example.GetAllCarParksQuery$Data$Mapper$1$1
 com/example/ouluapp/BuildConfig.java
  com.example.ouluapp.BuildConfig
 com/example/ouluapp/type/CustomType.java
@@ -54,16 +59,11 @@ com/example/ouluapp/GetAllWeatherStationsQuery.java
  com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$Mapper
  com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$Mapper$1
  com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$Mapper$1$1
-com/example/GetAllCarParksQuery.java
- com.example.GetAllCarParksQuery
- com.example.GetAllCarParksQuery$1
- com.example.GetAllCarParksQuery$Builder
- com.example.GetAllCarParksQuery$CarPark
- com.example.GetAllCarParksQuery$CarPark$1
- com.example.GetAllCarParksQuery$CarPark$Mapper
- com.example.GetAllCarParksQuery$Data
- com.example.GetAllCarParksQuery$Data$1
- com.example.GetAllCarParksQuery$Data$1$1
- com.example.GetAllCarParksQuery$Data$Mapper
- com.example.GetAllCarParksQuery$Data$Mapper$1
- com.example.GetAllCarParksQuery$Data$Mapper$1$1
+com/example/ouluapp/MainActivity.java
+ com.example.ouluapp.MainActivity
+ com.example.ouluapp.MainActivity$1
+ com.example.ouluapp.MainActivity$2
+ com.example.ouluapp.MainActivity$3
+ com.example.ouluapp.MainActivity$4
+ com.example.ouluapp.MainActivity$5
+ com.example.ouluapp.MainActivity$6

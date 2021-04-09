@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity{
 
     ArrayList<OverlayItem> cameraItems = new ArrayList<OverlayItem>();
     ArrayList<OverlayItem> weatherItems = new ArrayList<OverlayItem>();
+    ArrayList<OverlayItem> carParksItems = new ArrayList<OverlayItem>();
     int tet = 0;
 
 
@@ -57,9 +58,9 @@ public class MainActivity extends AppCompatActivity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getAllCarParks();
         getAllWeatherStations();
         getAllCameras();
+        getAllCarParks();
 
         ctx = getApplicationContext();
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
@@ -148,6 +149,9 @@ public class MainActivity extends AppCompatActivity{
                 cameraItem.setMarker(newMarker);
                 cameraItems.add(cameraItem);
             }
+        }
+        else if(itemToUpdate == "carparks"){
+
         }
 
         ItemizedOverlayWithFocus<OverlayItem> cameraOverlay = new ItemizedOverlayWithFocus<OverlayItem>(cameraItems,
@@ -256,8 +260,25 @@ public class MainActivity extends AppCompatActivity{
                     }
                 }, this);
 
-        weatherOverlay.setFocusItemsOnTap(true);
+        Drawable newMarker = ctx.getResources().getDrawable(R.drawable.mymarker);
 
+        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(carParksItems,newMarker,newMarker, Color.WHITE,
+                new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
+                    @Override
+                    public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
+                        //do something
+                        return true;
+                    }
+                    @Override
+                    public boolean onItemLongPress(final int index, final OverlayItem item) {
+                        return false;
+                    }
+                }, ctx);
+
+        weatherOverlay.setFocusItemsOnTap(true);
+        mOverlay.setFocusItemsOnTap(true);
+
+        map.getOverlays().add(mOverlay);
         map.getOverlays().add(cameraOverlay);
         map.getOverlays().add(weatherOverlay);
 
@@ -306,7 +327,34 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
+    private void getAllCarParks(){
+        ApolloConnector.setupApollo().query(new GetAllCarParksQuery())
+                .enqueue(new ApolloCall.Callback<GetAllCarParksQuery.Data>() {
+                    @Override
+                    public void onResponse(@NotNull Response<GetAllCarParksQuery.Data> response) {
+                        String[] seperated = response.getData().carParks().toString().split(",");
+                        int i = 1;
+                        while(i<seperated.length){
+                            String[] name = seperated[i].split("=");
+                            String[] lat = seperated[i+1].split("=");
+                            String[] lon = seperated[i+2].split("=");
+                            String[] spacesAvailable = seperated[i+3].split("=");
+                            carParksItems.add(new OverlayItem(name[1], "Vapaana: "+spacesAvailable[1], new GeoPoint(Double.parseDouble(lat[1]),Double.parseDouble(lon[1])))); // Lat/Lon decimal degrees
+                            if(i==16||i==76){
+                                i=i+5;
+                            }
+                            i=i+5;
+                        }
 
+                        //Log.e("Apollo","Testing: "+response.getData().carParks());
+                    }
+
+                    @Override
+                    public void onFailure(@NotNull ApolloException e) {
+                        Log.e("Apollo", "Error", e);
+                    }
+                });
+    }
 
     @Override
     public void onResume() {
@@ -359,57 +407,5 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
-    private void getAllCarParks(){
-        // First, create an `ApolloClient`
-        // Replace the serverUrl with your GraphQL endpoint
-        ApolloClient apolloClient = ApolloClient.builder()
-                .serverUrl("https://api.oulunliikenne.fi/proxy/graphql")
-                .build();
 
-        // Then enqueue your query
-        apolloClient.query(new GetAllCarParksQuery())
-                .enqueue(new ApolloCall.Callback<GetAllCarParksQuery.Data>() {
-                    @Override
-                    public void onResponse(@NotNull Response<GetAllCarParksQuery.Data> response) {
-                        ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
-                        String[] seperated = response.getData().carParks().toString().split(",");
-                        int i = 1;
-                        while(i<seperated.length){
-                            String[] name = seperated[i].split("=");
-                            String[] lat = seperated[i+1].split("=");
-                            String[] lon = seperated[i+2].split("=");
-                            String[] spacesAvailable = seperated[i+3].split("=");
-                            items.add(new OverlayItem(name[1], "Vapaana: "+spacesAvailable[1], new GeoPoint(Double.parseDouble(lat[1]),Double.parseDouble(lon[1])))); // Lat/Lon decimal degrees
-                            if(i==16||i==76){
-                                i=i+5;
-                            }
-                            i=i+5;
-                        }
-
-                        Drawable newMarker = ctx.getResources().getDrawable(R.drawable.mymarker);
-
-                        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items,newMarker,newMarker, Color.WHITE,
-                                new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
-                                    @Override
-                                    public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
-                                        //do something
-                                        return true;
-                                    }
-                                    @Override
-                                    public boolean onItemLongPress(final int index, final OverlayItem item) {
-                                        return false;
-                                    }
-                                }, ctx);
-
-                        mOverlay.setFocusItemsOnTap(true);
-                        map.getOverlays().add(mOverlay);
-                        Log.e("Apollo","Testing: "+response.getData().carParks());
-                    }
-
-                    @Override
-                    public void onFailure(@NotNull ApolloException e) {
-                        Log.e("Apollo", "Error", e);
-                    }
-                });
-    }
 }
