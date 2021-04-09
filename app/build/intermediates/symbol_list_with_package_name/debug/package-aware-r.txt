@@ -1807,6 +1807,7 @@ id bubble_subdescription
 id bubble_title
 id buttonPanel
 id cache_measures
+id camera_image_view
 id cancel_button
 id center
 id center_horizontal
@@ -1926,6 +1927,8 @@ id linear
 id listMode
 id list_item
 id map
+id map_popup_body
+id map_popup_header
 id mapview
 id masked
 id material_clock_display
@@ -2195,6 +2198,8 @@ layout abc_tooltip
 layout activity_cameraphoto
 layout activity_main
 layout bonuspack_bubble
+layout camera_popup
+layout cameraphoto_dialog
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog

@@ -45,7 +45,7 @@ public class CameraPhoto extends AppCompatActivity {
         time = (String[])intent.getSerializableExtra("TIME");
 
         cameraPhotoLength= cameraPhoto.length-1;
-        Picasso.with(context).load(cameraPhoto[photoID]).into(imageView);
+        //Picasso.with(context).load(cameraPhoto[photoID]).into(imageView);
         switchPhoto(photoID);
 
     }
@@ -78,7 +78,7 @@ public class CameraPhoto extends AppCompatActivity {
     }
     public void switchPhoto(int id){
         String dateTime;
-        Picasso.with(context).load(cameraPhoto[id]).into(imageView);
+        //Picasso.with(context).load(cameraPhoto[id]).into(imageView);
         if (time[id] != null){
             String[] dateParts = time[id].split("T");
             String[] timeParts = dateParts[1].split("Z");
