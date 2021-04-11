@@ -22,13 +22,12 @@ public class CustomMarkerInfoWindow extends MarkerInfoWindow {
         TextView title = (TextView) mView.findViewById(R.id.map_popup_header);
         title.setText(m.getTitle());
 
-
         TextView snippet = (TextView) mView
                 .findViewById(R.id.map_popup_body);
         String[] tempDate = m.getSnippet().split("SPLIT");
 
         if (tempDate != null){
-            String[] dateParts = tempDate[1].split("T");
+            String[] dateParts = tempDate[tempDate.length-1].split("T");
             String[] timeParts = dateParts[1].split("Z");
 
             String[] timeParts2 = timeParts[0].split("\\.");
@@ -44,8 +43,12 @@ public class CustomMarkerInfoWindow extends MarkerInfoWindow {
         }else {
             dateTime = "No Time";
         }
+        String temp = "Lämpötila: " +tempDate[0] + "°C";
+        String wind = "Tuulen Nopeus: " +tempDate[1] + "m/s";
+        String moisture = "Kosteus: " +tempDate[2] + "%";
+        String finalText = dateTime + "\n" + temp + "\n" + wind + "\n" + moisture;
 
-        snippet.setText(dateTime+ "\n" + tempDate[0] + "°C");
+        snippet.setText(finalText);
 
 
     }
