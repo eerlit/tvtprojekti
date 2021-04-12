@@ -1,5 +1,40 @@
+com/example/ouluapp/StopsByBboxQuery.java
+ com.example.ouluapp.StopsByBboxQuery
+ com.example.ouluapp.StopsByBboxQuery$1
+ com.example.ouluapp.StopsByBboxQuery$Builder
+ com.example.ouluapp.StopsByBboxQuery$Data
+ com.example.ouluapp.StopsByBboxQuery$Data$1
+ com.example.ouluapp.StopsByBboxQuery$Data$1$1
+ com.example.ouluapp.StopsByBboxQuery$Data$Mapper
+ com.example.ouluapp.StopsByBboxQuery$Data$Mapper$1
+ com.example.ouluapp.StopsByBboxQuery$Data$Mapper$1$1
+ com.example.ouluapp.StopsByBboxQuery$StopsByBbox
+ com.example.ouluapp.StopsByBboxQuery$StopsByBbox$1
+ com.example.ouluapp.StopsByBboxQuery$StopsByBbox$1$1
+ com.example.ouluapp.StopsByBboxQuery$StopsByBbox$Mapper
+ com.example.ouluapp.StopsByBboxQuery$StopsByBbox$Mapper$1
+ com.example.ouluapp.StopsByBboxQuery$StopsByBbox$Mapper$1$1
+ com.example.ouluapp.StopsByBboxQuery$Stoptime
+ com.example.ouluapp.StopsByBboxQuery$Stoptime$1
+ com.example.ouluapp.StopsByBboxQuery$Stoptime$Mapper
+ com.example.ouluapp.StopsByBboxQuery$Stoptime$Mapper$1
+ com.example.ouluapp.StopsByBboxQuery$StoptimesForPattern
+ com.example.ouluapp.StopsByBboxQuery$StoptimesForPattern$1
+ com.example.ouluapp.StopsByBboxQuery$StoptimesForPattern$1$1
+ com.example.ouluapp.StopsByBboxQuery$StoptimesForPattern$Mapper
+ com.example.ouluapp.StopsByBboxQuery$StoptimesForPattern$Mapper$1
+ com.example.ouluapp.StopsByBboxQuery$StoptimesForPattern$Mapper$1$1
+ com.example.ouluapp.StopsByBboxQuery$Trip
+ com.example.ouluapp.StopsByBboxQuery$Trip$1
+ com.example.ouluapp.StopsByBboxQuery$Trip$Mapper
+com/example/ouluapp/ApolloConnector.java
+ com.example.ouluapp.ApolloConnector
+com/example/ouluapp/type/CustomType.java
+ com.example.ouluapp.type.CustomType
+ com.example.ouluapp.type.CustomType$1
 com/example/ouluapp/BuildConfig.java
  com.example.ouluapp.BuildConfig
 com/example/ouluapp/MainActivity.java
  com.example.ouluapp.MainActivity
  com.example.ouluapp.MainActivity$1
+ com.example.ouluapp.MainActivity$1$1

@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,15 +16,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.apollographql.apollo.ApolloCall;
+import com.apollographql.apollo.ApolloClient;
+import com.apollographql.apollo.api.Response;
+import com.apollographql.apollo.exception.ApolloException;
+import com.example.ouluapp.StopsByBboxQuery;
+
+
+import org.jetbrains.annotations.NotNull;
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.CustomZoomButtonsController;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.ItemizedIconOverlay;
 import org.osmdroid.views.overlay.ItemizedOverlayWithFocus;
 import org.osmdroid.views.overlay.OverlayItem;
 import org.osmdroid.views.overlay.ScaleBarOverlay;
+import org.osmdroid.views.overlay.gestures.RotationGestureOverlay;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
@@ -34,32 +45,27 @@ import static java.security.AccessController.getContext;
 public class MainActivity extends AppCompatActivity{
     private final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;
     private MapView map = null;
-    private  MyLocationNewOverlay mLocationOverlay;
+    Context ctx;
+    private MyLocationNewOverlay mLocationOverlay;
+    private RotationGestureOverlay mRotationGestureOverlay;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //handle permissions first, before map is created. not depicted here
-
-        //load/initialize the osmdroid configuration, this can be done
-        Context ctx = getApplicationContext();
+        ctx = getApplicationContext();
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
-        //setting this before the layout is inflated is a good idea
-        //it 'should' ensure that the map has a writable location for the map cache, even without permissions
-        //if no tiles are displayed, you can try overriding the cache path using Configuration.getInstance().setCachePath
-        //see also StorageUtils
-        //note, the load method also sets the HTTP User Agent to your application's package name, abusing osm's
-        //tile servers will get you banned based on this string
 
-        //inflate and create the map
+
         setContentView(R.layout.activity_main);
+        getBusStops();
+
 
         map = (MapView) findViewById(R.id.map);
         map.setTileSource(TileSourceFactory.MAPNIK);
-        map.setBuiltInZoomControls(true);
-        map.setMultiTouchControls(true);
+        map.getZoomController().setVisibility(CustomZoomButtonsController.Visibility.SHOW_AND_FADEOUT);
+
 
 
         IMapController mapController = map.getController();
@@ -71,6 +77,11 @@ public class MainActivity extends AppCompatActivity{
         this.mLocationOverlay = new MyLocationNewOverlay(new GpsMyLocationProvider(ctx),map);
         this.mLocationOverlay.enableMyLocation();
         map.getOverlays().add(this.mLocationOverlay);
+
+        //kartan pyörittäminen sormilla
+        mRotationGestureOverlay = new RotationGestureOverlay(map);
+        mRotationGestureOverlay.setEnabled(true);
+        map.getOverlays().add(this.mRotationGestureOverlay);
 
         requestPermissionsIfNecessary(new String[] {
                 // if you need to show the current location, uncomment the line below
@@ -84,25 +95,78 @@ public class MainActivity extends AppCompatActivity{
 
 
 
-        ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
-        items.add(new OverlayItem("Title", "Description", new GeoPoint(65.015837d, 25.470374d))); // Lat/Lon decimal degrees
+//        ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
+//        //items.add(new OverlayItem("Title", "Description", new GeoPoint(65.015837d, 25.470374d))); // Lat/Lon decimal degrees
+//
+////the overlay
+//        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items,
+//                new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
+//                    @Override
+//                    public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
+//                        //do something
+//                        return true;
+//                    }
+//                    @Override
+//                    public boolean onItemLongPress(final int index, final OverlayItem item) {
+//                        return false;
+//                    }
+//                }, this);
+//        mOverlay.setFocusItemsOnTap(true);
+//
+//        map.getOverlays().add(mOverlay);
+//        map.setMultiTouchControls(true);
 
-//the overlay
-        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items,
-                new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
-                    @Override
-                    public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
-                        //do something
-                        return true;
-                    }
-                    @Override
-                    public boolean onItemLongPress(final int index, final OverlayItem item) {
-                        return false;
-                    }
-                }, this);
-        mOverlay.setFocusItemsOnTap(true);
+    }
 
-        map.getOverlays().add(mOverlay);
+
+
+    private void getBusStops()
+    {
+        ApolloConnector.setupApollo().query(
+                StopsByBboxQuery
+                .builder()
+                .build())
+                .enqueue(new ApolloCall.Callback<StopsByBboxQuery.Data>(){
+                    @Override
+                    public void onResponse(@NotNull Response<StopsByBboxQuery.Data> response) {
+
+                        //your items
+                        ArrayList<OverlayItem> stops = new ArrayList<OverlayItem>();
+                        //haetaan tarvittava data graphqlstä ja lisätään se arraylistiin
+                        stops.add(new OverlayItem(response.getData().stopsByBbox().get(0).name(),
+                                response.getData().stopsByBbox().get(0).stoptimesForPatterns().get(0).stoptimes().get(0).trip().routeShortName(),
+                                new GeoPoint(response.getData().stopsByBbox().get(0).lat(),response.getData().stopsByBbox().get(0).lon()))); // Lat/Lon decimal degrees
+
+                        //the overlay
+                        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(stops,
+                                new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
+                                    @Override
+                                    public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
+                                        //do something
+                                        return true;
+                                    }
+                                    @Override
+                                    public boolean onItemLongPress(final int index, final OverlayItem item) {
+                                        return false;
+                                    }
+                                },ctx);
+                        mOverlay.setFocusItemsOnTap(true);
+
+                        map.getOverlays().add(mOverlay);
+                        Log.d("MainActivity", "Response: " + response.getData().stopsByBbox());
+
+
+
+
+                    }
+
+                    @Override
+                    public void onFailure(@NotNull ApolloException e) {
+                        Log.e("Apollo", "toimiiko vai ei error", e);
+                    }
+                });
+
+
 
     }
 
