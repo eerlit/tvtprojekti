@@ -1,0 +1,26 @@
+query stopsByBbox {
+  stopsByBbox(
+    minLat: 64.7593
+    minLon: 24.5628
+    maxLat: 65.3724
+    maxLon: 26.4211
+  ) {
+    lat
+    lon
+    name
+    stoptimesForPatterns(omitCanceled:true, timeRange:3600)
+    {
+      stoptimes{
+        scheduledArrival
+        realtimeArrival
+        arrivalDelay
+        departureDelay
+        scheduledDeparture
+        headsign
+        trip{
+          routeShortName
+        }
+      }
+    }
+  }
+}
