@@ -8,18 +8,16 @@ query stopsByBbox {
     lat
     lon
     name
-    stoptimesForPatterns(omitCanceled:true, timeRange:3600)
+    stoptimesWithoutPatterns(omitCanceled:true, numberOfDepartures: 4)
     {
-      stoptimes{
-        scheduledArrival
-        realtimeArrival
-        arrivalDelay
-        departureDelay
-        scheduledDeparture
-        headsign
-        trip{
-          routeShortName
-        }
+      scheduledArrival
+      realtimeArrival
+      arrivalDelay
+      departureDelay
+      scheduledDeparture
+      headsign
+      trip{
+        routeShortName
       }
     }
   }

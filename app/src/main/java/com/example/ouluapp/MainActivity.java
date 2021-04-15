@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
@@ -12,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.IntegerRes;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -63,7 +66,7 @@ public class MainActivity extends AppCompatActivity{
 
 
         map = (MapView) findViewById(R.id.map);
-        map.setTileSource(TileSourceFactory.MAPNIK);
+        //map.setTileSource(TileSourceFactory.MAPNIK);
         map.getZoomController().setVisibility(CustomZoomButtonsController.Visibility.SHOW_AND_FADEOUT);
 
 
@@ -114,11 +117,10 @@ public class MainActivity extends AppCompatActivity{
 //        mOverlay.setFocusItemsOnTap(true);
 //
 //        map.getOverlays().add(mOverlay);
-//        map.setMultiTouchControls(true);
+        map.setMultiTouchControls(true);
 
     }
 
-//pylly
 
     private void getBusStops()
     {
@@ -127,15 +129,33 @@ public class MainActivity extends AppCompatActivity{
                 .builder()
                 .build())
                 .enqueue(new ApolloCall.Callback<StopsByBboxQuery.Data>(){
+                    @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void onResponse(@NotNull Response<StopsByBboxQuery.Data> response) {
 
                         //your items
                         ArrayList<OverlayItem> stops = new ArrayList<OverlayItem>();
                         //haetaan tarvittava data graphqlstä ja lisätään se arraylistiin
-                        stops.add(new OverlayItem(response.getData().stopsByBbox().get(0).name(),
-                                response.getData().stopsByBbox().get(0).stoptimesForPatterns().get(0).stoptimes().get(0).trip().routeShortName(),
-                                new GeoPoint(response.getData().stopsByBbox().get(0).lat(),response.getData().stopsByBbox().get(0).lon()))); // Lat/Lon decimal degrees
+
+
+
+
+                        for(int i = 0; i<response.getData().stopsByBbox().size(); i++)
+                        {
+                            int scheduledArrival = response.getData().stopsByBbox().get(Integer.max(0,i)).stoptimesWithoutPatterns().get(0).scheduledArrival();
+                            int hours = scheduledArrival / 60;
+                            int minutes = hours % 60;
+                            hours = hours/ 60;
+                            Log.d("MainActivity", "scheduledarrival: " + scheduledArrival);
+                                stops.add(new OverlayItem(response.getData().stopsByBbox().get(i).name(),
+                                        response.getData().stopsByBbox().get(Integer.max(0, i)).stoptimesWithoutPatterns().get(0).headsign() + " " +
+                                                response.getData().stopsByBbox().get(Integer.max(0,i)).stoptimesWithoutPatterns().get(0).trip().routeShortName() + "\n" +
+                                                hours + ":" + minutes,
+                                        new GeoPoint(response.getData().stopsByBbox().get(i).lat(), response.getData().stopsByBbox().get(i).lon()))); // Lat/Lon decimal degrees
+
+                        }
+
+
 
                         //the overlay
                         ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(stops,
@@ -153,7 +173,7 @@ public class MainActivity extends AppCompatActivity{
                         mOverlay.setFocusItemsOnTap(true);
 
                         map.getOverlays().add(mOverlay);
-                        Log.d("MainActivity", "Response: " + response.getData().stopsByBbox());
+                        Log.d("MainActivity", "Response: " + response.getData().stopsByBbox().get(0).stoptimesWithoutPatterns.size());
 
 
 

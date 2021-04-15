@@ -14,16 +14,10 @@ com/example/ouluapp/StopsByBboxQuery.java
  com.example.ouluapp.StopsByBboxQuery$StopsByBbox$Mapper
  com.example.ouluapp.StopsByBboxQuery$StopsByBbox$Mapper$1
  com.example.ouluapp.StopsByBboxQuery$StopsByBbox$Mapper$1$1
- com.example.ouluapp.StopsByBboxQuery$Stoptime
- com.example.ouluapp.StopsByBboxQuery$Stoptime$1
- com.example.ouluapp.StopsByBboxQuery$Stoptime$Mapper
- com.example.ouluapp.StopsByBboxQuery$Stoptime$Mapper$1
- com.example.ouluapp.StopsByBboxQuery$StoptimesForPattern
- com.example.ouluapp.StopsByBboxQuery$StoptimesForPattern$1
- com.example.ouluapp.StopsByBboxQuery$StoptimesForPattern$1$1
- com.example.ouluapp.StopsByBboxQuery$StoptimesForPattern$Mapper
- com.example.ouluapp.StopsByBboxQuery$StoptimesForPattern$Mapper$1
- com.example.ouluapp.StopsByBboxQuery$StoptimesForPattern$Mapper$1$1
+ com.example.ouluapp.StopsByBboxQuery$StoptimesWithoutPattern
+ com.example.ouluapp.StopsByBboxQuery$StoptimesWithoutPattern$1
+ com.example.ouluapp.StopsByBboxQuery$StoptimesWithoutPattern$Mapper
+ com.example.ouluapp.StopsByBboxQuery$StoptimesWithoutPattern$Mapper$1
  com.example.ouluapp.StopsByBboxQuery$Trip
  com.example.ouluapp.StopsByBboxQuery$Trip$1
  com.example.ouluapp.StopsByBboxQuery$Trip$Mapper
