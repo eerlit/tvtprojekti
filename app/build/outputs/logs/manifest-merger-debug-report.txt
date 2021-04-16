@@ -1,174 +1,325 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-21:12
-INJECTED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-21:12
-INJECTED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-21:12
-INJECTED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-21:12
-MERGED from [com.google.android.material:material:1.3.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\0b040ae6fd7360855475a012c5af81a6\material-1.3.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\73327337a728e12c5c3cdecdb4b7e327\constraintlayout-2.0.4\AndroidManifest.xml:2:1-11:12
-MERGED from [androidx.appcompat:appcompat:1.2.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\44b21666f861b2b454523071d69d07d7\appcompat-1.2.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\082141e7a08ecc0568dc277abb6b2eb2\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\3b91b187821fc6e4f6300506297b769e\jetified-viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\2caca0665cfc150845d481add640d717\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.appcompat:appcompat-resources:1.2.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\78be485c09b159ccd6437b5ce26410a0\jetified-appcompat-resources-1.2.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\90ad92d9d7e544d3d7a553e07e526cde\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\6a8e87f523c55e5b29d9c4a3f69e8c47\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\5fcf58f467c61301f7dd22175ddca6ba\coordinatorlayout-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.transition:transition:1.2.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\b154dbc73687587a7ce14e229cc71d1e\transition-1.2.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\9d3d448a3878af78f8d5e2175d6f4332\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\a5f1739a336003917307af1b7a40c6ec\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\fcc32fb6a5b1c720640eae2793bf295e\dynamicanimation-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\921fb1c1970f14455564b73ac43ed75b\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\9b319768499df63b1d0933a3c55ff3e7\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.loader:loader:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\19ba019dbf22e650e8e95d7507462ba8\loader-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.activity:activity:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\1c867de8727b52b88cec2ad3aed090ac\jetified-activity-1.0.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\76a75c6502d93031e6f1d463ce4e8940\recyclerview-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.customview:customview:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\4d3225ea5d57f620bf5356e2a6f066d6\customview-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.core:core:1.3.1] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\8dbd859d1cd89239b42e7382b4fc40d7\core-1.3.1\AndroidManifest.xml:17:1-26:12
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\1b49f6b12087442447a2c9046372b97f\versionedparcelable-1.1.0\AndroidManifest.xml:17:1-27:12
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\a5508913c832bc0c65ebd72baf7fb6d8\lifecycle-runtime-2.1.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\384d88a73e203b8300027f46f36e4e61\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\ac846bd1991b3727d0d9b0a2719ca5c8\jetified-savedstate-1.0.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\054d779a91766207571d826869795163\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\07966c8c4706ffeaf638d555f4c86fb0\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\41c41c2fbc05e9a19fa443c48f799c3d\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.print:print:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\634f2f03e50a0eb4514a8d791ceb2f13\print-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\5e93b9f41c3983a761aa6e19533f24ec\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\1435e0b5216c3fd72a2d6579c29d3ee1\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\035487676af6db782633ffbdc1d98b21\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\3fd5b4b866d23b43b0e15439a0ee99e7\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-21:12
-INJECTED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-21:12
-INJECTED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-21:12
+ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:2:1-32:12
+MERGED from [androidx.multidex:multidex:2.0.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/2e7b68a4907b6db5185108e7530d8c52/multidex-2.0.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.material:material:1.3.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/aa40df8e71394a78bee8af9c32162833/material-1.3.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /home/eerik/.gradle/caches/transforms-2/files-2.1/6db1e84b18133d83c1dd3c66ddef4521/constraintlayout-2.0.4/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat:1.2.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/acefec94288dca7104ac387206d06815/appcompat-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.MKergall:osmbonuspack:6.6.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/c38c93250971f95f8ff4807ab0e15760/jetified-osmbonuspack-6.6.0/AndroidManifest.xml:2:1-13:12
+MERGED from [org.osmdroid:osmdroid-android:6.1.10] /home/eerik/.gradle/caches/transforms-2/files-2.1/94201d9f89ff59b4905f2aaf93a28f1b/jetified-osmdroid-android-6.1.10/AndroidManifest.xml:2:1-29:12
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/14f22ff0ce9dbac1b2945849bbf177e4/jetified-mapbox-android-sdk-9.6.1/AndroidManifest.xml:2:1-21:12
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:2:1-32:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/de652f00744ef3151a71d750cc269fda/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/2bee74dd56dded38c09baa5ee1986321/jetified-viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/b5511d7e6c26e7e08432770a4f6bd918/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/c21499c714f804c593c39529a0529d4f/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/9a2cba2cc73155a23778bcf1075bc180/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/bc785d2466662deda86055f1c1ce65d4/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/8aece8f58b806417d16367ef56d81890/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.transition:transition:1.2.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/94d5caca094cfe2264960512e24bead3/transition-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/e3a23bb9f3127463e14a5ee008cd9cd1/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/cbcfca010871a50f67fb308672ff8ad4/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/7b3c80c702cd44dfd18c8f5f55375252/dynamicanimation-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-gestures:0.7.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/be9180bded6bba36cdd8f6de9847b862/jetified-mapbox-android-gestures-0.7.0/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/18031c65d140bf067e2324dced458dfe/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/1006a86e71025eaaff2a919281c55ac7/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/17942ff16af3bbf0b2b559bbf4bf1da0/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/d4dd72499040655f81c328c6d44736db/jetified-activity-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/d8285edfd805b9c896ec9cf1ebb10851/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/299c5e74c479b210b54d14312f0d8670/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.3.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/196ab90fea67a83e4664c268f98d4256/core-1.3.1/AndroidManifest.xml:17:1-26:12
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-accounts:0.7.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/3ed858f262c23d79cf565e4621bffa34/jetified-mapbox-android-accounts-0.7.0/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/bafe58f52dd45e51cf5178c87a67c414/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/2dcdad4bf264bc57cb0a491cebd9994d/lifecycle-runtime-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/dfb546205ac713ad6866057c77898eb7/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/ae0a4a14c17fed70c9dacf952c0621a9/jetified-savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/04d45df5e1ee690ca888f3dfebfb96b3/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/5bb531cb4b0d6d319e26fdfc8cec13a5/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/fbb03132d9e49f674767e0c8c62d6f98/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/26ef4bb2323c49da1905182c58ba05db/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/bdd1c467b4f40f1168ebbe6087b88a3b/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/d6ba407c9e162f09ec1104e691f1bab7/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/9232ea6ef6c9c0ecf722d29bf748fd0c/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/1385e4735178cde19e88e083b4f798a0/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk-gl-core:5.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/621d7c8586dd85b43512be219f1704b7/jetified-mapbox-android-sdk-gl-core-5.2.2/AndroidManifest.xml:2:1-21:12
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-core:3.1.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/0278004bafaa53ae206b62e07011f3a1/jetified-mapbox-android-core-3.1.1/AndroidManifest.xml:2:1-13:12
+INJECTED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:2:1-32:12
 	package
-		ADDED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:3:5-34
-		INJECTED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml
-		INJECTED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:4:5-34
+		INJECTED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml
+		INJECTED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml
-		ADDED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-21:12
-		INJECTED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml
+		INJECTED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:2:1-32:12
+		INJECTED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:3:5-51
 	android:versionCode
-		INJECTED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml
-		ADDED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-21:12
-		INJECTED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml
+		INJECTED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:2:1-32:12
+		INJECTED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:6:5-78
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/14f22ff0ce9dbac1b2945849bbf177e4/jetified-mapbox-android-sdk-9.6.1/AndroidManifest.xml:19:5-79
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/14f22ff0ce9dbac1b2945849bbf177e4/jetified-mapbox-android-sdk-9.6.1/AndroidManifest.xml:19:5-79
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk-gl-core:5.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/621d7c8586dd85b43512be219f1704b7/jetified-mapbox-android-sdk-gl-core-5.2.2/AndroidManifest.xml:19:5-79
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk-gl-core:5.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/621d7c8586dd85b43512be219f1704b7/jetified-mapbox-android-sdk-gl-core-5.2.2/AndroidManifest.xml:19:5-79
+	android:name
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:6:22-76
+uses-permission#android.permission.INTERNET
+ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:7:5-67
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/14f22ff0ce9dbac1b2945849bbf177e4/jetified-mapbox-android-sdk-9.6.1/AndroidManifest.xml:16:5-67
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/14f22ff0ce9dbac1b2945849bbf177e4/jetified-mapbox-android-sdk-9.6.1/AndroidManifest.xml:16:5-67
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:15:5-67
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:15:5-67
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk-gl-core:5.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/621d7c8586dd85b43512be219f1704b7/jetified-mapbox-android-sdk-gl-core-5.2.2/AndroidManifest.xml:16:5-67
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk-gl-core:5.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/621d7c8586dd85b43512be219f1704b7/jetified-mapbox-android-sdk-gl-core-5.2.2/AndroidManifest.xml:16:5-67
+	android:name
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:7:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:8:5-80
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/14f22ff0ce9dbac1b2945849bbf177e4/jetified-mapbox-android-sdk-9.6.1/AndroidManifest.xml:17:5-79
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/14f22ff0ce9dbac1b2945849bbf177e4/jetified-mapbox-android-sdk-9.6.1/AndroidManifest.xml:17:5-79
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:13:5-79
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:13:5-79
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk-gl-core:5.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/621d7c8586dd85b43512be219f1704b7/jetified-mapbox-android-sdk-gl-core-5.2.2/AndroidManifest.xml:17:5-79
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk-gl-core:5.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/621d7c8586dd85b43512be219f1704b7/jetified-mapbox-android-sdk-gl-core-5.2.2/AndroidManifest.xml:17:5-79
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-core:3.1.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/0278004bafaa53ae206b62e07011f3a1/jetified-mapbox-android-core-3.1.1/AndroidManifest.xml:11:5-79
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-core:3.1.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/0278004bafaa53ae206b62e07011f3a1/jetified-mapbox-android-core-3.1.1/AndroidManifest.xml:11:5-79
+	android:name
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:8:22-76
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:9:5-81
+	android:name
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:9:22-78
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:10:5-80
+	android:name
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:10:22-78
 application
-ADDED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:5:5-19:19
-MERGED from [com.google.android.material:material:1.3.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\0b040ae6fd7360855475a012c5af81a6\material-1.3.0\AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.material:material:1.3.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\0b040ae6fd7360855475a012c5af81a6\material-1.3.0\AndroidManifest.xml:22:5-20
-MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\73327337a728e12c5c3cdecdb4b7e327\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
-MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\73327337a728e12c5c3cdecdb4b7e327\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
-MERGED from [androidx.core:core:1.3.1] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\8dbd859d1cd89239b42e7382b4fc40d7\core-1.3.1\AndroidManifest.xml:24:5-89
-MERGED from [androidx.core:core:1.3.1] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\8dbd859d1cd89239b42e7382b4fc40d7\core-1.3.1\AndroidManifest.xml:24:5-89
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\1b49f6b12087442447a2c9046372b97f\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\1b49f6b12087442447a2c9046372b97f\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
+ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:13:5-30:19
+MERGED from [com.google.android.material:material:1.3.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/aa40df8e71394a78bee8af9c32162833/material-1.3.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.3.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/aa40df8e71394a78bee8af9c32162833/material-1.3.0/AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /home/eerik/.gradle/caches/transforms-2/files-2.1/6db1e84b18133d83c1dd3c66ddef4521/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /home/eerik/.gradle/caches/transforms-2/files-2.1/6db1e84b18133d83c1dd3c66ddef4521/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
+MERGED from [com.github.MKergall:osmbonuspack:6.6.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/c38c93250971f95f8ff4807ab0e15760/jetified-osmbonuspack-6.6.0/AndroidManifest.xml:11:5-20
+MERGED from [com.github.MKergall:osmbonuspack:6.6.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/c38c93250971f95f8ff4807ab0e15760/jetified-osmbonuspack-6.6.0/AndroidManifest.xml:11:5-20
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:20:5-30:19
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:20:5-30:19
+MERGED from [androidx.core:core:1.3.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/196ab90fea67a83e4664c268f98d4256/core-1.3.1/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.3.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/196ab90fea67a83e4664c268f98d4256/core-1.3.1/AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/bafe58f52dd45e51cf5178c87a67c414/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/bafe58f52dd45e51cf5178c87a67c414/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
 	android:appComponentFactory
-		ADDED from [androidx.core:core:1.3.1] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\8dbd859d1cd89239b42e7382b4fc40d7\core-1.3.1\AndroidManifest.xml:24:18-86
+		ADDED from [androidx.core:core:1.3.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/196ab90fea67a83e4664c268f98d4256/core-1.3.1/AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:10:9-35
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:18:9-35
 	android:label
-		ADDED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:8:9-41
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:16:9-41
+	tools:ignore
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:21:9-33
 	android:roundIcon
-		ADDED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:9:9-54
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:17:9-54
 	android:icon
-		ADDED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:7:9-43
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:15:9-43
 	android:allowBackup
-		ADDED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:6:9-35
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:14:9-35
 	android:theme
-		ADDED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:11:9-45
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:20:9-45
 activity#com.example.ouluapp.MainActivity
-ADDED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:12:9-18:20
+ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:24:9-29:20
 	android:name
-		ADDED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:12:19-47
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:24:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:13:13-17:29
+ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:25:13-28:29
 action#android.intent.action.MAIN
-ADDED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:14:17-69
+ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:26:17-69
 	android:name
-		ADDED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:14:25-66
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:26:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:16:17-77
+ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:27:17-77
 	android:name
-		ADDED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml:16:27-74
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml:27:27-74
 uses-sdk
-INJECTED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml
-INJECTED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml
-MERGED from [com.google.android.material:material:1.3.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\0b040ae6fd7360855475a012c5af81a6\material-1.3.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.material:material:1.3.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\0b040ae6fd7360855475a012c5af81a6\material-1.3.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\73327337a728e12c5c3cdecdb4b7e327\constraintlayout-2.0.4\AndroidManifest.xml:5:5-7:41
-MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\73327337a728e12c5c3cdecdb4b7e327\constraintlayout-2.0.4\AndroidManifest.xml:5:5-7:41
-MERGED from [androidx.appcompat:appcompat:1.2.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\44b21666f861b2b454523071d69d07d7\appcompat-1.2.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.appcompat:appcompat:1.2.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\44b21666f861b2b454523071d69d07d7\appcompat-1.2.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\082141e7a08ecc0568dc277abb6b2eb2\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\082141e7a08ecc0568dc277abb6b2eb2\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\3b91b187821fc6e4f6300506297b769e\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\3b91b187821fc6e4f6300506297b769e\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\2caca0665cfc150845d481add640d717\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\2caca0665cfc150845d481add640d717\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.appcompat:appcompat-resources:1.2.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\78be485c09b159ccd6437b5ce26410a0\jetified-appcompat-resources-1.2.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.appcompat:appcompat-resources:1.2.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\78be485c09b159ccd6437b5ce26410a0\jetified-appcompat-resources-1.2.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\90ad92d9d7e544d3d7a553e07e526cde\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\90ad92d9d7e544d3d7a553e07e526cde\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\6a8e87f523c55e5b29d9c4a3f69e8c47\cardview-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\6a8e87f523c55e5b29d9c4a3f69e8c47\cardview-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\5fcf58f467c61301f7dd22175ddca6ba\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\5fcf58f467c61301f7dd22175ddca6ba\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.transition:transition:1.2.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\b154dbc73687587a7ce14e229cc71d1e\transition-1.2.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.transition:transition:1.2.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\b154dbc73687587a7ce14e229cc71d1e\transition-1.2.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\9d3d448a3878af78f8d5e2175d6f4332\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\9d3d448a3878af78f8d5e2175d6f4332\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\a5f1739a336003917307af1b7a40c6ec\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\a5f1739a336003917307af1b7a40c6ec\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\fcc32fb6a5b1c720640eae2793bf295e\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\fcc32fb6a5b1c720640eae2793bf295e\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\921fb1c1970f14455564b73ac43ed75b\viewpager-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\921fb1c1970f14455564b73ac43ed75b\viewpager-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\9b319768499df63b1d0933a3c55ff3e7\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\9b319768499df63b1d0933a3c55ff3e7\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.loader:loader:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\19ba019dbf22e650e8e95d7507462ba8\loader-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.loader:loader:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\19ba019dbf22e650e8e95d7507462ba8\loader-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.activity:activity:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\1c867de8727b52b88cec2ad3aed090ac\jetified-activity-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.activity:activity:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\1c867de8727b52b88cec2ad3aed090ac\jetified-activity-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\76a75c6502d93031e6f1d463ce4e8940\recyclerview-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\76a75c6502d93031e6f1d463ce4e8940\recyclerview-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.customview:customview:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\4d3225ea5d57f620bf5356e2a6f066d6\customview-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.customview:customview:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\4d3225ea5d57f620bf5356e2a6f066d6\customview-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.core:core:1.3.1] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\8dbd859d1cd89239b42e7382b4fc40d7\core-1.3.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.core:core:1.3.1] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\8dbd859d1cd89239b42e7382b4fc40d7\core-1.3.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\1b49f6b12087442447a2c9046372b97f\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\1b49f6b12087442447a2c9046372b97f\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\a5508913c832bc0c65ebd72baf7fb6d8\lifecycle-runtime-2.1.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\a5508913c832bc0c65ebd72baf7fb6d8\lifecycle-runtime-2.1.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\384d88a73e203b8300027f46f36e4e61\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\384d88a73e203b8300027f46f36e4e61\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\ac846bd1991b3727d0d9b0a2719ca5c8\jetified-savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\ac846bd1991b3727d0d9b0a2719ca5c8\jetified-savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\054d779a91766207571d826869795163\interpolator-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\054d779a91766207571d826869795163\interpolator-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\07966c8c4706ffeaf638d555f4c86fb0\documentfile-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\07966c8c4706ffeaf638d555f4c86fb0\documentfile-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\41c41c2fbc05e9a19fa443c48f799c3d\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\41c41c2fbc05e9a19fa443c48f799c3d\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.print:print:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\634f2f03e50a0eb4514a8d791ceb2f13\print-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.print:print:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\634f2f03e50a0eb4514a8d791ceb2f13\print-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\5e93b9f41c3983a761aa6e19533f24ec\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\5e93b9f41c3983a761aa6e19533f24ec\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\1435e0b5216c3fd72a2d6579c29d3ee1\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\1435e0b5216c3fd72a2d6579c29d3ee1\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\035487676af6db782633ffbdc1d98b21\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\035487676af6db782633ffbdc1d98b21\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\3fd5b4b866d23b43b0e15439a0ee99e7\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\veikk\.gradle\caches\transforms-2\files-2.1\3fd5b4b866d23b43b0e15439a0ee99e7\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:20:5-22:41
-INJECTED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml
-INJECTED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml
+INJECTED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml
+INJECTED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml
+MERGED from [androidx.multidex:multidex:2.0.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/2e7b68a4907b6db5185108e7530d8c52/multidex-2.0.1/AndroidManifest.xml:20:5-43
+MERGED from [androidx.multidex:multidex:2.0.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/2e7b68a4907b6db5185108e7530d8c52/multidex-2.0.1/AndroidManifest.xml:20:5-43
+MERGED from [com.google.android.material:material:1.3.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/aa40df8e71394a78bee8af9c32162833/material-1.3.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.3.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/aa40df8e71394a78bee8af9c32162833/material-1.3.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /home/eerik/.gradle/caches/transforms-2/files-2.1/6db1e84b18133d83c1dd3c66ddef4521/constraintlayout-2.0.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /home/eerik/.gradle/caches/transforms-2/files-2.1/6db1e84b18133d83c1dd3c66ddef4521/constraintlayout-2.0.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat:1.2.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/acefec94288dca7104ac387206d06815/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.2.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/acefec94288dca7104ac387206d06815/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.MKergall:osmbonuspack:6.6.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/c38c93250971f95f8ff4807ab0e15760/jetified-osmbonuspack-6.6.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.MKergall:osmbonuspack:6.6.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/c38c93250971f95f8ff4807ab0e15760/jetified-osmbonuspack-6.6.0/AndroidManifest.xml:7:5-9:41
+MERGED from [org.osmdroid:osmdroid-android:6.1.10] /home/eerik/.gradle/caches/transforms-2/files-2.1/94201d9f89ff59b4905f2aaf93a28f1b/jetified-osmdroid-android-6.1.10/AndroidManifest.xml:7:5-9:41
+MERGED from [org.osmdroid:osmdroid-android:6.1.10] /home/eerik/.gradle/caches/transforms-2/files-2.1/94201d9f89ff59b4905f2aaf93a28f1b/jetified-osmdroid-android-6.1.10/AndroidManifest.xml:7:5-9:41
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/14f22ff0ce9dbac1b2945849bbf177e4/jetified-mapbox-android-sdk-9.6.1/AndroidManifest.xml:5:5-7:41
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/14f22ff0ce9dbac1b2945849bbf177e4/jetified-mapbox-android-sdk-9.6.1/AndroidManifest.xml:5:5-7:41
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:7:5-9:41
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/de652f00744ef3151a71d750cc269fda/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/de652f00744ef3151a71d750cc269fda/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/2bee74dd56dded38c09baa5ee1986321/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/2bee74dd56dded38c09baa5ee1986321/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/b5511d7e6c26e7e08432770a4f6bd918/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/b5511d7e6c26e7e08432770a4f6bd918/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/c21499c714f804c593c39529a0529d4f/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/c21499c714f804c593c39529a0529d4f/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/9a2cba2cc73155a23778bcf1075bc180/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/9a2cba2cc73155a23778bcf1075bc180/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/bc785d2466662deda86055f1c1ce65d4/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/bc785d2466662deda86055f1c1ce65d4/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/8aece8f58b806417d16367ef56d81890/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/8aece8f58b806417d16367ef56d81890/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/94d5caca094cfe2264960512e24bead3/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/94d5caca094cfe2264960512e24bead3/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/e3a23bb9f3127463e14a5ee008cd9cd1/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/e3a23bb9f3127463e14a5ee008cd9cd1/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/cbcfca010871a50f67fb308672ff8ad4/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/cbcfca010871a50f67fb308672ff8ad4/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/7b3c80c702cd44dfd18c8f5f55375252/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/7b3c80c702cd44dfd18c8f5f55375252/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-gestures:0.7.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/be9180bded6bba36cdd8f6de9847b862/jetified-mapbox-android-gestures-0.7.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-gestures:0.7.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/be9180bded6bba36cdd8f6de9847b862/jetified-mapbox-android-gestures-0.7.0/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/18031c65d140bf067e2324dced458dfe/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/18031c65d140bf067e2324dced458dfe/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/1006a86e71025eaaff2a919281c55ac7/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/1006a86e71025eaaff2a919281c55ac7/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/17942ff16af3bbf0b2b559bbf4bf1da0/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/17942ff16af3bbf0b2b559bbf4bf1da0/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/d4dd72499040655f81c328c6d44736db/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/d4dd72499040655f81c328c6d44736db/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/d8285edfd805b9c896ec9cf1ebb10851/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/d8285edfd805b9c896ec9cf1ebb10851/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/299c5e74c479b210b54d14312f0d8670/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/299c5e74c479b210b54d14312f0d8670/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.3.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/196ab90fea67a83e4664c268f98d4256/core-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.3.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/196ab90fea67a83e4664c268f98d4256/core-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-accounts:0.7.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/3ed858f262c23d79cf565e4621bffa34/jetified-mapbox-android-accounts-0.7.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-accounts:0.7.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/3ed858f262c23d79cf565e4621bffa34/jetified-mapbox-android-accounts-0.7.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/bafe58f52dd45e51cf5178c87a67c414/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/bafe58f52dd45e51cf5178c87a67c414/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/2dcdad4bf264bc57cb0a491cebd9994d/lifecycle-runtime-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/2dcdad4bf264bc57cb0a491cebd9994d/lifecycle-runtime-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/dfb546205ac713ad6866057c77898eb7/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/dfb546205ac713ad6866057c77898eb7/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/ae0a4a14c17fed70c9dacf952c0621a9/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/ae0a4a14c17fed70c9dacf952c0621a9/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/04d45df5e1ee690ca888f3dfebfb96b3/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/04d45df5e1ee690ca888f3dfebfb96b3/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/5bb531cb4b0d6d319e26fdfc8cec13a5/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/5bb531cb4b0d6d319e26fdfc8cec13a5/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/fbb03132d9e49f674767e0c8c62d6f98/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/fbb03132d9e49f674767e0c8c62d6f98/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/26ef4bb2323c49da1905182c58ba05db/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/26ef4bb2323c49da1905182c58ba05db/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/bdd1c467b4f40f1168ebbe6087b88a3b/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/bdd1c467b4f40f1168ebbe6087b88a3b/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/d6ba407c9e162f09ec1104e691f1bab7/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/d6ba407c9e162f09ec1104e691f1bab7/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/9232ea6ef6c9c0ecf722d29bf748fd0c/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/9232ea6ef6c9c0ecf722d29bf748fd0c/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/1385e4735178cde19e88e083b4f798a0/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /home/eerik/.gradle/caches/transforms-2/files-2.1/1385e4735178cde19e88e083b4f798a0/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk-gl-core:5.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/621d7c8586dd85b43512be219f1704b7/jetified-mapbox-android-sdk-gl-core-5.2.2/AndroidManifest.xml:5:5-7:41
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk-gl-core:5.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/621d7c8586dd85b43512be219f1704b7/jetified-mapbox-android-sdk-gl-core-5.2.2/AndroidManifest.xml:5:5-7:41
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-core:3.1.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/0278004bafaa53ae206b62e07011f3a1/jetified-mapbox-android-core-3.1.1/AndroidManifest.xml:7:5-9:41
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-core:3.1.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/0278004bafaa53ae206b62e07011f3a1/jetified-mapbox-android-core-3.1.1/AndroidManifest.xml:7:5-9:41
+INJECTED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml
+INJECTED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml
-		ADDED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml
-		INJECTED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml
+		INJECTED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml
+		INJECTED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml
-		ADDED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml
-		INJECTED from C:\AndroidApps\tvtprojekti\app\src\main\AndroidManifest.xml
+		INJECTED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml
+		ADDED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml
+		INJECTED from /home/eerik/AndroidStudioProjects/tvtprojekti/app/src/main/AndroidManifest.xml
+supports-screens
+ADDED from [org.osmdroid:osmdroid-android:6.1.10] /home/eerik/.gradle/caches/transforms-2/files-2.1/94201d9f89ff59b4905f2aaf93a28f1b/jetified-osmdroid-android-6.1.10/AndroidManifest.xml:11:5-14:40
+	android:largeScreens
+		ADDED from [org.osmdroid:osmdroid-android:6.1.10] /home/eerik/.gradle/caches/transforms-2/files-2.1/94201d9f89ff59b4905f2aaf93a28f1b/jetified-osmdroid-android-6.1.10/AndroidManifest.xml:13:9-36
+	android:normalScreens
+		ADDED from [org.osmdroid:osmdroid-android:6.1.10] /home/eerik/.gradle/caches/transforms-2/files-2.1/94201d9f89ff59b4905f2aaf93a28f1b/jetified-osmdroid-android-6.1.10/AndroidManifest.xml:14:9-37
+	android:anyDensity
+		ADDED from [org.osmdroid:osmdroid-android:6.1.10] /home/eerik/.gradle/caches/transforms-2/files-2.1/94201d9f89ff59b4905f2aaf93a28f1b/jetified-osmdroid-android-6.1.10/AndroidManifest.xml:12:9-34
+uses-feature#android.hardware.location.network
+ADDED from [org.osmdroid:osmdroid-android:6.1.10] /home/eerik/.gradle/caches/transforms-2/files-2.1/94201d9f89ff59b4905f2aaf93a28f1b/jetified-osmdroid-android-6.1.10/AndroidManifest.xml:16:5-18:36
+	android:required
+		ADDED from [org.osmdroid:osmdroid-android:6.1.10] /home/eerik/.gradle/caches/transforms-2/files-2.1/94201d9f89ff59b4905f2aaf93a28f1b/jetified-osmdroid-android-6.1.10/AndroidManifest.xml:18:9-33
+	android:name
+		ADDED from [org.osmdroid:osmdroid-android:6.1.10] /home/eerik/.gradle/caches/transforms-2/files-2.1/94201d9f89ff59b4905f2aaf93a28f1b/jetified-osmdroid-android-6.1.10/AndroidManifest.xml:17:9-57
+uses-feature#android.hardware.location.gps
+ADDED from [org.osmdroid:osmdroid-android:6.1.10] /home/eerik/.gradle/caches/transforms-2/files-2.1/94201d9f89ff59b4905f2aaf93a28f1b/jetified-osmdroid-android-6.1.10/AndroidManifest.xml:19:5-21:36
+	android:required
+		ADDED from [org.osmdroid:osmdroid-android:6.1.10] /home/eerik/.gradle/caches/transforms-2/files-2.1/94201d9f89ff59b4905f2aaf93a28f1b/jetified-osmdroid-android-6.1.10/AndroidManifest.xml:21:9-33
+	android:name
+		ADDED from [org.osmdroid:osmdroid-android:6.1.10] /home/eerik/.gradle/caches/transforms-2/files-2.1/94201d9f89ff59b4905f2aaf93a28f1b/jetified-osmdroid-android-6.1.10/AndroidManifest.xml:20:9-53
+uses-feature#android.hardware.telephony
+ADDED from [org.osmdroid:osmdroid-android:6.1.10] /home/eerik/.gradle/caches/transforms-2/files-2.1/94201d9f89ff59b4905f2aaf93a28f1b/jetified-osmdroid-android-6.1.10/AndroidManifest.xml:22:5-24:36
+	android:required
+		ADDED from [org.osmdroid:osmdroid-android:6.1.10] /home/eerik/.gradle/caches/transforms-2/files-2.1/94201d9f89ff59b4905f2aaf93a28f1b/jetified-osmdroid-android-6.1.10/AndroidManifest.xml:24:9-33
+	android:name
+		ADDED from [org.osmdroid:osmdroid-android:6.1.10] /home/eerik/.gradle/caches/transforms-2/files-2.1/94201d9f89ff59b4905f2aaf93a28f1b/jetified-osmdroid-android-6.1.10/AndroidManifest.xml:23:9-50
+uses-feature#android.hardware.wifi
+ADDED from [org.osmdroid:osmdroid-android:6.1.10] /home/eerik/.gradle/caches/transforms-2/files-2.1/94201d9f89ff59b4905f2aaf93a28f1b/jetified-osmdroid-android-6.1.10/AndroidManifest.xml:25:5-27:36
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/14f22ff0ce9dbac1b2945849bbf177e4/jetified-mapbox-android-sdk-9.6.1/AndroidManifest.xml:12:5-14:36
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/14f22ff0ce9dbac1b2945849bbf177e4/jetified-mapbox-android-sdk-9.6.1/AndroidManifest.xml:12:5-14:36
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk-gl-core:5.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/621d7c8586dd85b43512be219f1704b7/jetified-mapbox-android-sdk-gl-core-5.2.2/AndroidManifest.xml:12:5-14:36
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk-gl-core:5.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/621d7c8586dd85b43512be219f1704b7/jetified-mapbox-android-sdk-gl-core-5.2.2/AndroidManifest.xml:12:5-14:36
+	android:required
+		ADDED from [org.osmdroid:osmdroid-android:6.1.10] /home/eerik/.gradle/caches/transforms-2/files-2.1/94201d9f89ff59b4905f2aaf93a28f1b/jetified-osmdroid-android-6.1.10/AndroidManifest.xml:27:9-33
+	android:name
+		ADDED from [org.osmdroid:osmdroid-android:6.1.10] /home/eerik/.gradle/caches/transforms-2/files-2.1/94201d9f89ff59b4905f2aaf93a28f1b/jetified-osmdroid-android-6.1.10/AndroidManifest.xml:26:9-45
+uses-feature#0x00020000
+ADDED from [com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/14f22ff0ce9dbac1b2945849bbf177e4/jetified-mapbox-android-sdk-9.6.1/AndroidManifest.xml:9:5-11:35
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk-gl-core:5.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/621d7c8586dd85b43512be219f1704b7/jetified-mapbox-android-sdk-gl-core-5.2.2/AndroidManifest.xml:9:5-11:35
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk-gl-core:5.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/621d7c8586dd85b43512be219f1704b7/jetified-mapbox-android-sdk-gl-core-5.2.2/AndroidManifest.xml:9:5-11:35
+	android:glEsVersion
+		ADDED from [com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/14f22ff0ce9dbac1b2945849bbf177e4/jetified-mapbox-android-sdk-9.6.1/AndroidManifest.xml:10:9-41
+	android:required
+		ADDED from [com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/14f22ff0ce9dbac1b2945849bbf177e4/jetified-mapbox-android-sdk-9.6.1/AndroidManifest.xml:11:9-32
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from [com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/14f22ff0ce9dbac1b2945849bbf177e4/jetified-mapbox-android-sdk-9.6.1/AndroidManifest.xml:18:5-76
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:14:5-76
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:14:5-76
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk-gl-core:5.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/621d7c8586dd85b43512be219f1704b7/jetified-mapbox-android-sdk-gl-core-5.2.2/AndroidManifest.xml:18:5-76
+MERGED from [com.mapbox.mapboxsdk:mapbox-android-sdk-gl-core:5.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/621d7c8586dd85b43512be219f1704b7/jetified-mapbox-android-sdk-gl-core-5.2.2/AndroidManifest.xml:18:5-76
+	android:name
+		ADDED from [com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1] /home/eerik/.gradle/caches/transforms-2/files-2.1/14f22ff0ce9dbac1b2945849bbf177e4/jetified-mapbox-android-sdk-9.6.1/AndroidManifest.xml:18:22-73
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:12:5-68
+	android:name
+		ADDED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:12:22-65
+uses-permission#android.permission.GET_TASKS
+ADDED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:16:5-18:38
+	android:maxSdkVersion
+		ADDED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:18:9-35
+	android:name
+		ADDED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:17:9-52
+provider#com.mapbox.android.telemetry.provider.MapboxTelemetryInitProvider
+ADDED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:21:9-25:39
+	android:authorities
+		ADDED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:23:13-79
+	android:exported
+		ADDED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:24:13-37
+	android:initOrder
+		ADDED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:25:13-36
+	android:name
+		ADDED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:22:13-93
+service#com.mapbox.android.telemetry.errors.ErrorReporterJobIntentService
+ADDED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:27:9-29:72
+	android:permission
+		ADDED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:29:13-69
+	android:name
+		ADDED from [com.mapbox.mapboxsdk:mapbox-android-telemetry:6.2.2] /home/eerik/.gradle/caches/transforms-2/files-2.1/d343f2617d4058887fa5235fcd1cf021/jetified-mapbox-android-telemetry-6.2.2/AndroidManifest.xml:28:13-93

@@ -1,15 +1,31 @@
+
 plugins {
     id 'com.android.application'
+    id "com.apollographql.apollo"
+
+
+
+
 }
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
-
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+    }
     defaultConfig {
         applicationId "com.example.ouluapp"
         minSdkVersion 16
         targetSdkVersion 30
+        multiDexEnabled=true
         versionCode 1
         versionName "1.0"
 
@@ -28,6 +44,8 @@ android {
     }
 }
 
+
+
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -36,4 +54,23 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'org.osmdroid:osmdroid-android:6.1.10'
+    implementation 'com.apollographql.apollo:apollo-runtime:2.4.6'
+    implementation "com.apollographql.apollo:apollo-coroutines-support:2.4.6"
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'com.github.MKergall:osmbonuspack:6.6.0'
+    implementation 'org.apache.commons:commons-lang3:3.4'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'com.mapbox.mapboxsdk:mapbox-sdk-geojson:5.6.0'
+    implementation ('com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1'){
+        exclude group: 'group_name', module: 'module_name'
+    }
+    implementation "androidx.multidex:multidex:2.0.1"
+
+
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'com.googlecode.json-simple:json-simple:1.1'
+    implementation 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+
 }

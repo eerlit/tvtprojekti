@@ -1,0 +1,23 @@
+    query GetTrafficFluencyFeatureCollection {
+    trafficFluencyFeatureCollection {
+        type
+        features {
+            type
+            geometry
+            properties {
+                id
+                type
+                measuredTime
+                trafficFlow
+                name
+                trafficDirection
+                trafficDirectionName
+                speedLimit
+                averageSpeed
+                detName
+                giveWayDelay
+                maxWaitCycles
+            }
+        }
+    }
+}

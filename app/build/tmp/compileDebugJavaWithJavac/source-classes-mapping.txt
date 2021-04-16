@@ -1,4 +1,37 @@
+com/example/ouluapp/ApolloConnector.java
+ com.example.ouluapp.ApolloConnector
 com/example/ouluapp/MainActivity.java
  com.example.ouluapp.MainActivity
+ com.example.ouluapp.MainActivity$1
+com/example/ouluapp/type/TrafficFlow.java
+ com.example.ouluapp.type.TrafficFlow
 com/example/ouluapp/BuildConfig.java
  com.example.ouluapp.BuildConfig
+com/example/ouluapp/type/CustomType.java
+ com.example.ouluapp.type.CustomType
+ com.example.ouluapp.type.CustomType$1
+ com.example.ouluapp.type.CustomType$2
+ com.example.ouluapp.type.CustomType$3
+com/example/ouluapp/type/TrafficFluencySourceType.java
+ com.example.ouluapp.type.TrafficFluencySourceType
+com/example/ouluapp/GetTrafficFluencyFeatureCollectionQuery.java
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$1
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Builder
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Data
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Data$1
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Data$Mapper
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Data$Mapper$1
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Feature
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Feature$1
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Feature$Mapper
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Feature$Mapper$1
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Properties
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Properties$1
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Properties$Mapper
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$TrafficFluencyFeatureCollection
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$TrafficFluencyFeatureCollection$1
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$TrafficFluencyFeatureCollection$1$1
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$TrafficFluencyFeatureCollection$Mapper
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$TrafficFluencyFeatureCollection$Mapper$1
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$TrafficFluencyFeatureCollection$Mapper$1$1

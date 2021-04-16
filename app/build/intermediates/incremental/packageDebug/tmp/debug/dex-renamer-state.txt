@@ -1,4 +1,10 @@
-#Tue Mar 16 11:35:23 EET 2021
-base.0=C\:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Fri Apr 16 13:28:05 EEST 2021
+path.2=classes2.dex
+path.1=classes.dex
 path.0=classes.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
 renamed.0=classes.dex
+base.2=/home/eerik/AndroidStudioProjects/tvtprojekti/app/build/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
+base.1=/home/eerik/AndroidStudioProjects/tvtprojekti/app/build/intermediates/dex/debug/mergeProjectDexDebug/classes.dex
+base.0=/home/eerik/AndroidStudioProjects/tvtprojekti/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
