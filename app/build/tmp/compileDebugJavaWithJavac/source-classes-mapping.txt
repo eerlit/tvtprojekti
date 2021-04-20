@@ -1,19 +1,5 @@
 com/example/ouluapp/ApolloConnector.java
  com.example.ouluapp.ApolloConnector
-com/example/ouluapp/MainActivity.java
- com.example.ouluapp.MainActivity
- com.example.ouluapp.MainActivity$1
-com/example/ouluapp/type/TrafficFlow.java
- com.example.ouluapp.type.TrafficFlow
-com/example/ouluapp/BuildConfig.java
- com.example.ouluapp.BuildConfig
-com/example/ouluapp/type/CustomType.java
- com.example.ouluapp.type.CustomType
- com.example.ouluapp.type.CustomType$1
- com.example.ouluapp.type.CustomType$2
- com.example.ouluapp.type.CustomType$3
-com/example/ouluapp/type/TrafficFluencySourceType.java
- com.example.ouluapp.type.TrafficFluencySourceType
 com/example/ouluapp/GetTrafficFluencyFeatureCollectionQuery.java
  com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery
  com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$1
@@ -35,3 +21,20 @@ com/example/ouluapp/GetTrafficFluencyFeatureCollectionQuery.java
  com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$TrafficFluencyFeatureCollection$Mapper
  com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$TrafficFluencyFeatureCollection$Mapper$1
  com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$TrafficFluencyFeatureCollection$Mapper$1$1
+com/example/ouluapp/type/TrafficFlow.java
+ com.example.ouluapp.type.TrafficFlow
+com/example/ouluapp/BuildConfig.java
+ com.example.ouluapp.BuildConfig
+com/example/ouluapp/type/CustomType.java
+ com.example.ouluapp.type.CustomType
+ com.example.ouluapp.type.CustomType$1
+ com.example.ouluapp.type.CustomType$2
+ com.example.ouluapp.type.CustomType$3
+com/example/ouluapp/type/TrafficFluencySourceType.java
+ com.example.ouluapp.type.TrafficFluencySourceType
+com/example/ouluapp/MainActivity.java
+ com.example.ouluapp.MainActivity
+ com.example.ouluapp.MainActivity$1
+ com.example.ouluapp.MainActivity$1$1
+ com.example.ouluapp.MainActivity$2
+ com.example.ouluapp.MainActivity$3

@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -40,6 +41,7 @@ import org.osmdroid.views.overlay.OverlayWithIW;
 import org.osmdroid.views.overlay.PolyOverlayWithIW;
 import org.osmdroid.views.overlay.Polygon;
 import org.osmdroid.views.overlay.Polyline;
+import org.osmdroid.views.overlay.infowindow.InfoWindow;
 
 import java.lang.reflect.Array;
 import java.net.DatagramPacket;
@@ -51,22 +53,19 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private final int request_permissions_request_code = 1;
     private MapView map = null;
-
     private ArrayList<Double> latLista = new ArrayList<Double>();
     private ArrayList<Double> longLista = new ArrayList<Double>();
-    private DatagramPacket response;
-
-
 
     Context ctx;
     String[] taulukko;
-    int count = 0;
 
 
 
@@ -77,8 +76,7 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-
-         ctx = getApplicationContext();
+        ctx = getApplicationContext();
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
 
         setContentView(R.layout.activity_main);
@@ -92,13 +90,30 @@ public class MainActivity extends AppCompatActivity {
         mapController.setCenter(startPoint);
 
 
-
-
         requestPermissionsIfNecessary(new String[]{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
 
         });
         getRoadCongestion();
+        TimerTask updateMapTimer;
+        final Handler handler = new Handler();
+        Timer myTimer = new Timer();
+
+        updateMapTimer = new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        getRoadCongestion();
+                        System.out.println("taalla");
+                    }
+                });
+            }
+        };
+        myTimer.schedule(updateMapTimer, 30000, 30000);
+
+
         map.invalidate();
 
 
@@ -168,40 +183,36 @@ public class MainActivity extends AppCompatActivity {
            public void onResponse(@NotNull Response<GetTrafficFluencyFeatureCollectionQuery.Data> response) {
 
 
-                    int a = 0;
-                    String derp;
-
-
+                    String koordinaatit;
                     ArrayList<GeoPoint> road = new ArrayList<>();
-
                     int roadNumber = 0;
-
-
                     int i = 0;
-
-
-
+                    //haetaan liikennedata Oulun API:n kautta lista-muuttujaan
                     List<GetTrafficFluencyFeatureCollectionQuery.Feature> lista = Objects.requireNonNull(Objects.requireNonNull(response.getData()).trafficFluencyFeatureCollection).features;
+                    //listan koko
                     int koko = lista.size();
-
+                    //for-looppi, jossa jokainen listalla oleva tie käydään läpi
                     for (int t =0; t <= koko-1; t++) {
                         //535 bugaa
 
-
-                        derp = lista.get(t).geometry.toString();
-
-                        derp = derp.replaceAll(".*coordinates=", "");
-                        derp = derp.replaceAll("[{}]", "");
-                        derp = derp.replaceAll("\\[", "");
-                        derp = derp.replaceAll("\\]", "");
-                        if(derp.isEmpty()) {
+                        //haetaan yksittäisen tien koordinaatit String-muuttujaan
+                        koordinaatit = lista.get(t).geometry.toString();
+                        //poistetaan haetusta datasta turhat merkit
+                        koordinaatit = koordinaatit.replaceAll(".*coordinates=", "");
+                        koordinaatit = koordinaatit.replaceAll("[{}]", "");
+                        koordinaatit = koordinaatit.replaceAll("\\[", "");
+                        koordinaatit = koordinaatit.replaceAll("\\]", "");
+                        //jos koordinaatit-kohta on tyhjä jonkun tien kohdalla, hypätään for loopissa seuraavaan tiehen.
+                        if(koordinaatit.isEmpty()) {
                             continue;
                         }
-                            taulukko = derp.split(", ");
+                        //jaetaan string-muuttujassa olevat arvot eri indekseihin taulukkoon.
+                            taulukko = koordinaatit.split(", ");
 
+                        //for-looppi, jossa edellä täytetystä taulukosta tallennetaan arvot double:na listaan
                             for (i = 0; i < taulukko.length; i++) {
 
-
+                                //joka toinen arvo on longitude-arvo, tällä if-lauseella varmistetaan että oikeat arvot menevät oikeaan listaan.
                                 if (i % 2 == 0) {
 
                                     longLista.add(Double.parseDouble(taulukko[i]));
@@ -211,76 +222,127 @@ public class MainActivity extends AppCompatActivity {
                                     latLista.add(Double.parseDouble(taulukko[i]));
                                 }
                             }
-
+                            //tässä for-loopissa käydään läpi edellä täytettyjä longitude- ja latitude listoja, ja tallennetaan niistä tiedot edelleen road-geopoint listaan
                             for (int j = 0; j < latLista.size(); j++) {
-
-
-
 
                                     road.add(new GeoPoint(latLista.get(j), longLista.get(j)));
 
                             }
 
+                        //haetaan yksittäisten teiden liikenteensujuvuusdata
+                        String trafficFlow = response.getData().trafficFluencyFeatureCollection.features.get(roadNumber).properties.trafficFlow.rawValue();
+                            String roadDirection = response.getData().trafficFluencyFeatureCollection.features.get(roadNumber).properties.trafficDirectionName;
+                            String roadName = response.getData().trafficFluencyFeatureCollection.features.get(roadNumber).properties.name;
 
-                            String trafficFlow = response.getData().trafficFluencyFeatureCollection.features.get(roadNumber).properties.trafficFlow.rawValue();
+                          String averageSpeed = String.valueOf(response.getData().trafficFluencyFeatureCollection.features.get(roadNumber).properties.averageSpeed);
+                          if(averageSpeed == null){
+                              averageSpeed = "";
+                          }
 
-                            createRoad(road, trafficFlow);
 
 
+                            //funktio, jolla tie piirretään kartalle
+                            createRoad(road, trafficFlow, roadDirection, roadName, averageSpeed);
+
+                            //muuttuja, jolla seurataan missä tien numerossa ollaan menossa.
                             roadNumber++;
 
+                            //tyhjennetään edellä käytetyt listat
                             road.clear();
-                            map.invalidate();
                             latLista.clear();
                             longLista.clear();
 
+                            //päivitetään kartta
+                        map.invalidate();
+
                     }
                     }
-
-
-
-
 
            @Override
            public void onFailure(@NotNull ApolloException e) {
-
 
            }
        });
 
     }
 
-private void createRoad(ArrayList<GeoPoint> arrayList, String trafficFlow)
+private void createRoad(ArrayList<GeoPoint> arrayList, String trafficFlow, String roadDirection, String roadName,String averageSpeed)
     {
+        //tiet piirretään kartalle Polyline:nä, parametrina map että saadaan infowindow-näkyviin kun tietä klikkaa
+        Polyline uusiTie = new Polyline(map);
+            //uusiTie.setTitle(String.valueOf(roadName));
 
-        Polyline uusiTie = new Polyline();
-
-
+        //varmistetaan että haetussa datassa on vain uniikkeja arvoja
         Set<GeoPoint> setti2 = new LinkedHashSet<>(arrayList);
         arrayList.clear();
         arrayList.addAll(setti2);
         setti2.clear();
 
+//lisätään geopoint listan pisteet kartalle
         uusiTie.setPoints(arrayList);
+        InfoWindow info = new InfoWindow(map, map) {
+            @Override
+            public void onOpen(Object item) {
 
+            }
+
+            @Override
+            public void onClose() {
+
+            }
+        };
+
+
+        String directionHelp = "suunta ";
+        String directionResult = "";
+        String averageSpeedHelp = "keskinopeus ";
+        String avgSpeedResult = "";
+        String kmh = "km/h";
+        StringBuilder sb;
+
+        if(roadDirection != null){
+
+          directionResult = directionHelp.concat(roadDirection);
+        }
+
+
+        if(averageSpeed != null){
+
+            avgSpeedResult = averageSpeedHelp.concat(averageSpeed);
+            avgSpeedResult = avgSpeedResult.concat(kmh);
+        }
+        if(avgSpeedResult.contains("null")){
+            avgSpeedResult = "";
+        }
+        String roadInfoResult = directionResult +  "\n" + " Tien nimi "  + roadName+  "\n" + avgSpeedResult;
+        //uusiTie.setTitle();
+        //liikenteensujuvuuden mukaan väritetään tiet tietynvärisiksi
         switch(trafficFlow){
             case "TRAFFIC_FLOW_NORMAL":
                 uusiTie.getOutlinePaint().setColor(Color.GREEN);
                 uusiTie.getOutlinePaint().setStrokeWidth(6);
+                uusiTie.setTitle(roadInfoResult);
                 break;
             case "TRAFFIC_HEAVIER_THAN_NORMAL":
-                uusiTie.getOutlinePaint().setColor(Color.rgb(255,59, 0));
+                uusiTie.getOutlinePaint().setColor(Color.RED);
+                String ruuhka = " Ruuhkauntunut tie";
+                //String apu = uusiTie.getTitle();
+                roadInfoResult = ruuhka + "\n" + roadInfoResult;
+                uusiTie.setTitle(roadInfoResult);
                 break;
             case "TRAFFIC_MUCH_HEAVIER_THAN_NORMAL":
                 uusiTie.getOutlinePaint().setColor(Color.RED);
+                uusiTie.getOutlinePaint().setStrokeWidth(6);
+                uusiTie.setTitle("todella ruuhkautunut tie"+ "\n" + roadName +"\n"+ avgSpeedResult);
+
                 break;
             case "TRAFFIC_FLOW_UNKNOWN":
                 uusiTie.getOutlinePaint().setColor(Color.BLACK);
                 uusiTie.getOutlinePaint().setStrokeWidth(5);
+                uusiTie.setTitle("ei dataa");
                 break;
         }
-
-
+        //lisätään karttaan polyline, joka sisältää yksittäisen tien koordinaatit
         map.getOverlays().add(uusiTie);
 
             arrayList.clear();
