@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
     String[] taulukko;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +94,63 @@ public class MainActivity extends AppCompatActivity {
 
         });
         getRoadCongestion();
+        updateRoadMap();
+
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //this will refresh the osmdroid configuration on resuming.
+        //if you make changes to the configuration, use
+        //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        //Configuration.getInstance().load(this, PreferenceManager.getDefaultSharedPreferences(this));
+        map.onResume(); //needed for compass, my location overlays, v6.0.0 and up
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        //this will refresh the osmdroid configuration on resuming.
+        //if you make changes to the configuration, use
+        //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        //Configuration.getInstance().save(this, prefs);
+        map.onPause();  //needed for compass, my location overlays, v6.0.0 and up
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        ArrayList<String> permissionsToRequest = new ArrayList<>();
+        for (int i = 0; i < grantResults.length; i++) {
+            permissionsToRequest.add(permissions[i]);
+        }
+        if (permissionsToRequest.size() > 0) {
+            ActivityCompat.requestPermissions(
+                    this,
+                    permissionsToRequest.toArray(new String[0]),
+                    request_permissions_request_code);
+        }
+    }
+
+    private void requestPermissionsIfNecessary(String[] permissions) {
+        ArrayList<String> permissionsToRequest = new ArrayList<>();
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(this, permission)
+                    != PackageManager.PERMISSION_GRANTED) {
+                // Permission is not granted
+                permissionsToRequest.add(permission);
+            }
+        }
+        if (permissionsToRequest.size() > 0) {
+            ActivityCompat.requestPermissions(
+                    this,
+                    permissionsToRequest.toArray(new String[0]),
+                    request_permissions_request_code);
+        }
+    }
+
+    private void updateRoadMap() {
         TimerTask updateMapTimer;
         final Handler handler = new Handler();
         Timer myTimer = new Timer();
@@ -114,163 +170,108 @@ public class MainActivity extends AppCompatActivity {
         myTimer.schedule(updateMapTimer, 30000, 30000);
 
 
-        map.invalidate();
-
-
-
+       // map.invalidate();
     }
-        @Override
-        public void onResume() {
-            super.onResume();
-            //this will refresh the osmdroid configuration on resuming.
-            //if you make changes to the configuration, use
-            //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-            //Configuration.getInstance().load(this, PreferenceManager.getDefaultSharedPreferences(this));
-            map.onResume(); //needed for compass, my location overlays, v6.0.0 and up
-        }
 
-        @Override
-        public void onPause() {
-            super.onPause();
-            //this will refresh the osmdroid configuration on resuming.
-            //if you make changes to the configuration, use
-            //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-            //Configuration.getInstance().save(this, prefs);
-            map.onPause();  //needed for compass, my location overlays, v6.0.0 and up
-        }
+    private void getRoadCongestion() {
 
-        @Override
-        public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-            ArrayList<String> permissionsToRequest = new ArrayList<>();
-            for (int i = 0; i < grantResults.length; i++) {
-                permissionsToRequest.add(permissions[i]);
-            }
-            if (permissionsToRequest.size() > 0) {
-                ActivityCompat.requestPermissions(
-                        this,
-                        permissionsToRequest.toArray(new String[0]),
-                        request_permissions_request_code);
-            }
-        }
 
-        private void requestPermissionsIfNecessary(String[] permissions) {
-            ArrayList<String> permissionsToRequest = new ArrayList<>();
-            for (String permission : permissions) {
-                if (ContextCompat.checkSelfPermission(this, permission)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    // Permission is not granted
-                    permissionsToRequest.add(permission);
+        ApolloConnector.setupApollo().query(
+                GetTrafficFluencyFeatureCollectionQuery.builder()
+                        .build()).enqueue(new ApolloCall.Callback<GetTrafficFluencyFeatureCollectionQuery.Data>() {
+
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+
+            public void onResponse(@NotNull Response<GetTrafficFluencyFeatureCollectionQuery.Data> response) {
+
+
+                String koordinaatit;
+                ArrayList<GeoPoint> road = new ArrayList<>();
+                int roadNumber = 0;
+                int i = 0;
+                //haetaan liikennedata Oulun API:n kautta lista-muuttujaan
+                List<GetTrafficFluencyFeatureCollectionQuery.Feature> lista = Objects.requireNonNull(Objects.requireNonNull(response.getData()).trafficFluencyFeatureCollection).features;
+                //listan koko
+                int koko = lista.size();
+                //for-looppi, jossa jokainen listalla oleva tie käydään läpi
+                for (int t = 0; t <= koko - 1; t++) {
+                    //535 bugaa
+
+                    //haetaan yksittäisen tien koordinaatit String-muuttujaan
+                    koordinaatit = lista.get(t).geometry.toString();
+                    //poistetaan haetusta datasta turhat merkit
+                    koordinaatit = koordinaatit.replaceAll(".*coordinates=", "");
+                    koordinaatit = koordinaatit.replaceAll("[{}]", "");
+                    koordinaatit = koordinaatit.replaceAll("\\[", "");
+                    koordinaatit = koordinaatit.replaceAll("\\]", "");
+                    //jos koordinaatit-kohta on tyhjä jonkun tien kohdalla, hypätään for loopissa seuraavaan tiehen.
+                    if (koordinaatit.isEmpty()) {
+                        continue;
+                    }
+                    //jaetaan string-muuttujassa olevat arvot eri indekseihin taulukkoon.
+                    taulukko = koordinaatit.split(", ");
+
+                    //for-looppi, jossa edellä täytetystä taulukosta tallennetaan arvot double:na listaan
+                    for (i = 0; i < taulukko.length; i++) {
+
+                        //joka toinen arvo on longitude-arvo, tällä if-lauseella varmistetaan että oikeat arvot menevät oikeaan listaan.
+                        if (i % 2 == 0) {
+
+                            longLista.add(Double.parseDouble(taulukko[i]));
+
+                        } else {
+
+                            latLista.add(Double.parseDouble(taulukko[i]));
+                        }
+                    }
+                    //tässä for-loopissa käydään läpi edellä täytettyjä longitude- ja latitude listoja, ja tallennetaan niistä tiedot edelleen road-geopoint listaan
+                    for (int j = 0; j < latLista.size(); j++) {
+
+                        road.add(new GeoPoint(latLista.get(j), longLista.get(j)));
+
+                    }
+
+                    //haetaan yksittäisten teiden liikenteensujuvuusdata
+                    String trafficFlow = response.getData().trafficFluencyFeatureCollection.features.get(roadNumber).properties.trafficFlow.rawValue();
+                    String roadDirection = response.getData().trafficFluencyFeatureCollection.features.get(roadNumber).properties.trafficDirectionName;
+                    String roadName = response.getData().trafficFluencyFeatureCollection.features.get(roadNumber).properties.name;
+
+                    String averageSpeed = String.valueOf(response.getData().trafficFluencyFeatureCollection.features.get(roadNumber).properties.averageSpeed);
+                    if (averageSpeed == null) {
+                        averageSpeed = "";
+                    }
+
+
+                    //funktio, jolla tie piirretään kartalle
+                    createRoad(road, trafficFlow, roadDirection, roadName, averageSpeed);
+
+                    //muuttuja, jolla seurataan missä tien numerossa ollaan menossa.
+                    roadNumber++;
+
+                    //tyhjennetään edellä käytetyt listat
+                    road.clear();
+                    latLista.clear();
+                    longLista.clear();
+
+                    //päivitetään kartta
+                    map.invalidate();
+
                 }
             }
-            if (permissionsToRequest.size() > 0) {
-                ActivityCompat.requestPermissions(
-                        this,
-                        permissionsToRequest.toArray(new String[0]),
-                        request_permissions_request_code);
+
+            @Override
+            public void onFailure(@NotNull ApolloException e) {
+
             }
-        }
-
-        private void getRoadCongestion( ){
-
-
-            ApolloConnector.setupApollo().query(
-              GetTrafficFluencyFeatureCollectionQuery.builder()
-               .build()).enqueue(new ApolloCall.Callback<GetTrafficFluencyFeatureCollectionQuery.Data>() {
-
-                @RequiresApi(api = Build.VERSION_CODES.O)
-                @Override
-
-           public void onResponse(@NotNull Response<GetTrafficFluencyFeatureCollectionQuery.Data> response) {
-
-
-                    String koordinaatit;
-                    ArrayList<GeoPoint> road = new ArrayList<>();
-                    int roadNumber = 0;
-                    int i = 0;
-                    //haetaan liikennedata Oulun API:n kautta lista-muuttujaan
-                    List<GetTrafficFluencyFeatureCollectionQuery.Feature> lista = Objects.requireNonNull(Objects.requireNonNull(response.getData()).trafficFluencyFeatureCollection).features;
-                    //listan koko
-                    int koko = lista.size();
-                    //for-looppi, jossa jokainen listalla oleva tie käydään läpi
-                    for (int t =0; t <= koko-1; t++) {
-                        //535 bugaa
-
-                        //haetaan yksittäisen tien koordinaatit String-muuttujaan
-                        koordinaatit = lista.get(t).geometry.toString();
-                        //poistetaan haetusta datasta turhat merkit
-                        koordinaatit = koordinaatit.replaceAll(".*coordinates=", "");
-                        koordinaatit = koordinaatit.replaceAll("[{}]", "");
-                        koordinaatit = koordinaatit.replaceAll("\\[", "");
-                        koordinaatit = koordinaatit.replaceAll("\\]", "");
-                        //jos koordinaatit-kohta on tyhjä jonkun tien kohdalla, hypätään for loopissa seuraavaan tiehen.
-                        if(koordinaatit.isEmpty()) {
-                            continue;
-                        }
-                        //jaetaan string-muuttujassa olevat arvot eri indekseihin taulukkoon.
-                            taulukko = koordinaatit.split(", ");
-
-                        //for-looppi, jossa edellä täytetystä taulukosta tallennetaan arvot double:na listaan
-                            for (i = 0; i < taulukko.length; i++) {
-
-                                //joka toinen arvo on longitude-arvo, tällä if-lauseella varmistetaan että oikeat arvot menevät oikeaan listaan.
-                                if (i % 2 == 0) {
-
-                                    longLista.add(Double.parseDouble(taulukko[i]));
-
-                                } else {
-
-                                    latLista.add(Double.parseDouble(taulukko[i]));
-                                }
-                            }
-                            //tässä for-loopissa käydään läpi edellä täytettyjä longitude- ja latitude listoja, ja tallennetaan niistä tiedot edelleen road-geopoint listaan
-                            for (int j = 0; j < latLista.size(); j++) {
-
-                                    road.add(new GeoPoint(latLista.get(j), longLista.get(j)));
-
-                            }
-
-                        //haetaan yksittäisten teiden liikenteensujuvuusdata
-                        String trafficFlow = response.getData().trafficFluencyFeatureCollection.features.get(roadNumber).properties.trafficFlow.rawValue();
-                            String roadDirection = response.getData().trafficFluencyFeatureCollection.features.get(roadNumber).properties.trafficDirectionName;
-                            String roadName = response.getData().trafficFluencyFeatureCollection.features.get(roadNumber).properties.name;
-
-                          String averageSpeed = String.valueOf(response.getData().trafficFluencyFeatureCollection.features.get(roadNumber).properties.averageSpeed);
-                          if(averageSpeed == null){
-                              averageSpeed = "";
-                          }
-
-
-
-                            //funktio, jolla tie piirretään kartalle
-                            createRoad(road, trafficFlow, roadDirection, roadName, averageSpeed);
-
-                            //muuttuja, jolla seurataan missä tien numerossa ollaan menossa.
-                            roadNumber++;
-
-                            //tyhjennetään edellä käytetyt listat
-                            road.clear();
-                            latLista.clear();
-                            longLista.clear();
-
-                            //päivitetään kartta
-                        map.invalidate();
-
-                    }
-                    }
-
-           @Override
-           public void onFailure(@NotNull ApolloException e) {
-
-           }
-       });
+        });
 
     }
 
-private void createRoad(ArrayList<GeoPoint> arrayList, String trafficFlow, String roadDirection, String roadName,String averageSpeed)
-    {
+    private void createRoad(ArrayList<GeoPoint> arrayList, String trafficFlow, String roadDirection, String roadName, String averageSpeed) {
         //tiet piirretään kartalle Polyline:nä, parametrina map että saadaan infowindow-näkyviin kun tietä klikkaa
         Polyline uusiTie = new Polyline(map);
-            //uusiTie.setTitle(String.valueOf(roadName));
+        //uusiTie.setTitle(String.valueOf(roadName));
 
         //varmistetaan että haetussa datassa on vain uniikkeja arvoja
         Set<GeoPoint> setti2 = new LinkedHashSet<>(arrayList);
@@ -280,44 +281,31 @@ private void createRoad(ArrayList<GeoPoint> arrayList, String trafficFlow, Strin
 
 //lisätään geopoint listan pisteet kartalle
         uusiTie.setPoints(arrayList);
-        InfoWindow info = new InfoWindow(map, map) {
-            @Override
-            public void onOpen(Object item) {
-
-            }
-
-            @Override
-            public void onClose() {
-
-            }
-        };
-
 
         String directionHelp = "suunta ";
         String directionResult = "";
         String averageSpeedHelp = "keskinopeus ";
         String avgSpeedResult = "";
         String kmh = "km/h";
-        StringBuilder sb;
 
-        if(roadDirection != null){
 
-          directionResult = directionHelp.concat(roadDirection);
+        if (roadDirection != null) {
+
+            directionResult = directionHelp.concat(roadDirection);
         }
 
-
-        if(averageSpeed != null){
+        if (averageSpeed != null) {
 
             avgSpeedResult = averageSpeedHelp.concat(averageSpeed);
             avgSpeedResult = avgSpeedResult.concat(kmh);
         }
-        if(avgSpeedResult.contains("null")){
+        if (avgSpeedResult.contains("null")) {
             avgSpeedResult = "";
         }
-        String roadInfoResult = directionResult +  "\n" + " Tien nimi "  + roadName+  "\n" + avgSpeedResult;
+        String roadInfoResult = directionResult + "\n" + " Tien nimi " + roadName + "\n" + avgSpeedResult;
         //uusiTie.setTitle();
         //liikenteensujuvuuden mukaan väritetään tiet tietynvärisiksi
-        switch(trafficFlow){
+        switch (trafficFlow) {
             case "TRAFFIC_FLOW_NORMAL":
                 uusiTie.getOutlinePaint().setColor(Color.GREEN);
                 uusiTie.getOutlinePaint().setStrokeWidth(6);
@@ -325,15 +313,16 @@ private void createRoad(ArrayList<GeoPoint> arrayList, String trafficFlow, Strin
                 break;
             case "TRAFFIC_HEAVIER_THAN_NORMAL":
                 uusiTie.getOutlinePaint().setColor(Color.RED);
+                uusiTie.getOutlinePaint().setStrokeWidth(6);
                 String ruuhka = " Ruuhkauntunut tie";
                 //String apu = uusiTie.getTitle();
                 roadInfoResult = ruuhka + "\n" + roadInfoResult;
                 uusiTie.setTitle(roadInfoResult);
                 break;
             case "TRAFFIC_MUCH_HEAVIER_THAN_NORMAL":
-                uusiTie.getOutlinePaint().setColor(Color.RED);
+                uusiTie.getOutlinePaint().setColor(Color.rgb(64, 0, 0));
                 uusiTie.getOutlinePaint().setStrokeWidth(6);
-                uusiTie.setTitle("todella ruuhkautunut tie"+ "\n" + roadName +"\n"+ avgSpeedResult);
+                uusiTie.setTitle("todella ruuhkautunut tie" + "\n" + roadName + "\n" + avgSpeedResult);
 
                 break;
             case "TRAFFIC_FLOW_UNKNOWN":
@@ -345,8 +334,8 @@ private void createRoad(ArrayList<GeoPoint> arrayList, String trafficFlow, Strin
         //lisätään karttaan polyline, joka sisältää yksittäisen tien koordinaatit
         map.getOverlays().add(uusiTie);
 
-            arrayList.clear();
+        arrayList.clear();
     }
 
 
-    }
+}

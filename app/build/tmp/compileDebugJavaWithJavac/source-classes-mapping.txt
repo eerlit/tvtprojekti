@@ -37,4 +37,3 @@ com/example/ouluapp/MainActivity.java
  com.example.ouluapp.MainActivity$1
  com.example.ouluapp.MainActivity$1$1
  com.example.ouluapp.MainActivity$2
- com.example.ouluapp.MainActivity$3
