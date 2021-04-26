@@ -17,13 +17,11 @@ import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.views.overlay.infowindow.MarkerInfoWindow;
 
 public class CustomCameraMarkerInfoWindow extends MarkerInfoWindow {
-    Context context;
     int photoID = 0;
     String cameraString, dataString;
     String[] cameraPhoto, dataDT, dataSplit;
     int cameraPhotoLength;
     float x1,x2;
-    Bitmap[] x;
     ImageView imageView = (ImageView) mView.findViewById(R.id.camera_image_view);
     TextView snippet = (TextView) mView.findViewById(R.id.map_popup_body);
 
@@ -32,24 +30,14 @@ public class CustomCameraMarkerInfoWindow extends MarkerInfoWindow {
 
     }
 
-
     @Override
     public void onOpen(Object item) {
         Marker m = (Marker) item;
-
 
         TextView title = (TextView) mView.findViewById(R.id.map_popup_header);
         title.setText(m.getTitle());
 
         dataString = m.getSnippet();
-
-
-        //dataDT = dataSplit
-
-
-        //snippet.setText();
-
-
 
         cameraString = m.getSubDescription();
         cameraPhoto = cameraString.split("SPLIT");
@@ -63,26 +51,25 @@ public class CustomCameraMarkerInfoWindow extends MarkerInfoWindow {
                 switch (touchevent.getAction()){
                     case MotionEvent.ACTION_DOWN:
                         x1 = touchevent.getX();
-                        System.out.println("ACTION DOWN");
                         break;
                     case MotionEvent.ACTION_UP:
                         x2 = touchevent.getX();
-                        System.out.println("ACTION UP");
                         if(x1 < x2){
+                            photoID--;
+                            if(photoID == -1){
+                                photoID = cameraPhotoLength;
+                            }
+                            switchPhoto(photoID);
+
+
+                        }
+                        if(x1 > x2){
                             photoID++;
                             if(photoID > cameraPhotoLength){
                                 photoID = 0;
                             }
                             switchPhoto(photoID);
 
-                        }
-                        if(x1 > x2){
-                            photoID--;
-                            if(photoID == -1){
-                                photoID = cameraPhotoLength;
-                            }
-
-                            switchPhoto(photoID);
                         }
                         break;
                 }
@@ -96,16 +83,16 @@ public class CustomCameraMarkerInfoWindow extends MarkerInfoWindow {
         String dateTime;
         String finalSubTitle;
         Picasso.get().load(cameraPhoto[id]).into(imageView);
-        String  temp = "NULL";
-
+        String  weather = "NULL";
         dataSplit = dataString.split("SPLIT");
         dataDT = dataSplit[id].split("dt");
-        if (!dataSplit[dataSplit.length-1].contains(":")){
-             temp = dataSplit[dataSplit.length-1];
-        }
-        System.out.println("dataSplit last: " +dataSplit[dataSplit.length-1]);
 
-        //Picasso.with(context).load(cameraPhoto[id]).into(imageView);
+        //check if data contains weather data
+        if (!dataSplit[dataSplit.length-1].contains(":")){
+            weather = dataSplit[dataSplit.length-1];
+        }
+
+        //format date and time
         if (dataDT[1] != null){
             String[] dateParts = dataDT[1].split("T");
             String[] timeParts = dateParts[1].split("Z");
@@ -114,6 +101,13 @@ public class CustomCameraMarkerInfoWindow extends MarkerInfoWindow {
             String[] timeHMS = timeParts2[0].split(":");
             int hour = Integer.parseInt(timeHMS[0]);
             hour = hour + 3;
+            if (hour == 25){
+                hour = 1;
+            }else if (hour == 26){
+                hour = 2;
+            }else if (hour == 27){
+                hour = 3;
+            }
             String finalTimeParts = hour + ":" + timeHMS[1] + ":" + timeHMS[2].split("Z")[0];
 
             String[] dateSplit = dateParts[0].split("-");
@@ -123,20 +117,34 @@ public class CustomCameraMarkerInfoWindow extends MarkerInfoWindow {
         }else {
             dateTime = "No Time";
         }
+            //put all data on a single string
+            finalSubTitle = dataDT[0] + " \n" + dateTime + "\n\n" +"Kuva " +(photoID+1) + "/" +(cameraPhotoLength+1);
 
+        //if there is weather data add that data to final string
+        if (weather != "NULL"){
+            String[] moistWindTemp = weather.split("WSPL");
 
+            //check if there is data
+            String temp = "Lämpötila: " +moistWindTemp[2]+"\n";
+            if (moistWindTemp[2].equals("NODATA")){
+                temp = "";
+            }
 
-            finalSubTitle = dataDT[0] + " \n" + dateTime;
+            String wind = "Tuulen Nopeus: " +moistWindTemp[1]+"\n";
+            if (moistWindTemp[1].equals("NODATA") ){
+                 wind = "";
+            }
 
-        if (temp != "NULL"){
-            finalSubTitle = dataDT[0] + " \n" + dateTime + " \n" + temp+"°C";
+            String moisture = "Kosteus: " +moistWindTemp[0]+"\n" ;
+            if (moistWindTemp[0].equals("NODATA") ){
+                moisture = "";
+            }
+            //put all data to single string
+            finalSubTitle = dataDT[0] + " \n" + dateTime + " \n" + temp  + wind + moisture + "\n" + "Kuva " +(photoID+1) + "/" +(cameraPhotoLength+1);
         }
 
 
         snippet.setText(finalSubTitle);
 
-        System.out.println("DataString: "+dataString);
-        System.out.println("DATASPLIT: " + dataSplit[0]);
-        System.out.println("DATADT: " + dataDT[0]);
     }
 }
