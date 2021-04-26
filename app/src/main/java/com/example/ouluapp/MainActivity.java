@@ -8,7 +8,10 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -41,12 +44,11 @@ import org.jetbrains.annotations.NotNull;
 public class MainActivity extends AppCompatActivity{
     private final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;
     private MapView map = null;
-    private  MyLocationNewOverlay mLocationOverlay = null;
     Context ctx;
     IMapController mapController;
     List<GetAllCamerasQuery.Camera> cameras = new ArrayList<>();
     List<GetAllWeatherStationsQuery.WeatherStation> weatherStations = new ArrayList<>();
-
+    Boolean[] menuItem = {true,true,true};
     ArrayList<Marker> weatherMarkerList = new ArrayList<>();
     ArrayList<Marker> cameraMarkerList = new ArrayList<>();
     ArrayList<Marker> weatherCamMarkerList = new ArrayList<>();
@@ -54,10 +56,10 @@ public class MainActivity extends AppCompatActivity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        connectToAPI();
+
         getAllWeatherStations();
         getAllCameras();
-
+        connectToAPI();
         ctx = getApplicationContext();
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
 
@@ -74,9 +76,9 @@ public class MainActivity extends AppCompatActivity{
         GeoPoint startPoint = new GeoPoint(65.012615, 25.471453);
         mapController.setCenter(startPoint);
 
-        this.mLocationOverlay = new MyLocationNewOverlay(new GpsMyLocationProvider(ctx),map);
-        this.mLocationOverlay.enableMyLocation();
-        map.getOverlays().add(this.mLocationOverlay);
+        MyLocationNewOverlay mLocationOverlay = new MyLocationNewOverlay(new GpsMyLocationProvider(ctx), map);
+        mLocationOverlay.enableMyLocation();
+        map.getOverlays().add(mLocationOverlay);
 
         requestPermissionsIfNecessary(new String[] {
                 Manifest.permission.ACCESS_FINE_LOCATION,
@@ -85,120 +87,228 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
-    private  void createItems(String itemToUpdate){
 
-        if(itemToUpdate.equals("weather")) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        //Items on map switch
+       switch (item.getItemId()){
+           case R.id.kamerat:
+               item.setChecked(!item.isChecked());
+               if (item.isChecked()){
+                   menuItem[0] = true;
+                   createWeatherCameraItems();
+                   createCameraItems();
+
+               }
+               if (!item.isChecked()){
+                    menuItem[0] = false;
+                   for (int i=0; i<cameraMarkerList.size(); i++){
+                       cameraMarkerList.get(i).remove(map);
+                   }
+               }
+               break;
+           case R.id.sääasemat:
+               item.setChecked(!item.isChecked());
+               if (item.isChecked()){
+                   menuItem[1] = true;
+                   createWeatherItems();
+                   createWeatherCameraItems();
+               }
+               if (!item.isChecked()){
+                   menuItem[1] = false;
+                   for (int i=0; i<weatherMarkerList.size(); i++){
+                       weatherMarkerList.get(i).remove(map);
+                   }
+               }
+
+               break;
+       }
+       if (!menuItem[0] && !menuItem[1]){
+           for (int i=0; i<weatherCamMarkerList.size(); i++){
+               weatherCamMarkerList.get(i).remove(map);
+           }
+       }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private  void createWeatherCameraItems(){
+        //weathercamera creation
+        if(menuItem[1] || menuItem[0]) {
             for (int i = 0; i < cameras.size(); i++) {
 
+                //camera latitude and longitude
                 double cLat = cameras.get(i).lat;
                 double cLon = cameras.get(i).lon;
 
+                //go through all waetherstations
                 for (int j = 0; j < weatherStations.size(); j++) {
-                    double wLat = weatherStations.get(j).lat;
-                    double wLon = weatherStations.get(j).lon;
-                    int tempIndex = 0;
-                    int moistureIndex = 0;
-                    int windIndex = 0;
-                    GeoPoint itemGeopoint = new GeoPoint(cLat, cLon);
-                    GeoPoint weatherItemPoint = new GeoPoint(wLat, wLon);
-                    double dist = itemGeopoint.distanceToAsDouble(weatherItemPoint);
-                    if (dist < 50) {
 
-                        String[] cameraURL, cameraDirection, cameraTime;
+                    //weatherstation latitude and longitude
+
+                    int tempIndex = -1;
+                    int moistureIndex = -1;
+                    int windIndex = -1;
+                    GeoPoint cameraItemPoint = new GeoPoint(cLat, cLon);
+
+                    if (cameraItemPoint.distanceToAsDouble(new GeoPoint(weatherStations.get(j).lat, weatherStations.get(j).lon)) < 50 ) { // weathercamera
+
+                        String[]  cameraDirection, cameraTime;
+                        ArrayList<String> cameraURL = new ArrayList<>();
                         double temp, wind, moisture;
-
-
-
-                        cameraURL = new String[cameras.get(i).presets.size()];
+                        StringBuffer stringBuffer = new StringBuffer();
                         cameraDirection = new String[cameras.get(i).presets.size()];
                         cameraTime = new String[cameras.get(i).presets.size()];
-                        for (int w = 0; w < weatherStations.get(j).sensorValues.size(); w++){
-                            if (weatherStations.get(j).sensorValues.get(w).name.contains("ILMA") && !weatherStations.get(j).sensorValues.get(w).name.contains("_")){
+
+
+
+
+                        //go trough camera info
+                        for (int k = 0; k < cameras.get(i).presets.size(); k++) {
+                            //get info about camera
+                            if (cameras.get(i).presets.get(k) != null){
+                                cameraDirection[k] = cameras.get(i).presets.get(k).presentationName;
+                                cameraURL.add(cameras.get(i).presets.get(k).imageUrl);
+                                cameraTime[k] = cameras.get(i).presets.get(k).measuredTime;
+                                if (cameraDirection[k] != null){
+                                    stringBuffer.append(cameraDirection[k] + "dt" + cameraTime[k] + "SPLIT");
+                                }
+                            }
+
+                        }
+
+                        //go trough weatherstation sensor values and get index of wanted measurements
+                        for (int w = 0; w < weatherStations.get(j).sensorValues.size(); w++) {
+                            if (weatherStations.get(j).sensorValues.get(w).name.contains("ILMA") && !weatherStations.get(j).sensorValues.get(w).name.contains("_")) {
                                 tempIndex = w;
                             }
-                            if (weatherStations.get(j).sensorValues.get(w).name.contains("ILMAN_KOSTEUS") ){
-                                moistureIndex = w;
-                            }
-                            if (weatherStations.get(j).sensorValues.get(w).name.contains("KESKITUULI")){
+                            if (weatherStations.get(j).sensorValues.get(w).name.contains("KESKITUULI")) {
                                 windIndex = w;
                             }
-                        }
-                        temp = weatherStations.get(j).sensorValues.get(tempIndex).sensorValue;
-                        wind = weatherStations.get(j).sensorValues.get(windIndex).sensorValue;
-                        moisture = weatherStations.get(j).sensorValues.get(moistureIndex).sensorValue;
+                            if (weatherStations.get(j).sensorValues.get(w).name.contains("ILMAN_KOSTEUS")) {
+                                moistureIndex = w;
+                            }
 
-                        for (int k = 0; k < cameras.get(i).presets.size(); k++) {
-                            cameraDirection[k] = cameras.get(i).presets.get(k).presentationName;
-                            cameraURL[k] = cameras.get(i).presets.get(k).imageUrl;
-                            cameraTime[k] = cameras.get(i).presets.get(k).measuredTime;
                         }
 
-                        StringBuffer stringBuffer = new StringBuffer();
-                        for (int b = 0; b < cameraTime.length; b++){
-                            stringBuffer.append(cameraDirection[b]+ "dt" +cameraTime[b]+ "SPLIT");
+                        //get measurements
+
+                        if (moistureIndex != -1){
+                            moisture = weatherStations.get(j).sensorValues.get(moistureIndex).sensorValue;
+                            stringBuffer.append(moisture+"%" + "WSPL");
+                        }else {
+                            stringBuffer.append("NODATA" + "WSPL");
                         }
-                        stringBuffer.append(moisture+"WSPL");
-                        stringBuffer.append(wind+"WSPL");
-                        stringBuffer.append(temp+"WSPL");
+                        if (windIndex != -1){
+                            wind = weatherStations.get(j).sensorValues.get(windIndex).sensorValue;
+                            stringBuffer.append(wind+ "m/s" + "WSPL");
+                        }else {
+                            stringBuffer.append("NODATA" + "WSPL");
+                        }
+                        if (tempIndex != -1){
+                            temp = weatherStations.get(j).sensorValues.get(tempIndex).sensorValue;
+                            stringBuffer.append(temp + "°C"+"WSPL");
+                        }else {
+                            stringBuffer.append("NODATA" + "WSPL");
+                        }
+
+
                         String directionTimeWeather = stringBuffer.toString();
-                        weatherCamMarkerList.add(addMarkerWeatherCamera(itemGeopoint, cameras.get(i).name, directionTimeWeather, cameraURL));
+
+                        //add marker to the map and to the marker list
+
+                        weatherCamMarkerList.add(addMarkerWeatherCamera(cameraItemPoint, cameras.get(i).name, directionTimeWeather, cameraURL));
+                        break;
                     }
 
                 }
             }
-                for (int i = 0; i < cameras.size(); i++) {
+        }
 
-                    double cLat = cameras.get(i).lat;
-                    double cLon = cameras.get(i).lon;
 
-                    for (int j = 0; j < weatherStations.size(); j++) {
-                        boolean exists = false;
-                        double wLat = weatherStations.get(j).lat;
-                        double wLon = weatherStations.get(j).lon;
-                        GeoPoint itemGeopoint = new GeoPoint(cLat, cLon);
-                        GeoPoint weatherItemPoint = new GeoPoint(wLat, wLon);
-                        double dist = itemGeopoint.distanceToAsDouble(weatherItemPoint);
-                        String time = weatherStations.get(j).measuredTime.toString();
 
-                        for (int k = 0; k < weatherCamMarkerList.size(); k++) {
-                            if (weatherCamMarkerList.get(k).getPosition().distanceToAsDouble(weatherItemPoint) < 50) {
-                                exists = true;
-                                break;
-                            }
-                        }
 
-                        if (dist >= 50 && !exists) {
-                            int tempIndex = 0;
-                            int moistureIndex = 0;
-                            int windIndex = 0;
-                            String weatherTime;
-                            for (int w = 0; w < weatherStations.get(j).sensorValues.size(); w++){
-                                if (weatherStations.get(j).sensorValues.get(w).name.contains("ILMA") && !weatherStations.get(j).sensorValues.get(w).name.contains("_")){
-                                    tempIndex = w;
-                                }
-                                if (weatherStations.get(j).sensorValues.get(w).name.contains("ILMAN_KOSTEUS") ){
-                                    moistureIndex = w;
-                                }
-                                if (weatherStations.get(j).sensorValues.get(w).name.contains("KESKITUULI")){
-                                    windIndex = w;
-                                }
-                            }
+    }
+    public void createWeatherItems(){
+        if (menuItem[1]){
+            //go trough every weatherstation
+            for (int j = 0; j < weatherStations.size(); j++) {
+                boolean exists = false;
+                GeoPoint weatherItemPoint = new GeoPoint(weatherStations.get(j).lat, weatherStations.get(j).lon);
 
-                            weatherTime = weatherStations.get(j).sensorValues.get(tempIndex).sensorValue.toString()+ "SPLIT"
-                                    + weatherStations.get(j).sensorValues.get(windIndex).sensorValue.toString() +"SPLIT"
-                                    + weatherStations.get(j).sensorValues.get(moistureIndex).sensorValue.toString() + "SPLIT"
-                                    +time;
-                            weatherMarkerList.add(addMarkerWeather(weatherItemPoint, weatherStations.get(j).name, weatherTime));
-                        }
+                //check if weathercamera exists
+                for (int k = 0; k < weatherCamMarkerList.size(); k++) {
+                    if (weatherCamMarkerList.get(k).getPosition().distanceToAsDouble(weatherItemPoint) < 50) {
+                        exists = true;
+                        break;
                     }
                 }
-            }
+                //if weathercamera does not exist create weatherstation
+                if (!exists) {
+                    StringBuffer stringBuffer = new StringBuffer();
+                    double temp, wind, moisture;
+                    int tempIndex = -1;
+                    int moistureIndex = -1;
+                    int windIndex = -1;
 
-        else if(itemToUpdate.equals("cameras")) {
+                    //go trough weatherstation sensor values and get index of wanted measurements
+                    for (int w = 0; w < weatherStations.get(j).sensorValues.size(); w++){
+                        if (weatherStations.get(j).sensorValues.get(w).name.contains("ILMA") && !weatherStations.get(j).sensorValues.get(w).name.contains("_")){
+                            tempIndex = w;
+                        }
+                        if (weatherStations.get(j).sensorValues.get(w).name.contains("ILMAN_KOSTEUS") ){
+                            moistureIndex = w;
+                        }
+                        if (weatherStations.get(j).sensorValues.get(w).name.contains("KESKITUULI")){
+                            windIndex = w;
+                        }
+                    }
+
+                    if (moistureIndex != -1){
+                        moisture = weatherStations.get(j).sensorValues.get(moistureIndex).sensorValue;
+                        stringBuffer.append(moisture+"%" + "SPLIT");
+                    }else {
+                        stringBuffer.append("NODATA" + "SPLIT");
+                    }
+                    if (windIndex != -1){
+                        wind = weatherStations.get(j).sensorValues.get(windIndex).sensorValue;
+                        stringBuffer.append(wind+ "m/s" + "SPLIT");
+                    }else {
+                        stringBuffer.append("NODATA" + "SPLIT");
+                    }
+                    if (tempIndex != -1){
+                        temp = weatherStations.get(j).sensorValues.get(tempIndex).sensorValue;
+                        stringBuffer.append(temp + "°C"+"SPLIT");
+                    }else {
+                        stringBuffer.append("NODATA" + "SPLIT");
+                    }
+
+                    //put all data on a single string
+                    String weatherTime = stringBuffer.toString() +weatherStations.get(j).measuredTime.toString();
+
+                    //add marker to the map and to the marker list
+                    weatherMarkerList.add(addMarkerWeather(weatherItemPoint, weatherStations.get(j).name, weatherTime));
+                }
+            }
+        }
+    }
+
+
+    public void createCameraItems(){
+        if( menuItem[0]) {
             for (int i = 0; i < cameras.size(); i++) {
                 boolean exists = false;
                 GeoPoint cameraGeoPoint = new GeoPoint(cameras.get(i).lat, cameras.get(i).lon);
 
+                //check if weathercamera exists
                 for (int k = 0; k < weatherCamMarkerList.size(); k++){
                     if (weatherCamMarkerList.get(k).getPosition().distanceToAsDouble(cameraGeoPoint) == 0){
                         exists = true;
@@ -206,40 +316,44 @@ public class MainActivity extends AppCompatActivity{
                     }
                 }
 
+                //if weathercamera does not exist create camera
                 if (!exists){
-                    String[] cameraURL, cameraDirection, cameraTime;
 
-                    cameraURL = new String[cameras.get(i).presets.size()];
+                    String[]  cameraDirection, cameraTime;
+                    StringBuffer stringBuffer = new StringBuffer();
+                    ArrayList<String> cameraURL = new ArrayList<>();
                     cameraDirection = new String[cameras.get(i).presets.size()];
                     cameraTime = new String[cameras.get(i).presets.size()];
 
-
+                    //go trough camera info
                     for(int k = 0; k < cameras.get(i).presets.size(); k++){
-                        cameraDirection[k] = cameras.get(i).presets.get(k).presentationName;
-                        cameraURL[k] = cameras.get(i).presets.get(k).imageUrl;
-                        cameraTime[k] = cameras.get(i).presets.get(k).measuredTime;
+                        //get info about camera
+                        if (cameras.get(i).presets.get(k) != null){
+                            cameraDirection[k] = cameras.get(i).presets.get(k).presentationName ;
+                            cameraURL.add(cameras.get(i).presets.get(k).imageUrl);
+                            cameraTime[k] = cameras.get(i).presets.get(k).measuredTime;
+                            if (cameraDirection[k] != null){
+                                stringBuffer.append(cameraDirection[k]+ "dt" +cameraTime[k]+ "SPLIT");
+                            }
+
+                        }
 
                     }
-
-                    StringBuffer stringBuffer = new StringBuffer();
-
-                    for (int b = 0; b < cameraTime.length; b++){
-                        stringBuffer.append(cameraDirection[b]+ "dt" +cameraTime[b]+ "SPLIT");
-                    }
-
                     String directionAndTime = stringBuffer.toString();
+                    //add marker to the map and to the marker list
                     cameraMarkerList.add(addMarkerCamera(cameraGeoPoint, cameras.get(i).name, directionAndTime, cameraURL ));
-
                 }
             }
         }
-
-
     }
+
+
     public Marker addMarkerWeather(GeoPoint p, String title, String temp) {
         Marker marker = new Marker(map);
         marker = new Marker(map);
         marker.setPosition(p);
+
+        //add marker to map overlay
         map.getOverlays().add(marker);
 
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
@@ -249,13 +363,14 @@ public class MainActivity extends AppCompatActivity{
         marker.setInfoWindow(new CustomMarkerInfoWindow(map));
         marker.setInfoWindowAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_TOP);
 
+
         marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker m, MapView arg1) {
-                Log.i("Script", "onMarkerClick()");
+                //show popup window
                 m.showInfoWindow();
-                GeoPoint s = new GeoPoint(p.getLatitude()+0.005, p.getLongitude());
-                mapController.setCenter(s);
+                //set marker to center of screen
+                mapController.setCenter(p);
                 return true;
             }
         });
@@ -263,15 +378,18 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-    public Marker addMarkerCamera(GeoPoint p, String name, String directionTime, String[] photoURL) {
+    public Marker addMarkerCamera(GeoPoint p, String name, String directionTime, ArrayList photoURL) {
         Marker marker = new Marker(map);
         marker = new Marker(map);
-        StringBuffer photoBuffer = new StringBuffer();
-
         marker.setPosition(p);
+
+        //add marker to map overlay
         map.getOverlays().add(marker);
-        for (int i = 0; i < photoURL.length; i++){
-            photoBuffer.append(photoURL[i] + "SPLIT");
+
+        //put photo url's to single string
+        StringBuffer photoBuffer = new StringBuffer();
+        for (int i = 0; i < photoURL.size(); i++){
+            photoBuffer.append(photoURL.get(i)+ "SPLIT");
         }
         String photoString = photoBuffer.toString();
 
@@ -286,25 +404,30 @@ public class MainActivity extends AppCompatActivity{
         marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker m, MapView arg1) {
-                Log.i("Script", "onMarkerClick()");
+                //show popup window
                 m.showInfoWindow();
-                GeoPoint s = new GeoPoint(p.getLatitude()+0.005, p.getLongitude());
-                mapController.setCenter(s);
+                //set marker to center of screen
+                mapController.setCenter(p);
                 return true;
             }
         });
+
         return marker;
     }
 
 
-    public Marker addMarkerWeatherCamera(GeoPoint p, String name, String directionTime, String[] photoURL) {
+    public Marker addMarkerWeatherCamera(GeoPoint p, String name, String directionTime, ArrayList photoURL) {
         Marker marker = new Marker(map);
         marker = new Marker(map);
-        StringBuffer photoBuffer = new StringBuffer();
         marker.setPosition(p);
+
+        //add marker to map overlay
         map.getOverlays().add(marker);
-        for (int i = 0; i < photoURL.length; i++){
-            photoBuffer.append(photoURL[i] + "SPLIT");
+
+        //put photo url's to single string
+        StringBuffer photoBuffer = new StringBuffer();
+        for (int i = 0; i < photoURL.size(); i++){
+            photoBuffer.append(photoURL.get(i) + "SPLIT");
         }
         String photoString = photoBuffer.toString();
 
@@ -319,16 +442,17 @@ public class MainActivity extends AppCompatActivity{
         marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker m, MapView arg1) {
-                Log.i("Script", "onMarkerClick()");
+                //show popup window
                 m.showInfoWindow();
-                GeoPoint s = new GeoPoint(p.getLatitude()+0.005, p.getLongitude());
-                mapController.setCenter(s);
+                //set marker to center of screen
+                mapController.setCenter(p);
                 return true;
             }
         });
         return marker;
     }
 
+    //get cameras from API
     private void getAllCameras(){
         ApolloConnector.setupApollo().query(
                 GetAllCamerasQuery
@@ -337,8 +461,9 @@ public class MainActivity extends AppCompatActivity{
                 .enqueue(new ApolloCall.Callback<GetAllCamerasQuery.Data>() {
                     @Override
                     public void onResponse(@NotNull Response<GetAllCamerasQuery.Data> response) {
-                        cameras = response.data().cameras;
-                        createItems("cameras");
+                        //put response data to list
+                        cameras = response.getData().cameras;
+                        createCameraItems();
                     }
 
                     @Override
@@ -349,6 +474,7 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
+    //get weatherstations from api
     private void getAllWeatherStations(){
         ApolloConnector.setupApollo().query(
                 GetAllWeatherStationsQuery
@@ -357,8 +483,10 @@ public class MainActivity extends AppCompatActivity{
                 .enqueue(new ApolloCall.Callback<GetAllWeatherStationsQuery.Data>() {
                     @Override
                     public void onResponse(@NotNull Response<GetAllWeatherStationsQuery.Data> response) {
-                        weatherStations = response.data().weatherStations;
-                        createItems("weather");
+                        //put response data to list
+                        weatherStations = response.getData().weatherStations;
+                        createWeatherCameraItems();
+                        createWeatherItems();
                     }
                     @Override
                     public void onFailure(@NotNull ApolloException e) {
@@ -477,7 +605,6 @@ public class MainActivity extends AppCompatActivity{
 
                         mOverlay.setFocusItemsOnTap(true);
                         map.getOverlays().add(mOverlay);
-                        Log.e("Apollo","Testing: "+response.getData().carParks());
                     }
 
                     @Override

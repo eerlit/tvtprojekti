@@ -1815,6 +1815,7 @@ id center_vertical
 id chain
 id chains
 id checkbox
+id checkbox_group
 id checked
 id chip
 id chip1
@@ -1915,6 +1916,7 @@ id italic
 id item_touch_helper_previous_elevation
 id jumpToEnd
 id jumpToStart
+id kamerat
 id labelGroup
 id labeled
 id largeLabel
@@ -2002,6 +2004,7 @@ id parent
 id parentPanel
 id parentRelative
 id parent_matrix
+id parkkihallit
 id password_toggle
 id path
 id pathRelative
@@ -2077,6 +2080,7 @@ id stop
 id stretch
 id submenuarrow
 id submit_area
+id sääasemat
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -2282,6 +2286,7 @@ layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
+menu menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description

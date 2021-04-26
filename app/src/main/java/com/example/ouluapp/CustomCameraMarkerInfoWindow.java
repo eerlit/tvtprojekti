@@ -51,11 +51,9 @@ public class CustomCameraMarkerInfoWindow extends MarkerInfoWindow {
                 switch (touchevent.getAction()){
                     case MotionEvent.ACTION_DOWN:
                         x1 = touchevent.getX();
-                        System.out.println("ACTION DOWN");
                         break;
                     case MotionEvent.ACTION_UP:
                         x2 = touchevent.getX();
-                        System.out.println("ACTION UP");
                         if(x1 < x2){
                             photoID--;
                             if(photoID == -1){
@@ -88,12 +86,13 @@ public class CustomCameraMarkerInfoWindow extends MarkerInfoWindow {
         String  weather = "NULL";
         dataSplit = dataString.split("SPLIT");
         dataDT = dataSplit[id].split("dt");
+
+        //check if data contains weather data
         if (!dataSplit[dataSplit.length-1].contains(":")){
             weather = dataSplit[dataSplit.length-1];
         }
 
-
-
+        //format date and time
         if (dataDT[1] != null){
             String[] dateParts = dataDT[1].split("T");
             String[] timeParts = dateParts[1].split("Z");
@@ -102,6 +101,13 @@ public class CustomCameraMarkerInfoWindow extends MarkerInfoWindow {
             String[] timeHMS = timeParts2[0].split(":");
             int hour = Integer.parseInt(timeHMS[0]);
             hour = hour + 3;
+            if (hour == 25){
+                hour = 1;
+            }else if (hour == 26){
+                hour = 2;
+            }else if (hour == 27){
+                hour = 3;
+            }
             String finalTimeParts = hour + ":" + timeHMS[1] + ":" + timeHMS[2].split("Z")[0];
 
             String[] dateSplit = dateParts[0].split("-");
@@ -111,17 +117,30 @@ public class CustomCameraMarkerInfoWindow extends MarkerInfoWindow {
         }else {
             dateTime = "No Time";
         }
-
-
-
+            //put all data on a single string
             finalSubTitle = dataDT[0] + " \n" + dateTime + "\n\n" +"Kuva " +(photoID+1) + "/" +(cameraPhotoLength+1);
 
+        //if there is weather data add that data to final string
         if (weather != "NULL"){
             String[] moistWindTemp = weather.split("WSPL");
-            String temp = "Lämpötila: " +moistWindTemp[2] + "°C";
-            String wind = "Tuulen Nopeus: " +moistWindTemp[1] + "m/s";
-            String moisture = "Kosteus: " +moistWindTemp[0] + "%";
-            finalSubTitle = dataDT[0] + " \n" + dateTime + " \n" + temp + "\n" + wind + "\n"+ moisture + "\n\n" + "Kuva " +(photoID+1) + "/" +(cameraPhotoLength+1);
+
+            //check if there is data
+            String temp = "Lämpötila: " +moistWindTemp[2]+"\n";
+            if (moistWindTemp[2].equals("NODATA")){
+                temp = "";
+            }
+
+            String wind = "Tuulen Nopeus: " +moistWindTemp[1]+"\n";
+            if (moistWindTemp[1].equals("NODATA") ){
+                 wind = "";
+            }
+
+            String moisture = "Kosteus: " +moistWindTemp[0]+"\n" ;
+            if (moistWindTemp[0].equals("NODATA") ){
+                moisture = "";
+            }
+            //put all data to single string
+            finalSubTitle = dataDT[0] + " \n" + dateTime + " \n" + temp  + wind + moisture + "\n" + "Kuva " +(photoID+1) + "/" +(cameraPhotoLength+1);
         }
 
 

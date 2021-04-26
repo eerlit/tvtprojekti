@@ -4,18 +4,6 @@
         "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_baseline_cloud_24.png"
     },
     {
-        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_launcher_background.xml.flat",
-        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_launcher_background.xml"
-    },
-    {
-        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_baseline_cloud_24.png.flat",
-        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_baseline_cloud_24.png"
-    },
-    {
-        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher_background.png.flat",
-        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_launcher_background.png"
-    },
-    {
         "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
         "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
@@ -36,14 +24,6 @@
         "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
-    },
-    {
-        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\layout_custom_dialog.xml.flat",
-        "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\layout\\custom_dialog.xml"
-    },
-    {
         "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_baseline_weather_camera_24.png.flat",
         "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_baseline_weather_camera_24.png"
     },
@@ -52,24 +32,8 @@
         "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_baseline_cloud_24.png.flat",
-        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_baseline_cloud_24.png"
-    },
-    {
         "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\layout_camera_popup.xml.flat",
         "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\layout\\camera_popup.xml"
-    },
-    {
-        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher_background.png.flat",
-        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_background.png"
-    },
-    {
-        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
         "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
@@ -88,40 +52,8 @@
         "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_baseline_camera_alt_24.png"
     },
     {
-        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
-    },
-    {
-        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_cameraphoto.xml.flat",
-        "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\layout\\activity_cameraphoto.xml"
-    },
-    {
-        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
-    },
-    {
         "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
         "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
-    },
-    {
-        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_baseline_cloud_24.png.flat",
-        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_baseline_cloud_24.png"
-    },
-    {
-        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_baseline_weather_camera_24.xml.flat",
-        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_baseline_weather_camera_24.xml"
-    },
-    {
-        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_baseline_camera_alt_24.png.flat",
-        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_baseline_camera_alt_24.png"
-    },
-    {
-        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_baseline_weather_camera_24.png.flat",
-        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_baseline_weather_camera_24.png"
-    },
-    {
-        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_baseline_camera_alt_24.xml.flat",
-        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_baseline_camera_alt_24.xml"
     },
     {
         "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
@@ -134,10 +66,6 @@
     {
         "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
         "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\layout\\activity_main.xml"
-    },
-    {
-        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_baseline_weather_camera_24.png.flat",
-        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_baseline_weather_camera_24.png"
     },
     {
         "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_baseline_camera_alt_24.png.flat",
@@ -160,10 +88,6 @@
         "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_baseline_camera_alt_24.png"
     },
     {
-        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_baseline_weather_camera_24.png.flat",
-        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_baseline_weather_camera_24.png"
-    },
-    {
         "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_baseline_cloud_24.xml.flat",
         "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_baseline_cloud_24.xml"
     },
@@ -172,16 +96,96 @@
         "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_launcher_background.png.flat",
-        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_launcher_background.png"
-    },
-    {
         "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_baseline_weather_camera_24.png.flat",
         "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_baseline_weather_camera_24.png"
     },
     {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_launcher_background.xml.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_baseline_cloud_24.png.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_baseline_cloud_24.png"
+    },
+    {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\layout_custom_dialog.xml.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\layout\\custom_dialog.xml"
+    },
+    {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_baseline_cloud_24.png.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_baseline_cloud_24.png"
+    },
+    {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher_background.png.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_cameraphoto.xml.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\layout\\activity_cameraphoto.xml"
+    },
+    {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_baseline_cloud_24.png.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_baseline_cloud_24.png"
+    },
+    {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_baseline_weather_camera_24.xml.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_baseline_weather_camera_24.xml"
+    },
+    {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_baseline_camera_alt_24.png.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_baseline_camera_alt_24.png"
+    },
+    {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_baseline_weather_camera_24.png.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_baseline_weather_camera_24.png"
+    },
+    {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_baseline_camera_alt_24.xml.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_baseline_camera_alt_24.xml"
+    },
+    {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_baseline_weather_camera_24.png.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_baseline_weather_camera_24.png"
+    },
+    {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_baseline_weather_camera_24.png.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_baseline_weather_camera_24.png"
+    },
+    {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_launcher_background.png.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_launcher_background.png"
+    },
+    {
         "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable_mymarker.png.flat",
         "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\drawable\\mymarker.png"
+    },
+    {
+        "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\menu_menu.xml.flat",
+        "source": "C:\\AndroidApps\\tvtprojekti\\app\\src\\main\\res\\menu\\menu.xml"
     },
     {
         "merged": "C:\\AndroidApps\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
