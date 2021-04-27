@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity{
 
         getAllWeatherStations();
         getAllCameras();
-        connectToAPI();
+        getAllCarParks();
         ctx = getApplicationContext();
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
 
@@ -451,6 +451,36 @@ public class MainActivity extends AppCompatActivity{
         return marker;
     }
 
+    public Marker addMarkerCarParks(GeoPoint p, String title, String temp) {
+        StringBuffer sb = new StringBuffer(temp);
+        sb.deleteCharAt(sb.length()-1);
+        Marker marker = new Marker(map);
+        marker.setPosition(p);
+
+        //add marker to map overlay
+        map.getOverlays().add(marker);
+
+        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        marker.setIcon(ContextCompat.getDrawable(ctx,R.drawable.ic_baseline_local_parking_24));
+        marker.setTitle(title);
+        marker.setSnippet(sb.toString());
+        //marker.setInfoWindow(new CustomMarkerInfoWindow(map));
+        marker.setInfoWindowAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_TOP);
+
+
+        marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker m, MapView arg1) {
+                //show popup window
+                m.showInfoWindow();
+                //set marker to center of screen
+                mapController.setCenter(p);
+                return true;
+            }
+        });
+        return marker;
+    }
+
 
     public Marker addMarkerCamera(GeoPoint p, String name, String directionTime, ArrayList photoURL) {
         Marker marker = new Marker(map);
@@ -599,6 +629,37 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
+    private void getAllCarParks(){
+        ApolloConnector.setupApollo().query(new GetAllCarParksQuery())
+                .enqueue(new ApolloCall.Callback<GetAllCarParksQuery.Data>() {
+                    @Override
+                    public void onResponse(@NotNull Response<GetAllCarParksQuery.Data> response) {
+                        ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
+                        String[] separated = response.getData().carParks().toString().split(",");
+                        int i = 1;
+                        //StringBuffer sb = new StringBuffer();
+                        while(i<separated.length){
+                            String[] name = separated[i].split("=");
+                            String[] lat = separated[i+1].split("=");
+                            String[] lon = separated[i+2].split("=");
+                            String[] spacesAvailable = separated[i+3].split("=");
+                            //sb.deleteCharAt(spacesAvailable[1].length()-1);
+                            addMarkerCarParks(new GeoPoint(Double.parseDouble(lat[1]),Double.parseDouble(lon[1])),name[1],"Vapaana: "+spacesAvailable[1]);
+                            //items.add(new OverlayItem(name[1], "Vapaana: "+spacesAvailable[1], new GeoPoint(Double.parseDouble(lat[1]),Double.parseDouble(lon[1])))); // Lat/Lon decimal degrees
+                            if(i==16||i==76){
+                                i=i+5;
+                            }
+                            i=i+5;
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NotNull ApolloException e) {
+                        Log.e("Apollo", "Error", e);
+                    }
+                });
+    }
+
 
     @Override
     public void onResume() {
@@ -651,71 +712,6 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
-    private void connectToAPI(){
-        // First, create an `ApolloClient`
-        // Replace the serverUrl with your GraphQL endpoint
-        ApolloClient apolloClient = ApolloClient.builder()
-                .serverUrl("https://api.oulunliikenne.fi/proxy/graphql")
-                .build();
-
-        // Then enqueue your query
-        apolloClient.query(new GetAllCarParksQuery())
-                .enqueue(new ApolloCall.Callback<GetAllCarParksQuery.Data>() {
-                    @Override
-                    public void onResponse(@NotNull Response<GetAllCarParksQuery.Data> response) {
-                        ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
-                        String[] seperated = response.getData().carParks().toString().split(",");
-                        int i = 1;
-                        while(i<seperated.length){
-                            String[] name = seperated[i].split("=");
-                            String[] lat = seperated[i+1].split("=");
-                            String[] lon = seperated[i+2].split("=");
-                            String[] spacesAvailable = seperated[i+3].split("=");
-                            items.add(new OverlayItem(name[1], "Vapaana: "+spacesAvailable[1], new GeoPoint(Double.parseDouble(lat[1]),Double.parseDouble(lon[1])))); // Lat/Lon decimal degrees
-                            if(i==16||i==76){
-                                i=i+5;
-                            }
-                            i=i+5;
-                        }
-
-                        Drawable newMarker = ctx.getResources().getDrawable(R.drawable.mymarker);
-
-                        /*ItemizedIconOverlay<OverlayItem> mOverlay = new ItemizedIconOverlay<OverlayItem>(items,newMarker,new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
-                            @Override
-                            public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
-                                //do something
-                                return true;
-                            }
-                            @Override
-                            public boolean onItemLongPress(final int index, final OverlayItem item) {
-                                return false;
-                            }
-                        },ctx);*/
-
-                        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items,newMarker,newMarker, Color.WHITE,
-                                new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
-                                    @Override
-                                    public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
-                                        //do something
-                                        return true;
-                                    }
-                                    @Override
-                                    public boolean onItemLongPress(final int index, final OverlayItem item) {
-                                        return false;
-                                    }
-                                }, ctx);
-
-
-                        mOverlay.setFocusItemsOnTap(true);
-                        map.getOverlays().add(mOverlay);
-                    }
-
-                    @Override
-                    public void onFailure(@NotNull ApolloException e) {
-                        Log.e("Apollo", "Error", e);
-                    }
-                });
-    }
     private void updateRoadMap(){
         TimerTask updateMapTimer;
         final Handler handler = new Handler();

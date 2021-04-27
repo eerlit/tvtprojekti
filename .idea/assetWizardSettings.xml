@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/photo_camera/baseline_photo_camera_24.xml" />
+                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../../Android/Sdk/icons/material/materialicons/local_parking/baseline_local_parking_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,7 +33,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_baseline_weather_camera_24" />
+                            <entry key="color" value="355bca" />
+                            <entry key="outputName" value="ic_baseline_local_parking_24" />
                             <entry key="sourceFile" value="C:\AndroidApps\tvtprojekti" />
                           </map>
                         </option>
