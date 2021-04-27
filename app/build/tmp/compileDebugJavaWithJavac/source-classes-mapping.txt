@@ -1,3 +1,7 @@
+com/example/ouluapp/type/TrafficDisruptionSeverity.java
+ com.example.ouluapp.type.TrafficDisruptionSeverity
+com/example/ouluapp/CustomMarkerInfoWindow.java
+ com.example.ouluapp.CustomMarkerInfoWindow
 com/example/ouluapp/GetAllWeatherStationsQuery.java
  com.example.ouluapp.GetAllWeatherStationsQuery
  com.example.ouluapp.GetAllWeatherStationsQuery$1
@@ -17,28 +21,12 @@ com/example/ouluapp/GetAllWeatherStationsQuery.java
  com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$Mapper
  com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$Mapper$1
  com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$Mapper$1$1
-com/example/ouluapp/ApolloConnector.java
- com.example.ouluapp.ApolloConnector
-com/example/ouluapp/CustomMarkerInfoWindow.java
- com.example.ouluapp.CustomMarkerInfoWindow
-com/example/ouluapp/MainActivity.java
- com.example.ouluapp.MainActivity
- com.example.ouluapp.MainActivity$1
- com.example.ouluapp.MainActivity$2
- com.example.ouluapp.MainActivity$3
- com.example.ouluapp.MainActivity$4
- com.example.ouluapp.MainActivity$5
- com.example.ouluapp.MainActivity$6
- com.example.ouluapp.MainActivity$6$1
-com/example/ouluapp/CustomCameraMarkerInfoWindow.java
- com.example.ouluapp.CustomCameraMarkerInfoWindow
- com.example.ouluapp.CustomCameraMarkerInfoWindow$1
+com/example/ouluapp/type/TrafficFlow.java
+ com.example.ouluapp.type.TrafficFlow
 com/example/ouluapp/BuildConfig.java
  com.example.ouluapp.BuildConfig
-com/example/ouluapp/type/CustomType.java
- com.example.ouluapp.type.CustomType
- com.example.ouluapp.type.CustomType$1
- com.example.ouluapp.type.CustomType$2
+com/example/ouluapp/type/TrafficDisruptionValidityStatus.java
+ com.example.ouluapp.type.TrafficDisruptionValidityStatus
 com/example/ouluapp/GetAllCarParksQuery.java
  com.example.ouluapp.GetAllCarParksQuery
  com.example.ouluapp.GetAllCarParksQuery$1
@@ -71,3 +59,87 @@ com/example/ouluapp/GetAllCamerasQuery.java
  com.example.ouluapp.GetAllCamerasQuery$Preset
  com.example.ouluapp.GetAllCamerasQuery$Preset$1
  com.example.ouluapp.GetAllCamerasQuery$Preset$Mapper
+com/example/ouluapp/GetTrafficFluencyFeatureCollectionQuery.java
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$1
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Builder
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Data
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Data$1
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Data$Mapper
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Data$Mapper$1
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Feature
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Feature$1
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Feature$Mapper
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Feature$Mapper$1
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Properties
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Properties$1
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$Properties$Mapper
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$TrafficFluencyFeatureCollection
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$TrafficFluencyFeatureCollection$1
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$TrafficFluencyFeatureCollection$1$1
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$TrafficFluencyFeatureCollection$Mapper
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$TrafficFluencyFeatureCollection$Mapper$1
+ com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$TrafficFluencyFeatureCollection$Mapper$1$1
+com/example/ouluapp/ApolloConnector.java
+ com.example.ouluapp.ApolloConnector
+com/example/ouluapp/type/TrafficDisruptionModeOfTransport.java
+ com.example.ouluapp.type.TrafficDisruptionModeOfTransport
+com/example/ouluapp/CustomCameraMarkerInfoWindow.java
+ com.example.ouluapp.CustomCameraMarkerInfoWindow
+ com.example.ouluapp.CustomCameraMarkerInfoWindow$1
+com/example/ouluapp/GetAllTrafficAnnouncementsQuery.java
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$1
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$Builder
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$Class
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$Class$1
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$Class$Mapper
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$Data
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$Data$1
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$Data$1$1
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$Data$Mapper
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$Data$Mapper$1
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$Data$Mapper$1$1
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$Description
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$Description$1
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$Description$Mapper
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$Title
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$Title$1
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$Title$Mapper
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$TrafficAnnouncement
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$TrafficAnnouncement$1
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$TrafficAnnouncement$1$1
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$TrafficAnnouncement$1$2
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$TrafficAnnouncement$1$3
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$TrafficAnnouncement$Mapper
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$TrafficAnnouncement$Mapper$1
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$TrafficAnnouncement$Mapper$2
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$TrafficAnnouncement$Mapper$3
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$TrafficAnnouncement$Mapper$4
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$TrafficAnnouncement$Mapper$4$1
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$TrafficAnnouncement$Mapper$5
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$TrafficAnnouncement$Mapper$6
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$TrafficDirectionFreeText
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$TrafficDirectionFreeText$1
+ com.example.ouluapp.GetAllTrafficAnnouncementsQuery$TrafficDirectionFreeText$Mapper
+com/example/ouluapp/type/CustomType.java
+ com.example.ouluapp.type.CustomType
+ com.example.ouluapp.type.CustomType$1
+ com.example.ouluapp.type.CustomType$2
+ com.example.ouluapp.type.CustomType$3
+ com.example.ouluapp.type.CustomType$4
+com/example/ouluapp/type/TrafficFluencySourceType.java
+ com.example.ouluapp.type.TrafficFluencySourceType
+com/example/ouluapp/MainActivity.java
+ com.example.ouluapp.MainActivity
+ com.example.ouluapp.MainActivity$1
+ com.example.ouluapp.MainActivity$2
+ com.example.ouluapp.MainActivity$3
+ com.example.ouluapp.MainActivity$4
+ com.example.ouluapp.MainActivity$5
+ com.example.ouluapp.MainActivity$6
+ com.example.ouluapp.MainActivity$6$1
+ com.example.ouluapp.MainActivity$7
+ com.example.ouluapp.MainActivity$7$1
+ com.example.ouluapp.MainActivity$8
+ com.example.ouluapp.MainActivity$9
