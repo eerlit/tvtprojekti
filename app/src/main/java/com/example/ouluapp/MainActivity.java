@@ -196,6 +196,7 @@ public class MainActivity extends AppCompatActivity{
                    }
 
                }
+               break;
            case R.id.bussit:
                item.setChecked(!item.isChecked());
                if(item.isChecked()){
