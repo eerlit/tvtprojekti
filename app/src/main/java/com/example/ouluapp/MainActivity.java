@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity{
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
         });
-
+        getAllTrafficAnnouncements();
         getRoadCongestion();
         updateRoadMap();
 
@@ -177,12 +177,16 @@ public class MainActivity extends AppCompatActivity{
                     }
                }
                break;
+
            case R.id.hairioilmoitukset:
                item.setChecked(!item.isChecked());
                if(item.isChecked()){
                    menuItem[4] = true;
-                getAllTrafficAnnouncements();
+                   for(int k = 0; k < announcementMarkerList.size(); k++){
+                       announcementMarkerList.get(k).setVisible(true);
+                   }
                }
+
                if(!item.isChecked()){
                    menuItem[4] = false;
                    for(int k = 0; k < announcementMarkerList.size(); k++){
@@ -710,7 +714,7 @@ public class MainActivity extends AppCompatActivity{
                 String announcementSeverity;
 
 
-                //System.out.println(response.getData().trafficAnnouncements.get(0).severity);
+
 
                 List<GetAllTrafficAnnouncementsQuery.TrafficAnnouncement> lista = response.getData().trafficAnnouncements;
 
@@ -992,7 +996,7 @@ public class MainActivity extends AppCompatActivity{
         //lisätään karttaan polyline, joka sisältää yksittäisen tien koordinaatit
 
 
-            map.getOverlays().add(uusiTie);
+            map.getOverlays().add(0,uusiTie);
 
         arrayList.clear();
     }

@@ -20,7 +20,6 @@ import com.apollographql.apollo.api.internal.ResponseWriter;
 import com.apollographql.apollo.api.internal.SimpleOperationResponseParser;
 import com.apollographql.apollo.api.internal.Utils;
 import com.example.ouluapp.type.CustomType;
-import com.example.ouluapp.type.TrafficDisruptionModeOfTransport;
 import com.example.ouluapp.type.TrafficDisruptionSeverity;
 import com.example.ouluapp.type.TrafficDisruptionValidityStatus;
 import java.io.IOException;
@@ -38,7 +37,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public final class GetAllTrafficAnnouncementsQuery implements Query<GetAllTrafficAnnouncementsQuery.Data, GetAllTrafficAnnouncementsQuery.Data, Operation.Variables> {
-  public static final String OPERATION_ID = "da88bb950221b88f5fb62b5122e97bcb789fb96b19b9154fee9f7420b94dfd28";
+  public static final String OPERATION_ID = "88af371917367489e4d187a2098fb1e5dbe0cd8c60eeb0c56335bf52bfabbf66";
 
   public static final String QUERY_DOCUMENT = QueryDocumentMinifier.minify(
     "query GetAllTrafficAnnouncements {\n"
@@ -63,12 +62,6 @@ public final class GetAllTrafficAnnouncementsQuery implements Query<GetAllTraffi
         + "    startTime\n"
         + "    endTime\n"
         + "    geojson\n"
-        + "    modesOfTransport\n"
-        + "    class {\n"
-        + "      __typename\n"
-        + "      class\n"
-        + "      subclass\n"
-        + "    }\n"
         + "    trafficDirectionFreeText {\n"
         + "      __typename\n"
         + "      fi\n"
@@ -301,8 +294,6 @@ public final class GetAllTrafficAnnouncementsQuery implements Query<GetAllTraffi
       ResponseField.forCustomType("startTime", "startTime", null, true, CustomType.GRAPHQLDATETIME, Collections.<ResponseField.Condition>emptyList()),
       ResponseField.forCustomType("endTime", "endTime", null, true, CustomType.GRAPHQLDATETIME, Collections.<ResponseField.Condition>emptyList()),
       ResponseField.forCustomType("geojson", "geojson", null, true, CustomType.FEATURECOLLECTIONOBJECT, Collections.<ResponseField.Condition>emptyList()),
-      ResponseField.forList("modesOfTransport", "modesOfTransport", null, true, Collections.<ResponseField.Condition>emptyList()),
-      ResponseField.forList("class", "class", null, true, Collections.<ResponseField.Condition>emptyList()),
       ResponseField.forObject("trafficDirectionFreeText", "trafficDirectionFreeText", null, true, Collections.<ResponseField.Condition>emptyList()),
       ResponseField.forInt("temporarySpeedLimit", "temporarySpeedLimit", null, true, Collections.<ResponseField.Condition>emptyList()),
       ResponseField.forString("duration", "duration", null, true, Collections.<ResponseField.Condition>emptyList()),
@@ -334,10 +325,6 @@ public final class GetAllTrafficAnnouncementsQuery implements Query<GetAllTraffi
 
     final @Nullable Object geojson;
 
-    final @Nullable List<TrafficDisruptionModeOfTransport> modesOfTransport;
-
-    final @Nullable List<Class> class_;
-
     final @Nullable TrafficDirectionFreeText trafficDirectionFreeText;
 
     final @Nullable Integer temporarySpeedLimit;
@@ -367,8 +354,7 @@ public final class GetAllTrafficAnnouncementsQuery implements Query<GetAllTraffi
         @Nullable TrafficDisruptionSeverity severity,
         @Nullable TrafficDisruptionValidityStatus status, @Nullable Object startTime,
         @Nullable Object endTime, @Nullable Object geojson,
-        @Nullable List<TrafficDisruptionModeOfTransport> modesOfTransport,
-        @Nullable List<Class> class_, @Nullable TrafficDirectionFreeText trafficDirectionFreeText,
+        @Nullable TrafficDirectionFreeText trafficDirectionFreeText,
         @Nullable Integer temporarySpeedLimit, @Nullable String duration,
         @Nullable String additionalInfo, @Nullable Object detour, @Nullable String oversizeLoad,
         @Nullable String vehicleSizeLimit, @Nullable String url, @Nullable List<String> imageUrls) {
@@ -382,8 +368,6 @@ public final class GetAllTrafficAnnouncementsQuery implements Query<GetAllTraffi
       this.startTime = startTime;
       this.endTime = endTime;
       this.geojson = geojson;
-      this.modesOfTransport = modesOfTransport;
-      this.class_ = class_;
       this.trafficDirectionFreeText = trafficDirectionFreeText;
       this.temporarySpeedLimit = temporarySpeedLimit;
       this.duration = duration;
@@ -464,20 +448,6 @@ public final class GetAllTrafficAnnouncementsQuery implements Query<GetAllTraffi
     }
 
     /**
-     * Modes of transport that are affected by this disruption
-     */
-    public @Nullable List<TrafficDisruptionModeOfTransport> modesOfTransport() {
-      return this.modesOfTransport;
-    }
-
-    /**
-     * Class of the traffic announcement
-     */
-    public @Nullable List<Class> class_() {
-      return this.class_;
-    }
-
-    /**
      * The traffic direction in free text form that is affected by the traffic announcement
      */
     public @Nullable TrafficDirectionFreeText trafficDirectionFreeText() {
@@ -555,31 +525,15 @@ public final class GetAllTrafficAnnouncementsQuery implements Query<GetAllTraffi
           writer.writeCustom((ResponseField.CustomTypeField) $responseFields[7], startTime);
           writer.writeCustom((ResponseField.CustomTypeField) $responseFields[8], endTime);
           writer.writeCustom((ResponseField.CustomTypeField) $responseFields[9], geojson);
-          writer.writeList($responseFields[10], modesOfTransport, new ResponseWriter.ListWriter() {
-            @Override
-            public void write(List items, ResponseWriter.ListItemWriter listItemWriter) {
-              for (Object item : items) {
-                listItemWriter.writeString(((TrafficDisruptionModeOfTransport) item).rawValue());
-              }
-            }
-          });
-          writer.writeList($responseFields[11], class_, new ResponseWriter.ListWriter() {
-            @Override
-            public void write(List items, ResponseWriter.ListItemWriter listItemWriter) {
-              for (Object item : items) {
-                listItemWriter.writeObject(((Class) item).marshaller());
-              }
-            }
-          });
-          writer.writeObject($responseFields[12], trafficDirectionFreeText != null ? trafficDirectionFreeText.marshaller() : null);
-          writer.writeInt($responseFields[13], temporarySpeedLimit);
-          writer.writeString($responseFields[14], duration);
-          writer.writeString($responseFields[15], additionalInfo);
-          writer.writeCustom((ResponseField.CustomTypeField) $responseFields[16], detour);
-          writer.writeString($responseFields[17], oversizeLoad);
-          writer.writeString($responseFields[18], vehicleSizeLimit);
-          writer.writeString($responseFields[19], url);
-          writer.writeList($responseFields[20], imageUrls, new ResponseWriter.ListWriter() {
+          writer.writeObject($responseFields[10], trafficDirectionFreeText != null ? trafficDirectionFreeText.marshaller() : null);
+          writer.writeInt($responseFields[11], temporarySpeedLimit);
+          writer.writeString($responseFields[12], duration);
+          writer.writeString($responseFields[13], additionalInfo);
+          writer.writeCustom((ResponseField.CustomTypeField) $responseFields[14], detour);
+          writer.writeString($responseFields[15], oversizeLoad);
+          writer.writeString($responseFields[16], vehicleSizeLimit);
+          writer.writeString($responseFields[17], url);
+          writer.writeList($responseFields[18], imageUrls, new ResponseWriter.ListWriter() {
             @Override
             public void write(List items, ResponseWriter.ListItemWriter listItemWriter) {
               for (Object item : items) {
@@ -605,8 +559,6 @@ public final class GetAllTrafficAnnouncementsQuery implements Query<GetAllTraffi
           + "startTime=" + startTime + ", "
           + "endTime=" + endTime + ", "
           + "geojson=" + geojson + ", "
-          + "modesOfTransport=" + modesOfTransport + ", "
-          + "class_=" + class_ + ", "
           + "trafficDirectionFreeText=" + trafficDirectionFreeText + ", "
           + "temporarySpeedLimit=" + temporarySpeedLimit + ", "
           + "duration=" + duration + ", "
@@ -638,8 +590,6 @@ public final class GetAllTrafficAnnouncementsQuery implements Query<GetAllTraffi
          && ((this.startTime == null) ? (that.startTime == null) : this.startTime.equals(that.startTime))
          && ((this.endTime == null) ? (that.endTime == null) : this.endTime.equals(that.endTime))
          && ((this.geojson == null) ? (that.geojson == null) : this.geojson.equals(that.geojson))
-         && ((this.modesOfTransport == null) ? (that.modesOfTransport == null) : this.modesOfTransport.equals(that.modesOfTransport))
-         && ((this.class_ == null) ? (that.class_ == null) : this.class_.equals(that.class_))
          && ((this.trafficDirectionFreeText == null) ? (that.trafficDirectionFreeText == null) : this.trafficDirectionFreeText.equals(that.trafficDirectionFreeText))
          && ((this.temporarySpeedLimit == null) ? (that.temporarySpeedLimit == null) : this.temporarySpeedLimit.equals(that.temporarySpeedLimit))
          && ((this.duration == null) ? (that.duration == null) : this.duration.equals(that.duration))
@@ -678,10 +628,6 @@ public final class GetAllTrafficAnnouncementsQuery implements Query<GetAllTraffi
         h *= 1000003;
         h ^= (geojson == null) ? 0 : geojson.hashCode();
         h *= 1000003;
-        h ^= (modesOfTransport == null) ? 0 : modesOfTransport.hashCode();
-        h *= 1000003;
-        h ^= (class_ == null) ? 0 : class_.hashCode();
-        h *= 1000003;
         h ^= (trafficDirectionFreeText == null) ? 0 : trafficDirectionFreeText.hashCode();
         h *= 1000003;
         h ^= (temporarySpeedLimit == null) ? 0 : temporarySpeedLimit.hashCode();
@@ -709,8 +655,6 @@ public final class GetAllTrafficAnnouncementsQuery implements Query<GetAllTraffi
       final Title.Mapper titleFieldMapper = new Title.Mapper();
 
       final Description.Mapper descriptionFieldMapper = new Description.Mapper();
-
-      final Class.Mapper classFieldMapper = new Class.Mapper();
 
       final TrafficDirectionFreeText.Mapper trafficDirectionFreeTextFieldMapper = new TrafficDirectionFreeText.Mapper();
 
@@ -748,44 +692,26 @@ public final class GetAllTrafficAnnouncementsQuery implements Query<GetAllTraffi
         final Object startTime = reader.readCustomType((ResponseField.CustomTypeField) $responseFields[7]);
         final Object endTime = reader.readCustomType((ResponseField.CustomTypeField) $responseFields[8]);
         final Object geojson = reader.readCustomType((ResponseField.CustomTypeField) $responseFields[9]);
-        final List<TrafficDisruptionModeOfTransport> modesOfTransport = reader.readList($responseFields[10], new ResponseReader.ListReader<TrafficDisruptionModeOfTransport>() {
-          @Override
-          public TrafficDisruptionModeOfTransport read(
-              ResponseReader.ListItemReader listItemReader) {
-            return TrafficDisruptionModeOfTransport.safeValueOf(listItemReader.readString());
-          }
-        });
-        final List<Class> class_ = reader.readList($responseFields[11], new ResponseReader.ListReader<Class>() {
-          @Override
-          public Class read(ResponseReader.ListItemReader listItemReader) {
-            return listItemReader.readObject(new ResponseReader.ObjectReader<Class>() {
-              @Override
-              public Class read(ResponseReader reader) {
-                return classFieldMapper.map(reader);
-              }
-            });
-          }
-        });
-        final TrafficDirectionFreeText trafficDirectionFreeText = reader.readObject($responseFields[12], new ResponseReader.ObjectReader<TrafficDirectionFreeText>() {
+        final TrafficDirectionFreeText trafficDirectionFreeText = reader.readObject($responseFields[10], new ResponseReader.ObjectReader<TrafficDirectionFreeText>() {
           @Override
           public TrafficDirectionFreeText read(ResponseReader reader) {
             return trafficDirectionFreeTextFieldMapper.map(reader);
           }
         });
-        final Integer temporarySpeedLimit = reader.readInt($responseFields[13]);
-        final String duration = reader.readString($responseFields[14]);
-        final String additionalInfo = reader.readString($responseFields[15]);
-        final Object detour = reader.readCustomType((ResponseField.CustomTypeField) $responseFields[16]);
-        final String oversizeLoad = reader.readString($responseFields[17]);
-        final String vehicleSizeLimit = reader.readString($responseFields[18]);
-        final String url = reader.readString($responseFields[19]);
-        final List<String> imageUrls = reader.readList($responseFields[20], new ResponseReader.ListReader<String>() {
+        final Integer temporarySpeedLimit = reader.readInt($responseFields[11]);
+        final String duration = reader.readString($responseFields[12]);
+        final String additionalInfo = reader.readString($responseFields[13]);
+        final Object detour = reader.readCustomType((ResponseField.CustomTypeField) $responseFields[14]);
+        final String oversizeLoad = reader.readString($responseFields[15]);
+        final String vehicleSizeLimit = reader.readString($responseFields[16]);
+        final String url = reader.readString($responseFields[17]);
+        final List<String> imageUrls = reader.readList($responseFields[18], new ResponseReader.ListReader<String>() {
           @Override
           public String read(ResponseReader.ListItemReader listItemReader) {
             return listItemReader.readString();
           }
         });
-        return new TrafficAnnouncement(__typename, id, announcementId, title, description, severity, status, startTime, endTime, geojson, modesOfTransport, class_, trafficDirectionFreeText, temporarySpeedLimit, duration, additionalInfo, detour, oversizeLoad, vehicleSizeLimit, url, imageUrls);
+        return new TrafficAnnouncement(__typename, id, announcementId, title, description, severity, status, startTime, endTime, geojson, trafficDirectionFreeText, temporarySpeedLimit, duration, additionalInfo, detour, oversizeLoad, vehicleSizeLimit, url, imageUrls);
       }
     }
   }
@@ -1026,108 +952,6 @@ public final class GetAllTrafficAnnouncementsQuery implements Query<GetAllTraffi
         final String sv = reader.readString($responseFields[2]);
         final String en = reader.readString($responseFields[3]);
         return new Description(__typename, fi, sv, en);
-      }
-    }
-  }
-
-  public static class Class {
-    static final ResponseField[] $responseFields = {
-      ResponseField.forString("__typename", "__typename", null, false, Collections.<ResponseField.Condition>emptyList()),
-      ResponseField.forString("class", "class", null, true, Collections.<ResponseField.Condition>emptyList()),
-      ResponseField.forString("subclass", "subclass", null, true, Collections.<ResponseField.Condition>emptyList())
-    };
-
-    final @NotNull String __typename;
-
-    final @Nullable String class_;
-
-    final @Nullable String subclass;
-
-    private transient volatile String $toString;
-
-    private transient volatile int $hashCode;
-
-    private transient volatile boolean $hashCodeMemoized;
-
-    public Class(@NotNull String __typename, @Nullable String class_, @Nullable String subclass) {
-      this.__typename = Utils.checkNotNull(__typename, "__typename == null");
-      this.class_ = class_;
-      this.subclass = subclass;
-    }
-
-    public @NotNull String __typename() {
-      return this.__typename;
-    }
-
-    public @Nullable String class_() {
-      return this.class_;
-    }
-
-    public @Nullable String subclass() {
-      return this.subclass;
-    }
-
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    public ResponseFieldMarshaller marshaller() {
-      return new ResponseFieldMarshaller() {
-        @Override
-        public void marshal(ResponseWriter writer) {
-          writer.writeString($responseFields[0], __typename);
-          writer.writeString($responseFields[1], class_);
-          writer.writeString($responseFields[2], subclass);
-        }
-      };
-    }
-
-    @Override
-    public String toString() {
-      if ($toString == null) {
-        $toString = "Class{"
-          + "__typename=" + __typename + ", "
-          + "class_=" + class_ + ", "
-          + "subclass=" + subclass
-          + "}";
-      }
-      return $toString;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-      if (o == this) {
-        return true;
-      }
-      if (o instanceof Class) {
-        Class that = (Class) o;
-        return this.__typename.equals(that.__typename)
-         && ((this.class_ == null) ? (that.class_ == null) : this.class_.equals(that.class_))
-         && ((this.subclass == null) ? (that.subclass == null) : this.subclass.equals(that.subclass));
-      }
-      return false;
-    }
-
-    @Override
-    public int hashCode() {
-      if (!$hashCodeMemoized) {
-        int h = 1;
-        h *= 1000003;
-        h ^= __typename.hashCode();
-        h *= 1000003;
-        h ^= (class_ == null) ? 0 : class_.hashCode();
-        h *= 1000003;
-        h ^= (subclass == null) ? 0 : subclass.hashCode();
-        $hashCode = h;
-        $hashCodeMemoized = true;
-      }
-      return $hashCode;
-    }
-
-    public static final class Mapper implements ResponseFieldMapper<Class> {
-      @Override
-      public Class map(ResponseReader reader) {
-        final String __typename = reader.readString($responseFields[0]);
-        final String class_ = reader.readString($responseFields[1]);
-        final String subclass = reader.readString($responseFields[2]);
-        return new Class(__typename, class_, subclass);
       }
     }
   }
