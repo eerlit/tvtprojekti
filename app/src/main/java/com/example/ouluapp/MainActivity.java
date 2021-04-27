@@ -31,6 +31,7 @@ import org.osmdroid.views.overlay.ItemizedOverlayWithFocus;
 import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.views.overlay.OverlayItem;
 import org.osmdroid.views.overlay.Polyline;
+import org.osmdroid.views.overlay.gestures.RotationGestureOverlay;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
@@ -78,6 +79,8 @@ public class MainActivity extends AppCompatActivity{
     String[] arrayForRoads;
     String[] arrayForAnnouncements;
 
+    private RotationGestureOverlay mRotationGestureOverlay;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,6 +110,11 @@ public class MainActivity extends AppCompatActivity{
         MyLocationNewOverlay mLocationOverlay = new MyLocationNewOverlay(new GpsMyLocationProvider(ctx), map);
         mLocationOverlay.enableMyLocation();
         map.getOverlays().add(mLocationOverlay);
+
+        //kartan pyörittäminen sormilla
+        mRotationGestureOverlay = new RotationGestureOverlay(map);
+        mRotationGestureOverlay.setEnabled(true);
+        map.getOverlays().add(this.mRotationGestureOverlay);
 
         requestPermissionsIfNecessary(new String[] {
                 Manifest.permission.ACCESS_FINE_LOCATION,
