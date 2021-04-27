@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group
+        android:id="@+id/checkbox_group"
+        android:checkableBehavior="all">
+
+        <item
+            android:title="Kamerat"
+            android:id="@+id/kamerat"
+            app:showAsAction="never"
+            android:checked="true"/>
+
+        <item
+            android:title="Sääasemat"
+            android:id="@+id/sääasemat"
+            app:showAsAction="never"
+            android:checked="true"/>
+
+        <item
+            android:title="Parkkihallit"
+            android:id="@+id/parkkihallit"
+            app:showAsAction="never"
+            android:checked="true"/>
+
+        <item
+            android:title="Bussit"
+            android:id="@+id/bussit"
+            app:showAsAction="never"
+            android:checked="false"/>
+    </group>
+
+</menu>

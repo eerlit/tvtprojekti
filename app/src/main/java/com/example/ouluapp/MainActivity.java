@@ -689,17 +689,17 @@ public class MainActivity extends AppCompatActivity{
                                 int hours = scheduledArrival / 60;
                                 int minutes = hours % 60;
                                 hours = hours / 60;
-                                if (hours >= 9 ) {
+                                if (hours >= 0 ) {
                                     busMarkerList.add(addBusStop(new GeoPoint(response.getData().stopsByBbox().get(i).lat(), response.getData().stopsByBbox().get(i).lon()),
                                                                                 response.getData().stopsByBbox().get(i).name(),
                                             response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).headsign() + " " +
                                                     response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).trip().routeShortName() + " " +
-                                                "0" +response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).realtimeArrival() / 60 / 60 + ":0" +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).realtimeArrival() / 60 / 60 + ":" +
                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).realtimeArrival() / 60 % 60 + "\n" +
 
                                                     response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(1).headsign() + " " +
                                                     response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(1).trip().routeShortName() + " " +
-                                                    "0" +response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(1).realtimeArrival() / 60 / 60 + ":0" +
+                                                    +response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(1).realtimeArrival() / 60 / 60 + ":" +
                                                     response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(1).realtimeArrival() / 60 % 60 + "\n" +
 
                                                     response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(2).headsign() + " " +
@@ -710,7 +710,7 @@ public class MainActivity extends AppCompatActivity{
 
                                                     response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(3).headsign() + " " +
                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(3).trip().routeShortName() + " " +
-                                                    "0" +response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(3).realtimeArrival() / 60 / 60 + ":0" +
+                                                   response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(3).realtimeArrival() / 60 / 60 + ":" +
                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(3).realtimeArrival() / 60 % 60
                                                     ));
 //                                    stops.add(new OverlayItem(response.getData().stopsByBbox().get(i).name(),

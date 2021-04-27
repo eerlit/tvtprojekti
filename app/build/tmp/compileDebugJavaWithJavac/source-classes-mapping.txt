@@ -25,17 +25,8 @@ com/example/ouluapp/ApolloConnector.java
  com.example.ouluapp.ApolloConnector
 com/example/ouluapp/CustomMarkerInfoWindow.java
  com.example.ouluapp.CustomMarkerInfoWindow
-com/example/ouluapp/MainActivity.java
- com.example.ouluapp.MainActivity
- com.example.ouluapp.MainActivity$1
- com.example.ouluapp.MainActivity$2
- com.example.ouluapp.MainActivity$3
- com.example.ouluapp.MainActivity$4
- com.example.ouluapp.MainActivity$5
- com.example.ouluapp.MainActivity$6
- com.example.ouluapp.MainActivity$7
- com.example.ouluapp.MainActivity$7$1
- com.example.ouluapp.MainActivity$8
+com/example/ouluapp/BusDialog.java
+ com.example.ouluapp.BusDialog
 com/example/ouluapp/CustomCameraMarkerInfoWindow.java
  com.example.ouluapp.CustomCameraMarkerInfoWindow
  com.example.ouluapp.CustomCameraMarkerInfoWindow$1
@@ -96,5 +87,14 @@ com/example/ouluapp/GetAllWeatherStationsQuery.java
  com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$Mapper
  com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$Mapper$1
  com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$Mapper$1$1
-com/example/ouluapp/BusDialog.java
- com.example.ouluapp.BusDialog
+com/example/ouluapp/MainActivity.java
+ com.example.ouluapp.MainActivity
+ com.example.ouluapp.MainActivity$1
+ com.example.ouluapp.MainActivity$2
+ com.example.ouluapp.MainActivity$3
+ com.example.ouluapp.MainActivity$4
+ com.example.ouluapp.MainActivity$5
+ com.example.ouluapp.MainActivity$6
+ com.example.ouluapp.MainActivity$7
+ com.example.ouluapp.MainActivity$7$1
+ com.example.ouluapp.MainActivity$8
