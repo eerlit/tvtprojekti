@@ -1638,6 +1638,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable busicon
 drawable caution
 drawable center
 drawable design_bottom_navigation_item_background
@@ -1648,6 +1649,7 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable ic_baseline_camera_alt_24
 drawable ic_baseline_cloud_24
+drawable ic_baseline_directions_bus_24
 drawable ic_baseline_weather_camera_24
 drawable ic_clock_black_24dp
 drawable ic_keyboard_black_24dp
@@ -1808,6 +1810,7 @@ id bubble_image
 id bubble_moreinfo
 id bubble_subdescription
 id bubble_title
+id bussit
 id buttonPanel
 id cache_measures
 id camera_image_view
