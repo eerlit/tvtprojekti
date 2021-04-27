@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity{
     private ArrayList<Double> longListForAnnouncements = new ArrayList<Double>();
     private ArrayList<Double> latListForAnnouncements = new ArrayList<Double>();
     ArrayList<Marker> busMarkerList = new ArrayList<>();
+    ArrayList<Marker> parkHouseMarkerList = new ArrayList<>();
 
     Polyline uusiTie;
     String[] arrayForRoads;
@@ -200,6 +201,7 @@ public class MainActivity extends AppCompatActivity{
                    }
 
                }
+               break;
            case R.id.bussit:
                item.setChecked(!item.isChecked());
                if(item.isChecked()){
@@ -212,6 +214,21 @@ public class MainActivity extends AppCompatActivity{
                        busMarkerList.get(i).remove(map);
                    }
                }
+               break;
+           case R.id.parkkihallit:
+               item.setChecked(!item.isChecked());
+               if(item.isChecked()){
+                   menuItem[2] = true;
+                   getAllCarParks();
+               }
+               if(!item.isChecked()){
+                   menuItem[2] = false;
+                   for (int i=0; i<parkHouseMarkerList.size();i++){
+                       System.out.println(parkHouseMarkerList.size());
+                       parkHouseMarkerList.get(i).remove(map);
+                   }
+               }
+               break;
        }
        if (!menuItem[0] && !menuItem[1]){
            for (int i=0; i<weatherCamMarkerList.size(); i++){
@@ -652,7 +669,7 @@ public class MainActivity extends AppCompatActivity{
                             String[] lon = separated[i+2].split("=");
                             String[] spacesAvailable = separated[i+3].split("=");
                             //sb.deleteCharAt(spacesAvailable[1].length()-1);
-                            addMarkerCarParks(new GeoPoint(Double.parseDouble(lat[1]),Double.parseDouble(lon[1])),name[1],"Vapaana: "+spacesAvailable[1]);
+                            parkHouseMarkerList.add(addMarkerCarParks(new GeoPoint(Double.parseDouble(lat[1]),Double.parseDouble(lon[1])),name[1],"Vapaana: "+spacesAvailable[1]));
                             //items.add(new OverlayItem(name[1], "Vapaana: "+spacesAvailable[1], new GeoPoint(Double.parseDouble(lat[1]),Double.parseDouble(lon[1])))); // Lat/Lon decimal degrees
                             if(i==16||i==76){
                                 i=i+5;

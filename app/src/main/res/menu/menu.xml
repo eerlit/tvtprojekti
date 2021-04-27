@@ -19,7 +19,7 @@
         <item
             android:id="@+id/parkkihallit"
             android:checked="true"
-            android:title="Parkkihallit"
+            android:title="parkkihallit"
             app:showAsAction="never" />
         <item
             android:id="@+id/autotiet"

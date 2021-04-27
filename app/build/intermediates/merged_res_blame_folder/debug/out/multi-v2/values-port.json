@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Yuki\\AndroidStudioProjects\\tvtprojekti10\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-port\\values-port.xml",
+            "outputFile": "C:\\AndroidApps\\tvtprojekti3\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-port\\values-port.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Yuki\\.gradle\\caches\\transforms-2\\files-2.1\\748ac0f363e6a0e5d9d63a84b80c6b34\\appcompat-1.2.0\\res\\values-port\\values-port.xml",
+                    "source": "C:\\Users\\veikk\\.gradle\\caches\\transforms-2\\files-2.1\\748ac0f363e6a0e5d9d63a84b80c6b34\\appcompat-1.2.0\\res\\values-port\\values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
