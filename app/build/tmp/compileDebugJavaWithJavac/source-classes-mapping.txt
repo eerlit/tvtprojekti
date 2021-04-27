@@ -2,25 +2,21 @@ com/example/ouluapp/type/TrafficDisruptionSeverity.java
  com.example.ouluapp.type.TrafficDisruptionSeverity
 com/example/ouluapp/CustomMarkerInfoWindow.java
  com.example.ouluapp.CustomMarkerInfoWindow
-com/example/ouluapp/GetAllWeatherStationsQuery.java
- com.example.ouluapp.GetAllWeatherStationsQuery
- com.example.ouluapp.GetAllWeatherStationsQuery$1
- com.example.ouluapp.GetAllWeatherStationsQuery$Builder
- com.example.ouluapp.GetAllWeatherStationsQuery$Data
- com.example.ouluapp.GetAllWeatherStationsQuery$Data$1
- com.example.ouluapp.GetAllWeatherStationsQuery$Data$1$1
- com.example.ouluapp.GetAllWeatherStationsQuery$Data$Mapper
- com.example.ouluapp.GetAllWeatherStationsQuery$Data$Mapper$1
- com.example.ouluapp.GetAllWeatherStationsQuery$Data$Mapper$1$1
- com.example.ouluapp.GetAllWeatherStationsQuery$SensorValue
- com.example.ouluapp.GetAllWeatherStationsQuery$SensorValue$1
- com.example.ouluapp.GetAllWeatherStationsQuery$SensorValue$Mapper
- com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation
- com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$1
- com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$1$1
- com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$Mapper
- com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$Mapper$1
- com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$Mapper$1$1
+com/example/ouluapp/MainActivity.java
+ com.example.ouluapp.MainActivity
+ com.example.ouluapp.MainActivity$1
+ com.example.ouluapp.MainActivity$10
+ com.example.ouluapp.MainActivity$11
+ com.example.ouluapp.MainActivity$2
+ com.example.ouluapp.MainActivity$3
+ com.example.ouluapp.MainActivity$4
+ com.example.ouluapp.MainActivity$5
+ com.example.ouluapp.MainActivity$6
+ com.example.ouluapp.MainActivity$7
+ com.example.ouluapp.MainActivity$7$1
+ com.example.ouluapp.MainActivity$8
+ com.example.ouluapp.MainActivity$8$1
+ com.example.ouluapp.MainActivity$9
 com/example/ouluapp/type/TrafficFlow.java
  com.example.ouluapp.type.TrafficFlow
 com/example/ouluapp/BuildConfig.java
@@ -80,6 +76,29 @@ com/example/ouluapp/GetTrafficFluencyFeatureCollectionQuery.java
  com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$TrafficFluencyFeatureCollection$Mapper
  com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$TrafficFluencyFeatureCollection$Mapper$1
  com.example.ouluapp.GetTrafficFluencyFeatureCollectionQuery$TrafficFluencyFeatureCollection$Mapper$1$1
+com/example/ouluapp/StopsByBboxQuery.java
+ com.example.ouluapp.StopsByBboxQuery
+ com.example.ouluapp.StopsByBboxQuery$1
+ com.example.ouluapp.StopsByBboxQuery$Builder
+ com.example.ouluapp.StopsByBboxQuery$Data
+ com.example.ouluapp.StopsByBboxQuery$Data$1
+ com.example.ouluapp.StopsByBboxQuery$Data$1$1
+ com.example.ouluapp.StopsByBboxQuery$Data$Mapper
+ com.example.ouluapp.StopsByBboxQuery$Data$Mapper$1
+ com.example.ouluapp.StopsByBboxQuery$Data$Mapper$1$1
+ com.example.ouluapp.StopsByBboxQuery$StopsByBbox
+ com.example.ouluapp.StopsByBboxQuery$StopsByBbox$1
+ com.example.ouluapp.StopsByBboxQuery$StopsByBbox$1$1
+ com.example.ouluapp.StopsByBboxQuery$StopsByBbox$Mapper
+ com.example.ouluapp.StopsByBboxQuery$StopsByBbox$Mapper$1
+ com.example.ouluapp.StopsByBboxQuery$StopsByBbox$Mapper$1$1
+ com.example.ouluapp.StopsByBboxQuery$StoptimesWithoutPattern
+ com.example.ouluapp.StopsByBboxQuery$StoptimesWithoutPattern$1
+ com.example.ouluapp.StopsByBboxQuery$StoptimesWithoutPattern$Mapper
+ com.example.ouluapp.StopsByBboxQuery$StoptimesWithoutPattern$Mapper$1
+ com.example.ouluapp.StopsByBboxQuery$Trip
+ com.example.ouluapp.StopsByBboxQuery$Trip$1
+ com.example.ouluapp.StopsByBboxQuery$Trip$Mapper
 com/example/ouluapp/ApolloConnector.java
  com.example.ouluapp.ApolloConnector
 com/example/ouluapp/type/TrafficDisruptionModeOfTransport.java
@@ -130,16 +149,24 @@ com/example/ouluapp/type/CustomType.java
  com.example.ouluapp.type.CustomType$4
 com/example/ouluapp/type/TrafficFluencySourceType.java
  com.example.ouluapp.type.TrafficFluencySourceType
-com/example/ouluapp/MainActivity.java
- com.example.ouluapp.MainActivity
- com.example.ouluapp.MainActivity$1
- com.example.ouluapp.MainActivity$2
- com.example.ouluapp.MainActivity$3
- com.example.ouluapp.MainActivity$4
- com.example.ouluapp.MainActivity$5
- com.example.ouluapp.MainActivity$6
- com.example.ouluapp.MainActivity$6$1
- com.example.ouluapp.MainActivity$7
- com.example.ouluapp.MainActivity$7$1
- com.example.ouluapp.MainActivity$8
- com.example.ouluapp.MainActivity$9
+com/example/ouluapp/GetAllWeatherStationsQuery.java
+ com.example.ouluapp.GetAllWeatherStationsQuery
+ com.example.ouluapp.GetAllWeatherStationsQuery$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$Builder
+ com.example.ouluapp.GetAllWeatherStationsQuery$Data
+ com.example.ouluapp.GetAllWeatherStationsQuery$Data$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$Data$1$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$Data$Mapper
+ com.example.ouluapp.GetAllWeatherStationsQuery$Data$Mapper$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$Data$Mapper$1$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$SensorValue
+ com.example.ouluapp.GetAllWeatherStationsQuery$SensorValue$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$SensorValue$Mapper
+ com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation
+ com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$1$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$Mapper
+ com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$Mapper$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$Mapper$1$1
+com/example/ouluapp/BusDialog.java
+ com.example.ouluapp.BusDialog

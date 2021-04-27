@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\AndroidApps\\tvtprojekti2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\AndroidApps\\tvtprojekti3\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\veikk\\.gradle\\caches\\transforms-2\\files-2.1\\1b1a95e9b5c31c03577c2d66f8689cc6\\cardview-1.0.0\\res\\values\\values.xml",
@@ -42,6 +42,42 @@
                     }
                 },
                 {
+                    "source": "C:\\AndroidApps\\tvtprojekti3\\app\\src\\main\\res\\values\\themes.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "102",
+                        "endLines": "14",
+                        "endColumns": "12",
+                        "endOffsets": "830"
+                    },
+                    "to": {
+                        "startLines": "3791",
+                        "startColumns": "4",
+                        "startOffsets": "251318",
+                        "endLines": "3803",
+                        "endColumns": "12",
+                        "endOffsets": "252032"
+                    }
+                },
+                {
+                    "source": "C:\\AndroidApps\\tvtprojekti3\\app\\src\\main\\res\\values\\colors.xml",
+                    "from": {
+                        "startLines": "7,2,3,4,5,6,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "293,57,105,153,201,247,336",
+                        "endColumns": "41,46,46,46,44,44,41",
+                        "endOffsets": "330,99,147,195,241,287,373"
+                    },
+                    "to": {
+                        "startLines": "403,491,492,493,504,505,508",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "19541,25534,25581,25628,26372,26417,26583",
+                        "endColumns": "41,46,46,46,44,44,41",
+                        "endOffsets": "19578,25576,25623,25670,26412,26457,26620"
+                    }
+                },
+                {
                     "source": "C:\\Users\\veikk\\.gradle\\caches\\transforms-2\\files-2.1\\13aa6c19852ab85813265c33e28bb9d2\\jetified-viewpager2-1.0.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2",
@@ -78,6 +114,23 @@
                     }
                 },
                 {
+                    "source": "C:\\AndroidApps\\tvtprojekti3\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endColumns": "44",
+                        "endOffsets": "57"
+                    },
+                    "to": {
+                        "startLines": "1044",
+                        "startColumns": "4",
+                        "startOffsets": "61186",
+                        "endColumns": "44",
+                        "endOffsets": "61226"
+                    }
+                },
+                {
                     "source": "C:\\Users\\veikk\\.gradle\\caches\\transforms-2\\files-2.1\\d19e240966926a918164c2e0b73ddf1a\\jetified-appcompat-resources-1.2.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,29,36,47,74",
@@ -94,59 +147,6 @@
                         "endLines": "5042,5049,5060,7440,7445",
                         "endColumns": "24,24,24,24,24",
                         "endOffsets": "332024,332409,333006,479213,479483"
-                    }
-                },
-                {
-                    "source": "C:\\AndroidApps\\tvtprojekti2\\app\\src\\main\\res\\values\\colors.xml",
-                    "from": {
-                        "startLines": "7,2,3,4,5,6,8",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "293,57,105,153,201,247,336",
-                        "endColumns": "41,46,46,46,44,44,41",
-                        "endOffsets": "330,99,147,195,241,287,373"
-                    },
-                    "to": {
-                        "startLines": "403,491,492,493,504,505,508",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "19541,25534,25581,25628,26372,26417,26583",
-                        "endColumns": "41,46,46,46,44,44,41",
-                        "endOffsets": "19578,25576,25623,25670,26412,26457,26620"
-                    }
-                },
-                {
-                    "source": "C:\\AndroidApps\\tvtprojekti2\\app\\src\\main\\res\\values\\themes.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "102",
-                        "endLines": "14",
-                        "endColumns": "12",
-                        "endOffsets": "830"
-                    },
-                    "to": {
-                        "startLines": "3791",
-                        "startColumns": "4",
-                        "startOffsets": "251318",
-                        "endLines": "3803",
-                        "endColumns": "12",
-                        "endOffsets": "252032"
-                    }
-                },
-                {
-                    "source": "C:\\AndroidApps\\tvtprojekti2\\app\\src\\main\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "1",
-                        "startColumns": "4",
-                        "startOffsets": "17",
-                        "endColumns": "44",
-                        "endOffsets": "57"
-                    },
-                    "to": {
-                        "startLines": "1044",
-                        "startColumns": "4",
-                        "startOffsets": "61186",
-                        "endColumns": "44",
-                        "endOffsets": "61226"
                     }
                 },
                 {
