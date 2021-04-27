@@ -75,11 +75,12 @@ public class MainActivity extends AppCompatActivity{
     private ArrayList<Double> latListForAnnouncements = new ArrayList<Double>();
     ArrayList<Marker> busMarkerList = new ArrayList<>();
 
+    private RotationGestureOverlay mRotationGestureOverlay;
+
     Polyline uusiTie;
     String[] arrayForRoads;
     String[] arrayForAnnouncements;
 
-    private RotationGestureOverlay mRotationGestureOverlay;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -115,6 +116,7 @@ public class MainActivity extends AppCompatActivity{
         mRotationGestureOverlay = new RotationGestureOverlay(map);
         mRotationGestureOverlay.setEnabled(true);
         map.getOverlays().add(this.mRotationGestureOverlay);
+
 
         requestPermissionsIfNecessary(new String[] {
                 Manifest.permission.ACCESS_FINE_LOCATION,
@@ -200,6 +202,7 @@ public class MainActivity extends AppCompatActivity{
                    }
 
                }
+               break;
            case R.id.bussit:
                item.setChecked(!item.isChecked());
                if(item.isChecked()){
@@ -212,6 +215,7 @@ public class MainActivity extends AppCompatActivity{
                        busMarkerList.get(i).remove(map);
                    }
                }
+
        }
        if (!menuItem[0] && !menuItem[1]){
            for (int i=0; i<weatherCamMarkerList.size(); i++){
@@ -959,7 +963,7 @@ public class MainActivity extends AppCompatActivity{
                     longListForRoads.clear();
 
                     //päivitetään kartta
-                    map.invalidate();
+                    //map.invalidate();
 
 
                 }
