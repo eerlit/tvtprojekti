@@ -1,0 +1,16 @@
+query GetAllWeatherStations {
+  weatherStations {
+    weatherStationId
+    name
+    lat
+    lon
+    collectionStatus
+    measuredTime
+    sensorValues {
+      roadStationId
+      name
+      sensorValue
+      sensorUnit
+    }
+  }
+}

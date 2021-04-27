@@ -1,0 +1,14 @@
+query GetAllCameras { 
+  cameras {
+    cameraId
+    name
+    lat
+    lon
+    presets {
+      presetId
+      presentationName
+      imageUrl
+      measuredTime
+    }
+  }
+}
