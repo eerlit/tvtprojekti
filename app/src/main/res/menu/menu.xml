@@ -16,12 +16,22 @@
             android:id="@+id/sääasemat"
             app:showAsAction="never"
             android:checked="true"/>
-
         <item
-            android:title="Parrkihallit"
             android:id="@+id/parkkihallit"
-            app:showAsAction="never"
-            android:checked="true"/>
+            android:checked="true"
+            android:title="Parkkihallit"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/autotiet"
+            android:checkable="true"
+            android:checked="true"
+            android:title="autotiet" />
+        <item
+            android:id="@+id/hairioilmoitukset"
+            android:checkable="true"
+            android:checked="true"
+            android:title="häiriöilmoitukset" />
+
     </group>
 
 </menu>
