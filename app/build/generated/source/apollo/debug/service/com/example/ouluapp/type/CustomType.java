@@ -10,6 +10,18 @@ import java.lang.Override;
 import java.lang.String;
 
 public enum CustomType implements ScalarType {
+  FEATURECOLLECTIONOBJECT {
+    @Override
+    public String typeName() {
+      return "FeatureCollectionObject";
+    }
+
+    @Override
+    public String className() {
+      return "java.lang.Object";
+    }
+  },
+
   GEOMETRYINTERFACE {
     @Override
     public String typeName() {

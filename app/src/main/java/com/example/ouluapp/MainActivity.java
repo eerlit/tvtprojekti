@@ -3,52 +3,53 @@ package com.example.ouluapp;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Point;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
-import android.util.Log;
-import android.widget.Toast;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
+
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-
 import com.apollographql.apollo.ApolloCall;
 import com.apollographql.apollo.api.Response;
-import com.apollographql.apollo.api.internal.ResponseFieldMapper;
 import com.apollographql.apollo.exception.ApolloException;
+
 
 import org.jetbrains.annotations.NotNull;
 import org.osmdroid.api.IMapController;
-import org.osmdroid.bonuspack.routing.OSRMRoadManager;
-import org.osmdroid.bonuspack.routing.Road;
-import org.osmdroid.bonuspack.routing.RoadManager;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
-
-
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.ItemizedIconOverlay;
+import org.osmdroid.views.overlay.ItemizedOverlayWithFocus;
+import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.views.overlay.OverlayItem;
-import org.osmdroid.views.overlay.OverlayManager;
-import org.osmdroid.views.overlay.OverlayWithIW;
-import org.osmdroid.views.overlay.PolyOverlayWithIW;
-import org.osmdroid.views.overlay.Polygon;
 import org.osmdroid.views.overlay.Polyline;
-import org.osmdroid.views.overlay.infowindow.InfoWindow;
 
-import java.lang.reflect.Array;
-import java.net.DatagramPacket;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.LinkedHashMap;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
@@ -61,16 +62,22 @@ public class MainActivity extends AppCompatActivity {
 
     private final int request_permissions_request_code = 1;
     private MapView map = null;
-    private ArrayList<Double> latLista = new ArrayList<Double>();
-    private ArrayList<Double> longLista = new ArrayList<Double>();
+    private ArrayList<Double> latListForRoads = new ArrayList<Double>();
+    private ArrayList<Double> longListForRoads = new ArrayList<Double>();
+    private ArrayList<Double> longListForAnnouncements = new ArrayList<Double>();
+    private ArrayList<Double> latListForAnnouncements = new ArrayList<Double>();
 
     Context ctx;
-    String[] taulukko;
-
+    String[] arrayForRoads;
+    String[] arrayForAnnouncements;
+    Toolbar toolbar;
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -89,15 +96,18 @@ public class MainActivity extends AppCompatActivity {
         mapController.setCenter(startPoint);
 
 
+
         requestPermissionsIfNecessary(new String[]{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
 
         });
+        getAllTrafficAnnouncements();
         getRoadCongestion();
         updateRoadMap();
 
 
     }
+
 
     @Override
     public void onResume() {
@@ -170,8 +180,149 @@ public class MainActivity extends AppCompatActivity {
         myTimer.schedule(updateMapTimer, 30000, 30000);
 
 
-       // map.invalidate();
+
     }
+private void getAllTrafficAnnouncements(){
+
+ApolloConnector.setupApollo().query(GetAllTrafficAnnouncementsQuery.builder().build()).enqueue(new ApolloCall.Callback<GetAllTrafficAnnouncementsQuery.Data>() {
+    @Override
+    public void onResponse(@NotNull Response<GetAllTrafficAnnouncementsQuery.Data> response) {
+
+        ArrayList<GeoPoint> trafficProblemCoords = new ArrayList<>();
+
+        String announcementCoords;
+        String announcementDescription;
+        String announcementTitle;
+        boolean outDatedAnnouncement = false;
+        SimpleDateFormat presentDate = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf;
+        String announcementEndDate;
+        String announcementSeverity;
+
+
+       //System.out.println(response.getData().trafficAnnouncements.get(0).severity);
+
+       List<GetAllTrafficAnnouncementsQuery.TrafficAnnouncement> lista = response.getData().trafficAnnouncements;
+
+       for(int i = 0; i <= lista.size()-1; i++)
+       {
+        announcementCoords = lista.get(i).geojson.toString();
+
+           announcementCoords = announcementCoords.replaceAll(".*coordinates=", "");
+           announcementCoords = announcementCoords.replaceAll(".*properties=", "");
+           announcementCoords = announcementCoords.replaceAll("[{}]", "");
+           announcementCoords = announcementCoords.replaceAll("\\[", "");
+           announcementCoords = announcementCoords.replaceAll("\\]", "");
+
+           if(announcementCoords.isEmpty()){
+               continue;
+           }
+           arrayForAnnouncements = announcementCoords.split(",");
+
+           for(int j = 0; j < arrayForAnnouncements.length; j++){
+
+               if(j %2 == 0){
+
+                   longListForAnnouncements.add(Double.parseDouble(arrayForAnnouncements[j]));
+
+               }else{
+
+                   latListForAnnouncements.add(Double.parseDouble(arrayForAnnouncements[j]));
+               }
+
+           }
+            for(int h = 0; h < longListForAnnouncements.size()-1; h++) {
+
+                announcementDescription = response.getData().trafficAnnouncements.get(i).description.fi;
+                announcementTitle = response.getData().trafficAnnouncements.get(i).title.fi;
+                announcementSeverity = response.getData().trafficAnnouncements.get(i).severity.rawValue();
+
+                try {
+                    announcementEndDate = response.getData().trafficAnnouncements.get(i).endTime.toString();
+                    if(announcementEndDate != ""){
+                        announcementEndDate = announcementEndDate.replaceAll("[^\\d.]", "");
+                        String year;
+                        String day;
+                        String month;
+                        String result = "";
+                        year = announcementEndDate.substring(0, 4);
+                        month = announcementEndDate.substring(4,6);
+                        day = announcementEndDate.substring(6,8);
+                        result = result.concat(day + "/");
+                        result = result.concat(month + "/");
+                        result = result.concat(year);
+
+
+                        Calendar cal = Calendar.getInstance();
+                        String getCurrentDateTime = presentDate.format(cal.getTime());
+                        sdf = new SimpleDateFormat("dd/MM/yyyy");
+                        Date validUntilDate = null;
+
+                        try {
+                            validUntilDate = sdf.parse(result);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+
+                        if(new Date().after(validUntilDate)) {
+
+                            outDatedAnnouncement = true;
+                        }
+
+                        if(outDatedAnnouncement){
+                            continue;
+                        }
+                    }
+                }catch(NullPointerException e){
+
+                }
+
+
+
+                trafficProblemCoords.add(new GeoPoint(latListForAnnouncements.get(h), longListForAnnouncements.get(h)));
+
+                Marker roadWorkMarker = new Marker(map);
+
+                roadWorkMarker.setPosition(trafficProblemCoords.get(0));
+                switch(announcementSeverity){
+                    case "HIGH":{
+                        roadWorkMarker.setIcon(ContextCompat.getDrawable(ctx, R.drawable.alarm));
+                        break;
+                    }
+                    case "MEDIUM":{
+                        roadWorkMarker.setIcon(ContextCompat.getDrawable(ctx, R.drawable.caution));
+                        break;
+                    }
+
+                }
+
+
+                roadWorkMarker.setTitle(announcementTitle);
+                roadWorkMarker.setSnippet(announcementDescription);
+                map.getOverlays().add(roadWorkMarker);
+
+            }
+
+
+
+            trafficProblemCoords.clear();
+            longListForAnnouncements.clear();
+            latListForAnnouncements.clear();
+            
+       }
+
+    }
+
+    @Override
+    public void onFailure(@NotNull ApolloException e) {
+
+    }
+});
+
+}
+
+
 
     private void getRoadCongestion() {
 
@@ -186,7 +337,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(@NotNull Response<GetTrafficFluencyFeatureCollectionQuery.Data> response) {
 
 
-                String koordinaatit;
+                String coordinates;
                 ArrayList<GeoPoint> road = new ArrayList<>();
                 int roadNumber = 0;
                 int i = 0;
@@ -199,40 +350,40 @@ public class MainActivity extends AppCompatActivity {
                     //535 bugaa
 
                     //haetaan yksittäisen tien koordinaatit String-muuttujaan
-                    koordinaatit = lista.get(t).geometry.toString();
+                    coordinates = lista.get(t).geometry.toString();
                     //poistetaan haetusta datasta turhat merkit
-                    koordinaatit = koordinaatit.replaceAll(".*coordinates=", "");
-                    koordinaatit = koordinaatit.replaceAll("[{}]", "");
-                    koordinaatit = koordinaatit.replaceAll("\\[", "");
-                    koordinaatit = koordinaatit.replaceAll("\\]", "");
+                    coordinates = coordinates.replaceAll(".*coordinates=", "");
+                    coordinates = coordinates.replaceAll("[{}]", "");
+                    coordinates = coordinates.replaceAll("\\[", "");
+                    coordinates = coordinates.replaceAll("\\]", "");
                     //jos koordinaatit-kohta on tyhjä jonkun tien kohdalla, hypätään for loopissa seuraavaan tiehen.
-                    if (koordinaatit.isEmpty()) {
+                    if (coordinates.isEmpty()) {
                         continue;
                     }
                     //jaetaan string-muuttujassa olevat arvot eri indekseihin taulukkoon.
-                    taulukko = koordinaatit.split(", ");
+                    arrayForRoads = coordinates.split(", ");
 
                     //for-looppi, jossa edellä täytetystä taulukosta tallennetaan arvot double:na listaan
-                    for (i = 0; i < taulukko.length; i++) {
+                    for (i = 0; i < arrayForRoads.length; i++) {
 
                         //joka toinen arvo on longitude-arvo, tällä if-lauseella varmistetaan että oikeat arvot menevät oikeaan listaan.
                         if (i % 2 == 0) {
 
-                            longLista.add(Double.parseDouble(taulukko[i]));
+                            longListForRoads.add(Double.parseDouble(arrayForRoads[i]));
 
                         } else {
 
-                            latLista.add(Double.parseDouble(taulukko[i]));
+                            latListForRoads.add(Double.parseDouble(arrayForRoads[i]));
                         }
                     }
                     //tässä for-loopissa käydään läpi edellä täytettyjä longitude- ja latitude listoja, ja tallennetaan niistä tiedot edelleen road-geopoint listaan
-                    for (int j = 0; j < latLista.size(); j++) {
+                    for (int j = 0; j < latListForRoads.size(); j++) {
 
-                        road.add(new GeoPoint(latLista.get(j), longLista.get(j)));
+                        road.add(new GeoPoint(latListForRoads.get(j), longListForRoads.get(j)));
 
                     }
 
-                    //haetaan yksittäisten teiden liikenteensujuvuusdata
+                    //haetaan yksittäisten teiden liikenteensujuvuusdataa
                     String trafficFlow = response.getData().trafficFluencyFeatureCollection.features.get(roadNumber).properties.trafficFlow.rawValue();
                     String roadDirection = response.getData().trafficFluencyFeatureCollection.features.get(roadNumber).properties.trafficDirectionName;
                     String roadName = response.getData().trafficFluencyFeatureCollection.features.get(roadNumber).properties.name;
@@ -251,8 +402,8 @@ public class MainActivity extends AppCompatActivity {
 
                     //tyhjennetään edellä käytetyt listat
                     road.clear();
-                    latLista.clear();
-                    longLista.clear();
+                    latListForRoads.clear();
+                    longListForRoads.clear();
 
                     //päivitetään kartta
                     map.invalidate();
@@ -303,7 +454,7 @@ public class MainActivity extends AppCompatActivity {
             avgSpeedResult = "";
         }
         String roadInfoResult = directionResult + "\n" + " Tien nimi " + roadName + "\n" + avgSpeedResult;
-        //uusiTie.setTitle();
+
         //liikenteensujuvuuden mukaan väritetään tiet tietynvärisiksi
         switch (trafficFlow) {
             case "TRAFFIC_FLOW_NORMAL":
@@ -315,19 +466,19 @@ public class MainActivity extends AppCompatActivity {
                 uusiTie.getOutlinePaint().setColor(Color.RED);
                 uusiTie.getOutlinePaint().setStrokeWidth(6);
                 String ruuhka = " Ruuhkauntunut tie";
-                //String apu = uusiTie.getTitle();
+
                 roadInfoResult = ruuhka + "\n" + roadInfoResult;
                 uusiTie.setTitle(roadInfoResult);
                 break;
             case "TRAFFIC_MUCH_HEAVIER_THAN_NORMAL":
-                uusiTie.getOutlinePaint().setColor(Color.rgb(64, 0, 0));
+                uusiTie.getOutlinePaint().setColor(Color.rgb(150, 0, 0));
                 uusiTie.getOutlinePaint().setStrokeWidth(6);
                 uusiTie.setTitle("todella ruuhkautunut tie" + "\n" + roadName + "\n" + avgSpeedResult);
 
                 break;
             case "TRAFFIC_FLOW_UNKNOWN":
                 uusiTie.getOutlinePaint().setColor(Color.BLACK);
-                uusiTie.getOutlinePaint().setStrokeWidth(5);
+                uusiTie.getOutlinePaint().setStrokeWidth(3);
                 uusiTie.setTitle("ei dataa");
                 break;
         }
@@ -336,6 +487,7 @@ public class MainActivity extends AppCompatActivity {
 
         arrayList.clear();
     }
+
 
 
 }

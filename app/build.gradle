@@ -62,15 +62,12 @@ dependencies {
     implementation 'org.apache.commons:commons-lang3:3.4'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
-    implementation 'com.mapbox.mapboxsdk:mapbox-sdk-geojson:5.6.0'
-    implementation ('com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1'){
-        exclude group: 'group_name', module: 'module_name'
-    }
+  
     implementation "androidx.multidex:multidex:2.0.1"
 
 
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'com.googlecode.json-simple:json-simple:1.1'
-    implementation 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+
 
 }
