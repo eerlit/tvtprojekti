@@ -7,16 +7,16 @@ com/example/ouluapp/MainActivity.java
  com.example.ouluapp.MainActivity$1
  com.example.ouluapp.MainActivity$10
  com.example.ouluapp.MainActivity$11
+ com.example.ouluapp.MainActivity$12
  com.example.ouluapp.MainActivity$2
  com.example.ouluapp.MainActivity$3
  com.example.ouluapp.MainActivity$4
  com.example.ouluapp.MainActivity$5
  com.example.ouluapp.MainActivity$6
  com.example.ouluapp.MainActivity$7
- com.example.ouluapp.MainActivity$7$1
  com.example.ouluapp.MainActivity$8
- com.example.ouluapp.MainActivity$8$1
  com.example.ouluapp.MainActivity$9
+ com.example.ouluapp.MainActivity$9$1
 com/example/ouluapp/type/TrafficFlow.java
  com.example.ouluapp.type.TrafficFlow
 com/example/ouluapp/BuildConfig.java
