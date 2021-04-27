@@ -15,7 +15,7 @@ query GetAllTrafficAnnouncements {
      severity
      status
      startTime
-     endTime<
+     endTime
      geojson
      modesOfTransport
      class {

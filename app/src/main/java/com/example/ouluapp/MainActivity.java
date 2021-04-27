@@ -992,7 +992,7 @@ public class MainActivity extends AppCompatActivity{
         //lisätään karttaan polyline, joka sisältää yksittäisen tien koordinaatit
 
 
-            map.getOverlays().add(uusiTie);
+            map.getOverlays().add(0,uusiTie);
 
         arrayList.clear();
     }
