@@ -4,6 +4,8 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -42,6 +44,7 @@ import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static java.security.AccessController.getContext;
 
@@ -98,25 +101,6 @@ public class MainActivity extends AppCompatActivity{
 
 
 
-//        ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
-//        //items.add(new OverlayItem("Title", "Description", new GeoPoint(65.015837d, 25.470374d))); // Lat/Lon decimal degrees
-//
-////the overlay
-//        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items,
-//                new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
-//                    @Override
-//                    public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
-//                        //do something
-//                        return true;
-//                    }
-//                    @Override
-//                    public boolean onItemLongPress(final int index, final OverlayItem item) {
-//                        return false;
-//                    }
-//                }, this);
-//        mOverlay.setFocusItemsOnTap(true);
-//
-//        map.getOverlays().add(mOverlay);
         map.setMultiTouchControls(true);
 
     }
@@ -129,56 +113,149 @@ public class MainActivity extends AppCompatActivity{
                 .builder()
                 .build())
                 .enqueue(new ApolloCall.Callback<StopsByBboxQuery.Data>(){
-                    @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void onResponse(@NotNull Response<StopsByBboxQuery.Data> response) {
 
                         //your items
-                        ArrayList<OverlayItem> stops = new ArrayList<OverlayItem>();
                         //haetaan tarvittava data graphqlstä ja lisätään se arraylistiin
+                        ArrayList<OverlayItem> stops = new ArrayList<OverlayItem>();
+
+                        // KÄYTÄ NESTED SWITCH CASE IF ELSEN SIJASTA.
 
 
-
-
-                        for(int i = 0; i<response.getData().stopsByBbox().size(); i++)
+                        for(int i = 0; i<response.getData().stopsByBbox().size()-1; i++)
                         {
-                            int scheduledArrival = response.getData().stopsByBbox().get(Integer.max(0,i)).stoptimesWithoutPatterns().get(0).scheduledArrival();
-                            int hours = scheduledArrival / 60;
-                            int minutes = hours % 60;
-                            hours = hours/ 60;
-                            Log.d("MainActivity", "scheduledarrival: " + scheduledArrival);
-                                stops.add(new OverlayItem(response.getData().stopsByBbox().get(i).name(),
-                                        response.getData().stopsByBbox().get(Integer.max(0, i)).stoptimesWithoutPatterns().get(0).headsign() + " " +
-                                                response.getData().stopsByBbox().get(Integer.max(0,i)).stoptimesWithoutPatterns().get(0).trip().routeShortName() + "\n" +
-                                                hours + ":" + minutes,
-                                        new GeoPoint(response.getData().stopsByBbox().get(i).lat(), response.getData().stopsByBbox().get(i).lon()))); // Lat/Lon decimal degrees
+                            for(int j = 0; j < response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().size()-3;j++) {
+                                int scheduledArrival = response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).scheduledArrival();
+                                int hours = scheduledArrival / 60;
+                                int minutes = hours % 60;
+                                hours = hours / 60;
+                                //tunnit ja minuutit uusiksi if lausekkeen sisälle. Ongelmana voi ilmetä jos scheduledarrival kohdasta 0 = 17:50 ja kohdata 1 aika on = 18:01. Näyttääkö se ajan
+                                //muodossa 17:50 ja 18:1 <- näyttää tälleen vittu
+                                if (hours <= 9 && minutes <= 9) {
+                                    stops.add(new OverlayItem(response.getData().stopsByBbox().get(i).name(),
+                                            response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).headsign() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).trip().routeShortName() + " " +
+                                                    "0" +response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).realtimeArrival() / 60 / 60 + ":0" +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).realtimeArrival() / 60 % 60 + "\n" +
 
+
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(1).headsign() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(1).trip().routeShortName() + " " +
+                                                    "0" +response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(1).realtimeArrival() / 60 / 60 + ":0" +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(1).realtimeArrival() / 60 % 60 + "\n" +
+
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(2).headsign() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(2).trip().routeShortName() + " " +
+                                                    "0" +response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(2).realtimeArrival() / 60 / 60 + ":0" +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(2).realtimeArrival() / 60 % 60 + "\n" +
+
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(3).headsign() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(3).trip().routeShortName() + " " +
+                                                    "0" +response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(3).realtimeArrival() / 60 / 60 + ":0" +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(3).realtimeArrival() / 60 % 60,
+
+                                            new GeoPoint(response.getData().stopsByBbox().get(i).lat(), response.getData().stopsByBbox().get(i).lon()))); // Lat/Lon decimal degrees
+
+                                } else if (minutes <= 9) {
+                                    stops.add(new OverlayItem(response.getData().stopsByBbox().get(i).name(),
+                                            response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).headsign() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).trip().routeShortName() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).realtimeArrival() / 60 / 60 + ":0" +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).realtimeArrival() / 60 % 60 + "\n" +
+
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(1).headsign() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(1).trip().routeShortName() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(1).realtimeArrival() / 60 / 60 + ":0" +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(1).realtimeArrival() / 60 % 60  + "\n" +
+
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(2).headsign() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(2).trip().routeShortName() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(2).realtimeArrival() / 60 / 60 + ":0" +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(2).realtimeArrival() / 60 % 60  + "\n" +
+
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(3).headsign() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(3).trip().routeShortName() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(3).realtimeArrival() / 60 / 60 + ":0" +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(3).realtimeArrival() / 60 % 60,
+                                            new GeoPoint(response.getData().stopsByBbox().get(i).lat(), response.getData().stopsByBbox().get(i).lon()))); // Lat/Lon decimal degrees
+
+                                } else if (hours <= 9) {
+                                    stops.add(new OverlayItem(response.getData().stopsByBbox().get(i).name(),
+                                            response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).headsign() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).trip().routeShortName() + " " +
+                                                    "0" + response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).realtimeArrival() / 60 / 60 + ":" +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).realtimeArrival() / 60 % 60 + "\n" +
+
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(1).headsign() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(1).trip().routeShortName() + " " +
+                                                    "0" + response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(1).realtimeArrival() / 60 / 60 + ":" +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(1).realtimeArrival() / 60 % 60 + "\n" +
+
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(2).headsign() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(2).trip().routeShortName() + " " +
+                                                    "0" + response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(2).realtimeArrival() / 60 / 60 + ":" +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(2).realtimeArrival() / 60 % 60 + "\n" +
+
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(3).headsign() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(3).trip().routeShortName() + " " +
+                                                    "0" + response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(3).realtimeArrival() / 60 / 60 + ":" +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(3).realtimeArrival() / 60 % 60,
+
+                                            new GeoPoint(response.getData().stopsByBbox().get(i).lat(), response.getData().stopsByBbox().get(i).lon()))); // Lat/Lon decimal degrees
+
+                                } else if (hours >= 9 && minutes >= 9) {
+
+                                    stops.add(new OverlayItem(response.getData().stopsByBbox().get(i).name(),
+                                            response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).headsign() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).trip().routeShortName() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).realtimeArrival() / 60 / 60 + ":" +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).realtimeArrival() / 60 % 60 + "\n" +
+
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(1).headsign() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(1).trip().routeShortName() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(1).realtimeArrival() / 60 / 60 + ":" +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(1).realtimeArrival() / 60 % 60 + "\n" +
+
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(2).headsign() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(2).trip().routeShortName() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(2).realtimeArrival() / 60 / 60 + ":" +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(2).realtimeArrival() / 60 % 60 + "\n" +
+
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(3).headsign() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(3).trip().routeShortName() + " " +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(3).realtimeArrival() / 60 / 60 + ":" +
+                                                    response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(3).realtimeArrival() / 60 % 60,
+                                            new GeoPoint(response.getData().stopsByBbox().get(i).lat(), response.getData().stopsByBbox().get(i).lon()))); // Lat/Lon decimal degrees
+                                }
+                            }
+                        }
+
+                            Drawable busStop = ctx.getResources().getDrawable(R.drawable.busicon);
+
+                            //the overlay
+                            ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(stops, busStop, busStop, Color.WHITE,
+                                    new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
+                                        @Override
+                                        public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
+                                            //do something
+
+                                            return true;
+                                        }
+
+                                        @Override
+                                        public boolean onItemLongPress(final int index, final OverlayItem item) {
+                                            return false;
+                                        }
+                                    }, ctx);
+                            mOverlay.setFocusItemsOnTap(true);
+
+                            map.getOverlays().add(mOverlay);
+                            Log.d("MainActivity", "Response: " + response.getData().stopsByBbox().get(0).stoptimesWithoutPatterns.size());
                         }
 
 
 
-                        //the overlay
-                        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(stops,
-                                new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
-                                    @Override
-                                    public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
-                                        //do something
-                                        return true;
-                                    }
-                                    @Override
-                                    public boolean onItemLongPress(final int index, final OverlayItem item) {
-                                        return false;
-                                    }
-                                },ctx);
-                        mOverlay.setFocusItemsOnTap(true);
-
-                        map.getOverlays().add(mOverlay);
-                        Log.d("MainActivity", "Response: " + response.getData().stopsByBbox().get(0).stoptimesWithoutPatterns.size());
-
-
-
-
-                    }
 
                     @Override
                     public void onFailure(@NotNull ApolloException e) {
