@@ -64,6 +64,10 @@
         "source": "C:\\androidprojektit\\tvtprojekti\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_background.png"
     },
     {
+        "merged": "C:\\androidprojektit\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\drawable_busicon.png.flat",
+        "source": "C:\\androidprojektit\\tvtprojekti\\app\\src\\main\\res\\drawable\\busicon.png"
+    },
+    {
         "merged": "C:\\androidprojektit\\tvtprojekti\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
         "source": "C:\\androidprojektit\\tvtprojekti\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
