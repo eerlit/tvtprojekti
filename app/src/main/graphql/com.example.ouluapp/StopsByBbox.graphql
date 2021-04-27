@@ -12,8 +12,6 @@ query stopsByBbox {
     {
       scheduledArrival
       realtimeArrival
-      arrivalDelay
-      departureDelay
       scheduledDeparture
       headsign
       trip{

@@ -23,12 +23,78 @@ com/example/ouluapp/StopsByBboxQuery.java
  com.example.ouluapp.StopsByBboxQuery$Trip$Mapper
 com/example/ouluapp/ApolloConnector.java
  com.example.ouluapp.ApolloConnector
-com/example/ouluapp/type/CustomType.java
- com.example.ouluapp.type.CustomType
- com.example.ouluapp.type.CustomType$1
-com/example/ouluapp/BuildConfig.java
- com.example.ouluapp.BuildConfig
+com/example/ouluapp/CustomMarkerInfoWindow.java
+ com.example.ouluapp.CustomMarkerInfoWindow
 com/example/ouluapp/MainActivity.java
  com.example.ouluapp.MainActivity
  com.example.ouluapp.MainActivity$1
- com.example.ouluapp.MainActivity$1$1
+ com.example.ouluapp.MainActivity$2
+ com.example.ouluapp.MainActivity$3
+ com.example.ouluapp.MainActivity$4
+ com.example.ouluapp.MainActivity$5
+ com.example.ouluapp.MainActivity$6
+ com.example.ouluapp.MainActivity$7
+ com.example.ouluapp.MainActivity$7$1
+ com.example.ouluapp.MainActivity$8
+com/example/ouluapp/CustomCameraMarkerInfoWindow.java
+ com.example.ouluapp.CustomCameraMarkerInfoWindow
+ com.example.ouluapp.CustomCameraMarkerInfoWindow$1
+com/example/ouluapp/BuildConfig.java
+ com.example.ouluapp.BuildConfig
+com/example/ouluapp/type/CustomType.java
+ com.example.ouluapp.type.CustomType
+ com.example.ouluapp.type.CustomType$1
+ com.example.ouluapp.type.CustomType$2
+com/example/ouluapp/GetAllCarParksQuery.java
+ com.example.ouluapp.GetAllCarParksQuery
+ com.example.ouluapp.GetAllCarParksQuery$1
+ com.example.ouluapp.GetAllCarParksQuery$Builder
+ com.example.ouluapp.GetAllCarParksQuery$CarPark
+ com.example.ouluapp.GetAllCarParksQuery$CarPark$1
+ com.example.ouluapp.GetAllCarParksQuery$CarPark$Mapper
+ com.example.ouluapp.GetAllCarParksQuery$Data
+ com.example.ouluapp.GetAllCarParksQuery$Data$1
+ com.example.ouluapp.GetAllCarParksQuery$Data$1$1
+ com.example.ouluapp.GetAllCarParksQuery$Data$Mapper
+ com.example.ouluapp.GetAllCarParksQuery$Data$Mapper$1
+ com.example.ouluapp.GetAllCarParksQuery$Data$Mapper$1$1
+com/example/ouluapp/GetAllCamerasQuery.java
+ com.example.ouluapp.GetAllCamerasQuery
+ com.example.ouluapp.GetAllCamerasQuery$1
+ com.example.ouluapp.GetAllCamerasQuery$Builder
+ com.example.ouluapp.GetAllCamerasQuery$Camera
+ com.example.ouluapp.GetAllCamerasQuery$Camera$1
+ com.example.ouluapp.GetAllCamerasQuery$Camera$1$1
+ com.example.ouluapp.GetAllCamerasQuery$Camera$Mapper
+ com.example.ouluapp.GetAllCamerasQuery$Camera$Mapper$1
+ com.example.ouluapp.GetAllCamerasQuery$Camera$Mapper$1$1
+ com.example.ouluapp.GetAllCamerasQuery$Data
+ com.example.ouluapp.GetAllCamerasQuery$Data$1
+ com.example.ouluapp.GetAllCamerasQuery$Data$1$1
+ com.example.ouluapp.GetAllCamerasQuery$Data$Mapper
+ com.example.ouluapp.GetAllCamerasQuery$Data$Mapper$1
+ com.example.ouluapp.GetAllCamerasQuery$Data$Mapper$1$1
+ com.example.ouluapp.GetAllCamerasQuery$Preset
+ com.example.ouluapp.GetAllCamerasQuery$Preset$1
+ com.example.ouluapp.GetAllCamerasQuery$Preset$Mapper
+com/example/ouluapp/GetAllWeatherStationsQuery.java
+ com.example.ouluapp.GetAllWeatherStationsQuery
+ com.example.ouluapp.GetAllWeatherStationsQuery$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$Builder
+ com.example.ouluapp.GetAllWeatherStationsQuery$Data
+ com.example.ouluapp.GetAllWeatherStationsQuery$Data$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$Data$1$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$Data$Mapper
+ com.example.ouluapp.GetAllWeatherStationsQuery$Data$Mapper$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$Data$Mapper$1$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$SensorValue
+ com.example.ouluapp.GetAllWeatherStationsQuery$SensorValue$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$SensorValue$Mapper
+ com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation
+ com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$1$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$Mapper
+ com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$Mapper$1
+ com.example.ouluapp.GetAllWeatherStationsQuery$WeatherStation$Mapper$1$1
+com/example/ouluapp/BusDialog.java
+ com.example.ouluapp.BusDialog

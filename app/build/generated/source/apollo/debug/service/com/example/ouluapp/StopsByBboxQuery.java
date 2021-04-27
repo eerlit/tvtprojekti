@@ -36,7 +36,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public final class StopsByBboxQuery implements Query<StopsByBboxQuery.Data, StopsByBboxQuery.Data, Operation.Variables> {
-  public static final String OPERATION_ID = "21ff78a668f3380a9b634fa5641dcfc68b6ef73bd4a8ef96de06a5b1a37bb40f";
+  public static final String OPERATION_ID = "268d4d6349a849f2fcedcdee4f5fed725c818e3e967d44b5266b6d84e08c7043";
 
   public static final String QUERY_DOCUMENT = QueryDocumentMinifier.minify(
     "query stopsByBbox {\n"
@@ -49,8 +49,6 @@ public final class StopsByBboxQuery implements Query<StopsByBboxQuery.Data, Stop
         + "      __typename\n"
         + "      scheduledArrival\n"
         + "      realtimeArrival\n"
-        + "      arrivalDelay\n"
-        + "      departureDelay\n"
         + "      scheduledDeparture\n"
         + "      headsign\n"
         + "      trip {\n"
@@ -447,8 +445,6 @@ public final class StopsByBboxQuery implements Query<StopsByBboxQuery.Data, Stop
       ResponseField.forString("__typename", "__typename", null, false, Collections.<ResponseField.Condition>emptyList()),
       ResponseField.forInt("scheduledArrival", "scheduledArrival", null, true, Collections.<ResponseField.Condition>emptyList()),
       ResponseField.forInt("realtimeArrival", "realtimeArrival", null, true, Collections.<ResponseField.Condition>emptyList()),
-      ResponseField.forInt("arrivalDelay", "arrivalDelay", null, true, Collections.<ResponseField.Condition>emptyList()),
-      ResponseField.forInt("departureDelay", "departureDelay", null, true, Collections.<ResponseField.Condition>emptyList()),
       ResponseField.forInt("scheduledDeparture", "scheduledDeparture", null, true, Collections.<ResponseField.Condition>emptyList()),
       ResponseField.forString("headsign", "headsign", null, true, Collections.<ResponseField.Condition>emptyList()),
       ResponseField.forObject("trip", "trip", null, true, Collections.<ResponseField.Condition>emptyList())
@@ -459,10 +455,6 @@ public final class StopsByBboxQuery implements Query<StopsByBboxQuery.Data, Stop
     final @Nullable Integer scheduledArrival;
 
     final @Nullable Integer realtimeArrival;
-
-    final @Nullable Integer arrivalDelay;
-
-    final @Nullable Integer departureDelay;
 
     final @Nullable Integer scheduledDeparture;
 
@@ -477,14 +469,11 @@ public final class StopsByBboxQuery implements Query<StopsByBboxQuery.Data, Stop
     private transient volatile boolean $hashCodeMemoized;
 
     public StoptimesWithoutPattern(@NotNull String __typename, @Nullable Integer scheduledArrival,
-        @Nullable Integer realtimeArrival, @Nullable Integer arrivalDelay,
-        @Nullable Integer departureDelay, @Nullable Integer scheduledDeparture,
+        @Nullable Integer realtimeArrival, @Nullable Integer scheduledDeparture,
         @Nullable String headsign, @Nullable Trip trip) {
       this.__typename = Utils.checkNotNull(__typename, "__typename == null");
       this.scheduledArrival = scheduledArrival;
       this.realtimeArrival = realtimeArrival;
-      this.arrivalDelay = arrivalDelay;
-      this.departureDelay = departureDelay;
       this.scheduledDeparture = scheduledDeparture;
       this.headsign = headsign;
       this.trip = trip;
@@ -506,22 +495,6 @@ public final class StopsByBboxQuery implements Query<StopsByBboxQuery.Data, Stop
      */
     public @Nullable Integer realtimeArrival() {
       return this.realtimeArrival;
-    }
-
-    /**
-     * The offset from the scheduled arrival time in seconds. Negative values
-     * indicate that the trip is running ahead of schedule.
-     */
-    public @Nullable Integer arrivalDelay() {
-      return this.arrivalDelay;
-    }
-
-    /**
-     * The offset from the scheduled departure time in seconds. Negative values
-     * indicate that the trip is running ahead of schedule
-     */
-    public @Nullable Integer departureDelay() {
-      return this.departureDelay;
     }
 
     /**
@@ -555,11 +528,9 @@ public final class StopsByBboxQuery implements Query<StopsByBboxQuery.Data, Stop
           writer.writeString($responseFields[0], __typename);
           writer.writeInt($responseFields[1], scheduledArrival);
           writer.writeInt($responseFields[2], realtimeArrival);
-          writer.writeInt($responseFields[3], arrivalDelay);
-          writer.writeInt($responseFields[4], departureDelay);
-          writer.writeInt($responseFields[5], scheduledDeparture);
-          writer.writeString($responseFields[6], headsign);
-          writer.writeObject($responseFields[7], trip != null ? trip.marshaller() : null);
+          writer.writeInt($responseFields[3], scheduledDeparture);
+          writer.writeString($responseFields[4], headsign);
+          writer.writeObject($responseFields[5], trip != null ? trip.marshaller() : null);
         }
       };
     }
@@ -571,8 +542,6 @@ public final class StopsByBboxQuery implements Query<StopsByBboxQuery.Data, Stop
           + "__typename=" + __typename + ", "
           + "scheduledArrival=" + scheduledArrival + ", "
           + "realtimeArrival=" + realtimeArrival + ", "
-          + "arrivalDelay=" + arrivalDelay + ", "
-          + "departureDelay=" + departureDelay + ", "
           + "scheduledDeparture=" + scheduledDeparture + ", "
           + "headsign=" + headsign + ", "
           + "trip=" + trip
@@ -591,8 +560,6 @@ public final class StopsByBboxQuery implements Query<StopsByBboxQuery.Data, Stop
         return this.__typename.equals(that.__typename)
          && ((this.scheduledArrival == null) ? (that.scheduledArrival == null) : this.scheduledArrival.equals(that.scheduledArrival))
          && ((this.realtimeArrival == null) ? (that.realtimeArrival == null) : this.realtimeArrival.equals(that.realtimeArrival))
-         && ((this.arrivalDelay == null) ? (that.arrivalDelay == null) : this.arrivalDelay.equals(that.arrivalDelay))
-         && ((this.departureDelay == null) ? (that.departureDelay == null) : this.departureDelay.equals(that.departureDelay))
          && ((this.scheduledDeparture == null) ? (that.scheduledDeparture == null) : this.scheduledDeparture.equals(that.scheduledDeparture))
          && ((this.headsign == null) ? (that.headsign == null) : this.headsign.equals(that.headsign))
          && ((this.trip == null) ? (that.trip == null) : this.trip.equals(that.trip));
@@ -610,10 +577,6 @@ public final class StopsByBboxQuery implements Query<StopsByBboxQuery.Data, Stop
         h ^= (scheduledArrival == null) ? 0 : scheduledArrival.hashCode();
         h *= 1000003;
         h ^= (realtimeArrival == null) ? 0 : realtimeArrival.hashCode();
-        h *= 1000003;
-        h ^= (arrivalDelay == null) ? 0 : arrivalDelay.hashCode();
-        h *= 1000003;
-        h ^= (departureDelay == null) ? 0 : departureDelay.hashCode();
         h *= 1000003;
         h ^= (scheduledDeparture == null) ? 0 : scheduledDeparture.hashCode();
         h *= 1000003;
@@ -634,17 +597,15 @@ public final class StopsByBboxQuery implements Query<StopsByBboxQuery.Data, Stop
         final String __typename = reader.readString($responseFields[0]);
         final Integer scheduledArrival = reader.readInt($responseFields[1]);
         final Integer realtimeArrival = reader.readInt($responseFields[2]);
-        final Integer arrivalDelay = reader.readInt($responseFields[3]);
-        final Integer departureDelay = reader.readInt($responseFields[4]);
-        final Integer scheduledDeparture = reader.readInt($responseFields[5]);
-        final String headsign = reader.readString($responseFields[6]);
-        final Trip trip = reader.readObject($responseFields[7], new ResponseReader.ObjectReader<Trip>() {
+        final Integer scheduledDeparture = reader.readInt($responseFields[3]);
+        final String headsign = reader.readString($responseFields[4]);
+        final Trip trip = reader.readObject($responseFields[5], new ResponseReader.ObjectReader<Trip>() {
           @Override
           public Trip read(ResponseReader reader) {
             return tripFieldMapper.map(reader);
           }
         });
-        return new StoptimesWithoutPattern(__typename, scheduledArrival, realtimeArrival, arrivalDelay, departureDelay, scheduledDeparture, headsign, trip);
+        return new StoptimesWithoutPattern(__typename, scheduledArrival, realtimeArrival, scheduledDeparture, headsign, trip);
       }
     }
   }

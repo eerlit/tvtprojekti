@@ -1,13 +1,14 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-25:12
-INJECTED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-25:12
-INJECTED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-25:12
-INJECTED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-25:12
+ADDED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-27:12
 MERGED from [com.google.android.material:material:1.3.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\41edada027e13fc83af9c9875471d199\material-1.3.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\bc6eca68c270b489a83cdbd30383b0ee\constraintlayout-2.0.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.2.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\748ac0f363e6a0e5d9d63a84b80c6b34\appcompat-1.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [org.osmdroid:osmdroid-android:6.1.10] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\14bdf7a0ca7aab3a3fb2635568a87ba8\jetified-osmdroid-android-6.1.10\AndroidManifest.xml:2:1-29:12
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\fd0dfc2f53defb2ff09a04b906180478\jetified-picasso-2.71828\AndroidManifest.xml:2:1-14:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\1f51ca1f4f093873e3ba405d0c710242\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\13aa6c19852ab85813265c33e28bb9d2\jetified-viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\406e774e578f4ffa8315f94929d61243\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
@@ -26,6 +27,7 @@ MERGED from [androidx.activity:activity:1.0.0] C:\Users\Mr.Worldwide\.gradle\cac
 MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\b7b2730fdf98070905680e3bc2a0a44b\recyclerview-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\b45986b28a8eeb8b73657b1d155b2de4\customview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core:1.3.1] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\26afba13507a6e856312d979de795872\core-1.3.1\AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\9e258c89cc852c4657ae492e0b511dec\exifinterface-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\47940bc06620c15bc55cf8768b70d739\versionedparcelable-1.1.0\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\9c751ec0fc33ed240b396fb6c2aeb0bc\lifecycle-runtime-2.1.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\3778da84199fb9f6019388f55b63da35\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:17:1-22:12
@@ -38,20 +40,20 @@ MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Mr.Worldwide\
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\35f29eeb964ef5c507d4b1084850c5d2\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\59a94b988633150a421266e6e7ca3311\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\b6fb2caa0035ca3aeae44d5856d2b1e3\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-25:12
-INJECTED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-25:12
-INJECTED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-27:12
 	package
 		ADDED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:3:5-34
 		INJECTED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml
 		INJECTED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml
-		ADDED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-25:12
+		ADDED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-27:12
 		INJECTED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml
-		ADDED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-25:12
+		ADDED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:2:1-27:12
 		INJECTED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:2:11-69
@@ -76,11 +78,13 @@ ADDED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:8:5-
 	android:name
 		ADDED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:8:22-78
 application
-ADDED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:9:5-23:19
+ADDED from C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:9:5-25:19
 MERGED from [com.google.android.material:material:1.3.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\41edada027e13fc83af9c9875471d199\material-1.3.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.3.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\41edada027e13fc83af9c9875471d199\material-1.3.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\bc6eca68c270b489a83cdbd30383b0ee\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\bc6eca68c270b489a83cdbd30383b0ee\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\fd0dfc2f53defb2ff09a04b906180478\jetified-picasso-2.71828\AndroidManifest.xml:7:5-12:19
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\fd0dfc2f53defb2ff09a04b906180478\jetified-picasso-2.71828\AndroidManifest.xml:7:5-12:19
 MERGED from [androidx.core:core:1.3.1] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\26afba13507a6e856312d979de795872\core-1.3.1\AndroidManifest.xml:24:5-89
 MERGED from [androidx.core:core:1.3.1] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\26afba13507a6e856312d979de795872\core-1.3.1\AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\47940bc06620c15bc55cf8768b70d739\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
@@ -125,6 +129,8 @@ MERGED from [androidx.appcompat:appcompat:1.2.0] C:\Users\Mr.Worldwide\.gradle\c
 MERGED from [androidx.appcompat:appcompat:1.2.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\748ac0f363e6a0e5d9d63a84b80c6b34\appcompat-1.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [org.osmdroid:osmdroid-android:6.1.10] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\14bdf7a0ca7aab3a3fb2635568a87ba8\jetified-osmdroid-android-6.1.10\AndroidManifest.xml:7:5-9:41
 MERGED from [org.osmdroid:osmdroid-android:6.1.10] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\14bdf7a0ca7aab3a3fb2635568a87ba8\jetified-osmdroid-android-6.1.10\AndroidManifest.xml:7:5-9:41
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\fd0dfc2f53defb2ff09a04b906180478\jetified-picasso-2.71828\AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\fd0dfc2f53defb2ff09a04b906180478\jetified-picasso-2.71828\AndroidManifest.xml:5:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\1f51ca1f4f093873e3ba405d0c710242\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\1f51ca1f4f093873e3ba405d0c710242\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\13aa6c19852ab85813265c33e28bb9d2\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
@@ -161,6 +167,8 @@ MERGED from [androidx.customview:customview:1.0.0] C:\Users\Mr.Worldwide\.gradle
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\b45986b28a8eeb8b73657b1d155b2de4\customview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.core:core:1.3.1] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\26afba13507a6e856312d979de795872\core-1.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.core:core:1.3.1] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\26afba13507a6e856312d979de795872\core-1.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\9e258c89cc852c4657ae492e0b511dec\exifinterface-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\9e258c89cc852c4657ae492e0b511dec\exifinterface-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\47940bc06620c15bc55cf8768b70d739\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\47940bc06620c15bc55cf8768b70d739\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\9c751ec0fc33ed240b396fb6c2aeb0bc\lifecycle-runtime-2.1.0\AndroidManifest.xml:20:5-44
@@ -227,3 +235,11 @@ ADDED from [org.osmdroid:osmdroid-android:6.1.10] C:\Users\Mr.Worldwide\.gradle\
 		ADDED from [org.osmdroid:osmdroid-android:6.1.10] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\14bdf7a0ca7aab3a3fb2635568a87ba8\jetified-osmdroid-android-6.1.10\AndroidManifest.xml:27:9-33
 	android:name
 		ADDED from [org.osmdroid:osmdroid-android:6.1.10] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\14bdf7a0ca7aab3a3fb2635568a87ba8\jetified-osmdroid-android-6.1.10\AndroidManifest.xml:26:9-45
+provider#com.squareup.picasso.PicassoProvider
+ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\fd0dfc2f53defb2ff09a04b906180478\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
+	android:authorities
+		ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\fd0dfc2f53defb2ff09a04b906180478\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
+	android:exported
+		ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\fd0dfc2f53defb2ff09a04b906180478\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\fd0dfc2f53defb2ff09a04b906180478\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64

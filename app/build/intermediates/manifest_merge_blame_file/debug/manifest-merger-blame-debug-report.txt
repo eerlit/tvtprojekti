@@ -61,7 +61,7 @@
 33-->[org.osmdroid:osmdroid-android:6.1.10] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\14bdf7a0ca7aab3a3fb2635568a87ba8\jetified-osmdroid-android-6.1.10\AndroidManifest.xml:27:9-33
 34
 35    <application
-35-->C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:9:5-23:19
+35-->C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:9:5-25:19
 36        android:allowBackup="true"
 36-->C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:10:9-35
 37        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -92,6 +92,15 @@
 49-->C:\androidprojektit\tvtprojekti\app\src\main\AndroidManifest.xml:20:27-74
 50            </intent-filter>
 51        </activity>
-52    </application>
-53
-54</manifest>
+52
+53        <provider
+53-->[com.squareup.picasso:picasso:2.71828] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\fd0dfc2f53defb2ff09a04b906180478\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
+54            android:name="com.squareup.picasso.PicassoProvider"
+54-->[com.squareup.picasso:picasso:2.71828] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\fd0dfc2f53defb2ff09a04b906180478\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
+55            android:authorities="com.example.ouluapp.com.squareup.picasso"
+55-->[com.squareup.picasso:picasso:2.71828] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\fd0dfc2f53defb2ff09a04b906180478\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
+56            android:exported="false" />
+56-->[com.squareup.picasso:picasso:2.71828] C:\Users\Mr.Worldwide\.gradle\caches\transforms-2\files-2.1\fd0dfc2f53defb2ff09a04b906180478\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
+57    </application>
+58
+59</manifest>
