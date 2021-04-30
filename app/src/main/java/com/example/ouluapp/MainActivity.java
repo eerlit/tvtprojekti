@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity{
     Polyline uusiTie;
     String[] arrayForRoads;
     String[] arrayForAnnouncements;
+    boolean roadsVisible = true;
 
     private RotationGestureOverlay mRotationGestureOverlay;
 
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity{
         map = (MapView) findViewById(R.id.map);
         map.setTileSource(TileSourceFactory.MAPNIK);
 
-        map.getZoomController().setVisibility(CustomZoomButtonsController.Visibility.SHOW_AND_FADEOUT);
+
         map.setMultiTouchControls(true);
 
         mapController = map.getController();
@@ -120,6 +121,7 @@ public class MainActivity extends AppCompatActivity{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
         });
 
+        getAllTrafficAnnouncements();
         getRoadCongestion();
         updateRoadMap();
 
@@ -176,12 +178,14 @@ public class MainActivity extends AppCompatActivity{
                    menuItem[3] = true;
                    for( int k =0; k < roadList.size(); k++) {
                        roadList.get(k).setVisible(true);
+                       roadsVisible = true;
                    }
                }
                if(!item.isChecked()){
                    menuItem[3] = false;
                     for( int k =0; k < roadList.size(); k++){
                         roadList.get(k).setVisible(false);
+                        roadsVisible = false;
                     }
                }
                break;
@@ -189,7 +193,9 @@ public class MainActivity extends AppCompatActivity{
                item.setChecked(!item.isChecked());
                if(item.isChecked()){
                    menuItem[4] = true;
-                getAllTrafficAnnouncements();
+                   for(int k = 0; k < announcementMarkerList.size(); k++){
+                       announcementMarkerList.get(k).setVisible(true);
+                   }
                }
                if(!item.isChecked()){
                    menuItem[4] = false;
@@ -221,12 +227,12 @@ public class MainActivity extends AppCompatActivity{
                if(!item.isChecked()){
                    menuItem[2] = false;
                    for (int i=0; i<parkHouseMarkerList.size();i++){
-                       System.out.println(parkHouseMarkerList.size());
                        parkHouseMarkerList.get(i).remove(map);
                    }
                }
                break;
        }
+
        if (!menuItem[0] && !menuItem[1]){
            for (int i=0; i<weatherCamMarkerList.size(); i++){
                weatherCamMarkerList.get(i).remove(map);
@@ -749,13 +755,15 @@ public class MainActivity extends AppCompatActivity{
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        getRoadCongestion();
+                        if(roadsVisible) {
+                            getRoadCongestion();
+                        }
                         System.out.println("taalla");
                     }
                 });
             }
         };
-        myTimer.schedule(updateMapTimer, 30000, 30000);
+        myTimer.schedule(updateMapTimer, 60000, 60000);
     }
     private void getAllTrafficAnnouncements(){
 
