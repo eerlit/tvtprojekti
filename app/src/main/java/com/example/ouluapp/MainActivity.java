@@ -127,7 +127,6 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
-    //rottakoira
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -1081,10 +1080,10 @@ public class MainActivity extends AppCompatActivity{
                     public void onResponse(@NotNull Response<StopsByBboxQuery.Data> response) {
 
 
-                        //Käydään query läpi
+                        //haetaan queryn koko jotta päästään käsiksi kaikkiin datoihin stopsByBboxin alla
                         for(int i = 0; i<response.getData().stopsByBbox().size()-1; i++)
                         {
-                            //Käydään query läpi uudestaan kohdasta stopTimesWithoutPatterns ja haetaan koko
+                            //Haetaan queryn koko uudestaan kohdasta stoptimesWithoutPatterns jotta päästään käsiksi dataan stoptimesWithOutPatternsissä
                             for(int j = 0; j < response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().size()-3;j++) {
                                 //4 seuraavan saapumisaika pysäkille
                                 int scheduledArrival = response.getData().stopsByBbox().get(i).stoptimesWithoutPatterns().get(0).realtimeArrival();
@@ -1130,40 +1129,13 @@ public class MainActivity extends AppCompatActivity{
                             }
                         }
 
-//                        Drawable busStop = ctx.getResources().getDrawable(R.drawable.busicon);
-//
-//                        //the overlay
-//                        ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(stops, busStop, busStop, Color.WHITE,
-//                                new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
-//                                    @Override
-//                                    public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
-//                                        //do something
-//
-//                                        return true;
-//                                    }
-//
-//                                    @Override
-//                                    public boolean onItemLongPress(final int index, final OverlayItem item) {
-//                                        return false;
-//                                    }
-//                                }, ctx);
-//                        mOverlay.setFocusItemsOnTap(true);
-//
-//                        map.getOverlays().add(mOverlay);
-//                        Log.d("MainActivity", "Response: " + response.getData().stopsByBbox().get(0).stoptimesWithoutPatterns.size());
                     }
-
-
-
 
                     @Override
                     public void onFailure(@NotNull ApolloException e) {
                         Log.e("Apollo", "toimiiko vai ei error", e);
                     }
                 });
-
-
-
     }
 
 }
