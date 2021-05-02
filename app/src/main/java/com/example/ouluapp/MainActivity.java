@@ -497,10 +497,98 @@ public class MainActivity extends AppCompatActivity{
         marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker m, MapView arg1) {
-                //näytä popup window
-                m.showInfoWindow();
-                //siirrä näkymä keskelle markeria
-                mapController.setCenter(p);
+                //tarkista onko valittu menussa
+                if (menuItem[1]){
+                    //näytä popup window
+                    m.showInfoWindow();
+                    //siirrä näkymä keskelle markeria
+                    mapController.setCenter(p);
+                }
+                return true;
+            }
+        });
+        return marker;
+    }
+
+
+    public Marker addMarkerCamera(GeoPoint p, String name, String directionTime, ArrayList photoURL) {
+        Marker marker = new Marker(map);
+        marker = new Marker(map);
+        marker.setPosition(p);
+
+        //lisää marker overlayhyn
+        map.getOverlays().add(marker);
+
+        //laita photoURL lista yhteen stringiin
+        StringBuffer photoBuffer = new StringBuffer();
+        for (int i = 0; i < photoURL.size(); i++){
+            photoBuffer.append(photoURL.get(i)+ "SPLIT");
+        }
+        String photoString = photoBuffer.toString();
+
+        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        marker.setIcon(ContextCompat.getDrawable(ctx,R.drawable.ic_baseline_camera_alt_24));
+        marker.setTitle(name);
+        marker.setSnippet(directionTime);
+        marker.setSubDescription(photoString);
+        marker.setInfoWindow(new CustomCameraMarkerInfoWindow(map));
+        marker.setInfoWindowAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_TOP);
+
+        //kamera markerin klikin kuuntelija
+        marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker m, MapView arg1) {
+                //tarkista onko valittu menussa
+                if (menuItem[0]){
+                    //näytä popup window
+                    m.showInfoWindow();
+                    //siirrä näkymä keskelle markeria
+                    mapController.setCenter(p);
+                }
+
+                return true;
+            }
+        });
+
+        return marker;
+    }
+
+
+    public Marker addMarkerWeatherCamera(GeoPoint p, String name, String directionTime, ArrayList photoURL) {
+        Marker marker = new Marker(map);
+        marker = new Marker(map);
+        marker.setPosition(p);
+
+        //lisää marker overlayhyn
+        map.getOverlays().add(marker);
+
+        //laita photoURL lista yhteen stringiin
+        StringBuffer photoBuffer = new StringBuffer();
+        for (int i = 0; i < photoURL.size(); i++){
+            photoBuffer.append(photoURL.get(i) + "SPLIT");
+        }
+        String photoString = photoBuffer.toString();
+
+        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        marker.setIcon(ContextCompat.getDrawable(ctx,R.drawable.ic_baseline_weather_camera_24));
+        marker.setTitle(name);
+        marker.setSnippet(directionTime);
+        marker.setSubDescription(photoString);
+        marker.setInfoWindow(new CustomCameraMarkerInfoWindow(map));
+        marker.setInfoWindowAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_TOP);
+
+        //sääkamera markerin klikin kuuntelija
+        marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker m, MapView arg1) {
+                //tarkista onko valittu menussa
+                if (menuItem[0] || menuItem[1]){
+                    //näytä popup window
+                    m.showInfoWindow();
+                    ////siirrä näkymä keskelle markeria
+                    mapController.setCenter(p);
+                }
+
                 return true;
             }
         });
@@ -537,82 +625,6 @@ public class MainActivity extends AppCompatActivity{
         return marker;
     }
 
-
-    public Marker addMarkerCamera(GeoPoint p, String name, String directionTime, ArrayList photoURL) {
-        Marker marker = new Marker(map);
-        marker = new Marker(map);
-        marker.setPosition(p);
-
-        //lisää marker overlayhyn
-        map.getOverlays().add(marker);
-
-        //laita photoURL lista yhteen stringiin
-        StringBuffer photoBuffer = new StringBuffer();
-        for (int i = 0; i < photoURL.size(); i++){
-            photoBuffer.append(photoURL.get(i)+ "SPLIT");
-        }
-        String photoString = photoBuffer.toString();
-
-        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-        marker.setIcon(ContextCompat.getDrawable(ctx,R.drawable.ic_baseline_camera_alt_24));
-        marker.setTitle(name);
-        marker.setSnippet(directionTime);
-        marker.setSubDescription(photoString);
-        marker.setInfoWindow(new CustomCameraMarkerInfoWindow(map));
-        marker.setInfoWindowAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_TOP);
-
-        //kamera markerin klikin kuuntelija
-        marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker m, MapView arg1) {
-                //näytä popup window
-                m.showInfoWindow();
-                //siirrä näkymä keskelle markeria
-                mapController.setCenter(p);
-                return true;
-            }
-        });
-
-        return marker;
-    }
-
-
-    public Marker addMarkerWeatherCamera(GeoPoint p, String name, String directionTime, ArrayList photoURL) {
-        Marker marker = new Marker(map);
-        marker = new Marker(map);
-        marker.setPosition(p);
-
-        //lisää marker overlayhyn
-        map.getOverlays().add(marker);
-
-        //laita photoURL lista yhteen stringiin
-        StringBuffer photoBuffer = new StringBuffer();
-        for (int i = 0; i < photoURL.size(); i++){
-            photoBuffer.append(photoURL.get(i) + "SPLIT");
-        }
-        String photoString = photoBuffer.toString();
-
-        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-        marker.setIcon(ContextCompat.getDrawable(ctx,R.drawable.ic_baseline_weather_camera_24));
-        marker.setTitle(name);
-        marker.setSnippet(directionTime);
-        marker.setSubDescription(photoString);
-        marker.setInfoWindow(new CustomCameraMarkerInfoWindow(map));
-        marker.setInfoWindowAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_TOP);
-
-        //sääkamera markerin klikin kuuntelija
-        marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker m, MapView arg1) {
-                //näytä popup window
-                m.showInfoWindow();
-                ////siirrä näkymä keskelle markeria
-                mapController.setCenter(p);
-                return true;
-            }
-        });
-        return marker;
-    }
 
     public Marker addMarkerBusStops(GeoPoint p, String title, String snippet){
         Marker marker = new Marker(map);
