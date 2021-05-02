@@ -19,14 +19,16 @@ public class CustomMarkerInfoWindow extends MarkerInfoWindow {
         Marker m = (Marker) item;
         String dateTime;
 
+        //hae title textview ja laita siihen markerin title data
         TextView title = (TextView) mView.findViewById(R.id.map_popup_header);
         title.setText(m.getTitle());
 
+        //hae snippet textview
         TextView snippet = (TextView) mView
                 .findViewById(R.id.map_popup_body);
         String[] tempDate = m.getSnippet().split("SPLIT");
 
-        //format date and time
+        //muotoile päivämäärästä ja ajasta järkevää
         if (tempDate[tempDate.length-1].contains("T")){
             String[] dateParts = tempDate[tempDate.length-1].split("T");
             String[] timeParts = dateParts[1].split("Z");
@@ -52,25 +54,28 @@ public class CustomMarkerInfoWindow extends MarkerInfoWindow {
             dateTime = "No Time";
         }
 
-        //check if there is data
+        //tarkista onko lämpötiladataa
         String temp = "Lämpötila: " +tempDate[2]+"\n";
         if (tempDate[2].equals("NODATA")){
             temp = "";
         }
 
+        //tarkista onko tuulidataa
         String wind = "Tuulen Nopeus: " +tempDate[1]+"\n";
         if (tempDate[1].equals("NODATA") ){
             wind = "";
         }
 
+        //tarkista onko kosteusdataa
         String moisture = "Kosteus: " +tempDate[0]+"\n" ;
         if (tempDate[0].equals("NODATA") ){
             moisture = "";
         }
 
-        //put all data to single string
+        //laita kaikki data yhteen stringiin
         String finalText = dateTime + "\n" + temp  + wind  + moisture;
 
+        //laita snippet textviewiin teksti
         snippet.setText(finalText);
 
 

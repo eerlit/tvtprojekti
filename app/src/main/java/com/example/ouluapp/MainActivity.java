@@ -98,7 +98,6 @@ public class MainActivity extends AppCompatActivity{
         map = (MapView) findViewById(R.id.map);
         map.setTileSource(TileSourceFactory.MAPNIK);
 
-
         map.setMultiTouchControls(true);
 
         mapController = map.getController();
@@ -144,31 +143,59 @@ public class MainActivity extends AppCompatActivity{
                item.setChecked(!item.isChecked());
                if (item.isChecked()){
                    menuItem[0] = true;
-                   createWeatherCameraItems();
-                   createCameraItems();
+                   //kameroiden näyttäminen menusta valistemalla
+                   for (int i=0; i<cameraMarkerList.size(); i++){
+                       cameraMarkerList.get(i).setVisible(true);
+                   }
+                   //kameroiden piilottaminen menusta valistemalla
+                   for (int i=0; i<weatherCamMarkerList.size(); i++){
+                       weatherCamMarkerList.get(i).setVisible(true);
+                   }
 
                }
                if (!item.isChecked()){
                     menuItem[0] = false;
                    for (int i=0; i<cameraMarkerList.size(); i++){
-                       cameraMarkerList.get(i).remove(map);
+                       cameraMarkerList.get(i).setVisible(false);
                    }
                }
                break;
+
            case R.id.sääasemat:
                item.setChecked(!item.isChecked());
                if (item.isChecked()){
                    menuItem[1] = true;
-                   createWeatherItems();
-                   createWeatherCameraItems();
+                   //sääasemien näyttäminen menusta valitsemalla
+                   for (int i=0; i<weatherMarkerList.size(); i++){
+                       weatherMarkerList.get(i).setVisible(true);
+                   }
+                   //sääkameroiden näyttäminen menusta valitsemalla
+                   for (int i=0; i<weatherCamMarkerList.size(); i++){
+                       weatherCamMarkerList.get(i).setVisible(true);
+                   }
                }
                if (!item.isChecked()){
                    menuItem[1] = false;
+                   //sääasemien piilottaminen menusta valitsemalla
                    for (int i=0; i<weatherMarkerList.size(); i++){
-                       weatherMarkerList.get(i).remove(map);
+                       weatherMarkerList.get(i).setVisible(false);
                    }
                }
 
+               break;
+
+           case R.id.parkkihallit:
+               item.setChecked(!item.isChecked());
+               if(item.isChecked()){
+                   menuItem[2] = true;
+                   getAllCarParks();
+               }
+               if(!item.isChecked()){
+                   menuItem[2] = false;
+                   for (int i=0; i<parkHouseMarkerList.size();i++){
+                       parkHouseMarkerList.get(i).remove(map);
+                   }
+               }
                break;
 
            case R.id.autotiet:
@@ -188,6 +215,7 @@ public class MainActivity extends AppCompatActivity{
                     }
                }
                break;
+
            case R.id.hairioilmoitukset:
                item.setChecked(!item.isChecked());
                if(item.isChecked()){
@@ -204,11 +232,13 @@ public class MainActivity extends AppCompatActivity{
 
                }
                break;
+
            case R.id.bussit:
                item.setChecked(!item.isChecked());
                if(item.isChecked()){
                    menuItem[5] = true;
                    getBusStops();
+
                }
                if(!item.isChecked()){
                    menuItem[5] = false;
@@ -217,24 +247,13 @@ public class MainActivity extends AppCompatActivity{
                    }
                }
                break;
-           case R.id.parkkihallit:
-               item.setChecked(!item.isChecked());
-               if(item.isChecked()){
-                   menuItem[2] = true;
-                   getAllCarParks();
-               }
-               if(!item.isChecked()){
-                   menuItem[2] = false;
-                   for (int i=0; i<parkHouseMarkerList.size();i++){
-                       parkHouseMarkerList.get(i).remove(map);
-                   }
-               }
-               break;
+
        }
 
+       //sääkameroiden piilotus jos kamerat ja sääasemat on unchecked menussa
        if (!menuItem[0] && !menuItem[1]){
            for (int i=0; i<weatherCamMarkerList.size(); i++){
-               weatherCamMarkerList.get(i).remove(map);
+               weatherCamMarkerList.get(i).setVisible(false);
            }
        }
 
@@ -242,25 +261,26 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private  void createWeatherCameraItems(){
-        //weathercamera creation
+        //sääkameroiden teko
         if(menuItem[1] || menuItem[0]) {
             for (int i = 0; i < cameras.size(); i++) {
 
-                //camera latitude and longitude
+                //kameran latitude ja longitude
                 double cLat = cameras.get(i).lat;
                 double cLon = cameras.get(i).lon;
 
-                //go through all waetherstations
+                //käy kaikki sääasemat läpi
                 for (int j = 0; j < weatherStations.size(); j++) {
-
-                    //weatherstation latitude and longitude
 
                     int tempIndex = -1;
                     int moistureIndex = -1;
                     int windIndex = -1;
+
+                    //kameran geopisteet GeoPointiksi
                     GeoPoint cameraItemPoint = new GeoPoint(cLat, cLon);
 
-                    if (cameraItemPoint.distanceToAsDouble(new GeoPoint(weatherStations.get(j).lat, weatherStations.get(j).lon)) < 50 ) { // weathercamera
+                    //jos kamera ja sääasema on 50m säteellä ne yhdistetään sääkameraksi
+                    if (cameraItemPoint.distanceToAsDouble(new GeoPoint(weatherStations.get(j).lat, weatherStations.get(j).lon)) < 50 ) {
 
                         String[]  cameraDirection, cameraTime;
                         ArrayList<String> cameraURL = new ArrayList<>();
@@ -272,13 +292,14 @@ public class MainActivity extends AppCompatActivity{
 
 
 
-                        //go trough camera info
+                        //käy kameran datan läpi
                         for (int k = 0; k < cameras.get(i).presets.size(); k++) {
-                            //get info about camera
+                            //hae kameran data
                             if (cameras.get(i).presets.get(k) != null){
                                 cameraDirection[k] = cameras.get(i).presets.get(k).presentationName;
                                 cameraURL.add(cameras.get(i).presets.get(k).imageUrl);
                                 cameraTime[k] = cameras.get(i).presets.get(k).measuredTime;
+                                //laita data stringbufferiin
                                 if (cameraDirection[k] != null){
                                     stringBuffer.append(cameraDirection[k] + "dt" + cameraTime[k] + "SPLIT");
                                 }
@@ -286,7 +307,7 @@ public class MainActivity extends AppCompatActivity{
 
                         }
 
-                        //go trough weatherstation sensor values and get index of wanted measurements
+                        //käy sääasemat läpi ja hae halutun datan indeksi
                         for (int w = 0; w < weatherStations.get(j).sensorValues.size(); w++) {
                             if (weatherStations.get(j).sensorValues.get(w).name.contains("ILMA") && !weatherStations.get(j).sensorValues.get(w).name.contains("_")) {
                                 tempIndex = w;
@@ -300,20 +321,21 @@ public class MainActivity extends AppCompatActivity{
 
                         }
 
-                        //get measurements
-
+                        //hae kosteus aikaisemmin haetulla indeksillä
                         if (moistureIndex != -1){
                             moisture = weatherStations.get(j).sensorValues.get(moistureIndex).sensorValue;
                             stringBuffer.append(moisture+"%" + "WSPL");
                         }else {
                             stringBuffer.append("NODATA" + "WSPL");
                         }
+                        //hae tuulennopeus aikaisemmin haetulla indeksillä
                         if (windIndex != -1){
                             wind = weatherStations.get(j).sensorValues.get(windIndex).sensorValue;
                             stringBuffer.append(wind+ "m/s" + "WSPL");
                         }else {
                             stringBuffer.append("NODATA" + "WSPL");
                         }
+                        //hae lämpötila aikaisemmin haetulla indeksillä
                         if (tempIndex != -1){
                             temp = weatherStations.get(j).sensorValues.get(tempIndex).sensorValue;
                             stringBuffer.append(temp + "°C"+"WSPL");
@@ -321,11 +343,10 @@ public class MainActivity extends AppCompatActivity{
                             stringBuffer.append("NODATA" + "WSPL");
                         }
 
-
+                        //laita kaikki data stringbufferista yhteen stringiin
                         String directionTimeWeather = stringBuffer.toString();
 
-                        //add marker to the map and to the marker list
-
+                        //lisää marker karttaan sekä listaan
                         weatherCamMarkerList.add(addMarkerWeatherCamera(cameraItemPoint, cameras.get(i).name, directionTimeWeather, cameraURL));
                         break;
                     }
@@ -340,19 +361,20 @@ public class MainActivity extends AppCompatActivity{
     }
     public void createWeatherItems(){
         if (menuItem[1]){
-            //go trough every weatherstation
+            //käy kaikki sääasemat läpi
             for (int j = 0; j < weatherStations.size(); j++) {
                 boolean exists = false;
+                //hae sääaseman geopisteet ja tee uusi GeoPoint
                 GeoPoint weatherItemPoint = new GeoPoint(weatherStations.get(j).lat, weatherStations.get(j).lon);
 
-                //check if weathercamera exists
+                //tarkista jos sääkamera on olemassa
                 for (int k = 0; k < weatherCamMarkerList.size(); k++) {
                     if (weatherCamMarkerList.get(k).getPosition().distanceToAsDouble(weatherItemPoint) < 50) {
                         exists = true;
                         break;
                     }
                 }
-                //if weathercamera does not exist create weatherstation
+                //jos sääkameraa ei ole olemassa tee sääasema
                 if (!exists) {
                     StringBuffer stringBuffer = new StringBuffer();
                     double temp, wind, moisture;
@@ -360,7 +382,7 @@ public class MainActivity extends AppCompatActivity{
                     int moistureIndex = -1;
                     int windIndex = -1;
 
-                    //go trough weatherstation sensor values and get index of wanted measurements
+                    //käy sääasemat läpi ja hae halutun datan indeksi
                     for (int w = 0; w < weatherStations.get(j).sensorValues.size(); w++){
                         if (weatherStations.get(j).sensorValues.get(w).name.contains("ILMA") && !weatherStations.get(j).sensorValues.get(w).name.contains("_")){
                             tempIndex = w;
@@ -373,18 +395,21 @@ public class MainActivity extends AppCompatActivity{
                         }
                     }
 
+                    //hae kosteus aikaisemmin haetulla indeksillä
                     if (moistureIndex != -1){
                         moisture = weatherStations.get(j).sensorValues.get(moistureIndex).sensorValue;
                         stringBuffer.append(moisture+"%" + "SPLIT");
                     }else {
                         stringBuffer.append("NODATA" + "SPLIT");
                     }
+                    //hae tuulennopeus aikaisemmin haetulla indeksillä
                     if (windIndex != -1){
                         wind = weatherStations.get(j).sensorValues.get(windIndex).sensorValue;
                         stringBuffer.append(wind+ "m/s" + "SPLIT");
                     }else {
                         stringBuffer.append("NODATA" + "SPLIT");
                     }
+                    //hae lämpötila aikaisemmin haetulla indeksillä
                     if (tempIndex != -1){
                         temp = weatherStations.get(j).sensorValues.get(tempIndex).sensorValue;
                         stringBuffer.append(temp + "°C"+"SPLIT");
@@ -392,10 +417,10 @@ public class MainActivity extends AppCompatActivity{
                         stringBuffer.append("NODATA" + "SPLIT");
                     }
 
-                    //put all data on a single string
+                    //laita kaikki data stringbufferista yhteen stringiin
                     String weatherTime = stringBuffer.toString() +weatherStations.get(j).measuredTime.toString();
 
-                    //add marker to the map and to the marker list
+                    //lisää marker karttaan sekä listaan
                     weatherMarkerList.add(addMarkerWeather(weatherItemPoint, weatherStations.get(j).name, weatherTime));
                 }
             }
@@ -405,11 +430,13 @@ public class MainActivity extends AppCompatActivity{
 
     public void createCameraItems(){
         if( menuItem[0]) {
+            //käy kaikki kamerat läpi
             for (int i = 0; i < cameras.size(); i++) {
                 boolean exists = false;
+                //hae kameran geopisteet ja luo uusi GeoPoint
                 GeoPoint cameraGeoPoint = new GeoPoint(cameras.get(i).lat, cameras.get(i).lon);
 
-                //check if weathercamera exists
+                //tarkista onko sääkamera olemassa
                 for (int k = 0; k < weatherCamMarkerList.size(); k++){
                     if (weatherCamMarkerList.get(k).getPosition().distanceToAsDouble(cameraGeoPoint) == 0){
                         exists = true;
@@ -417,7 +444,7 @@ public class MainActivity extends AppCompatActivity{
                     }
                 }
 
-                //if weathercamera does not exist create camera
+                //jos sääkameraa ei ole olemassa luo uusi kamera
                 if (!exists){
 
                     String[]  cameraDirection, cameraTime;
@@ -426,13 +453,14 @@ public class MainActivity extends AppCompatActivity{
                     cameraDirection = new String[cameras.get(i).presets.size()];
                     cameraTime = new String[cameras.get(i).presets.size()];
 
-                    //go trough camera info
+                    //käy kameran data läpi
                     for(int k = 0; k < cameras.get(i).presets.size(); k++){
-                        //get info about camera
+                        //hae kameran data
                         if (cameras.get(i).presets.get(k) != null){
                             cameraDirection[k] = cameras.get(i).presets.get(k).presentationName ;
                             cameraURL.add(cameras.get(i).presets.get(k).imageUrl);
                             cameraTime[k] = cameras.get(i).presets.get(k).measuredTime;
+                            //laita data stringbufferiin
                             if (cameraDirection[k] != null){
                                 stringBuffer.append(cameraDirection[k]+ "dt" +cameraTime[k]+ "SPLIT");
                             }
@@ -440,8 +468,9 @@ public class MainActivity extends AppCompatActivity{
                         }
 
                     }
+                    //laita kaikki data stringbufferista yhteen stringiin
                     String directionAndTime = stringBuffer.toString();
-                    //add marker to the map and to the marker list
+                    //lisää marker karttaan ja listaan
                     cameraMarkerList.add(addMarkerCamera(cameraGeoPoint, cameras.get(i).name, directionAndTime, cameraURL ));
                 }
             }
@@ -454,7 +483,7 @@ public class MainActivity extends AppCompatActivity{
         marker = new Marker(map);
         marker.setPosition(p);
 
-        //add marker to map overlay
+        //lisää markeer kartta overlayhyn
         map.getOverlays().add(marker);
 
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
@@ -464,13 +493,13 @@ public class MainActivity extends AppCompatActivity{
         marker.setInfoWindow(new CustomMarkerInfoWindow(map));
         marker.setInfoWindowAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_TOP);
 
-
+        //sääasema markerin klikin kuuntelija
         marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker m, MapView arg1) {
-                //show popup window
+                //näytä popup window
                 m.showInfoWindow();
-                //set marker to center of screen
+                //siirrä näkymä keskelle markeria
                 mapController.setCenter(p);
                 return true;
             }
@@ -514,10 +543,10 @@ public class MainActivity extends AppCompatActivity{
         marker = new Marker(map);
         marker.setPosition(p);
 
-        //add marker to map overlay
+        //lisää marker overlayhyn
         map.getOverlays().add(marker);
 
-        //put photo url's to single string
+        //laita photoURL lista yhteen stringiin
         StringBuffer photoBuffer = new StringBuffer();
         for (int i = 0; i < photoURL.size(); i++){
             photoBuffer.append(photoURL.get(i)+ "SPLIT");
@@ -532,12 +561,13 @@ public class MainActivity extends AppCompatActivity{
         marker.setInfoWindow(new CustomCameraMarkerInfoWindow(map));
         marker.setInfoWindowAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_TOP);
 
+        //kamera markerin klikin kuuntelija
         marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker m, MapView arg1) {
-                //show popup window
+                //näytä popup window
                 m.showInfoWindow();
-                //set marker to center of screen
+                //siirrä näkymä keskelle markeria
                 mapController.setCenter(p);
                 return true;
             }
@@ -552,10 +582,10 @@ public class MainActivity extends AppCompatActivity{
         marker = new Marker(map);
         marker.setPosition(p);
 
-        //add marker to map overlay
+        //lisää marker overlayhyn
         map.getOverlays().add(marker);
 
-        //put photo url's to single string
+        //laita photoURL lista yhteen stringiin
         StringBuffer photoBuffer = new StringBuffer();
         for (int i = 0; i < photoURL.size(); i++){
             photoBuffer.append(photoURL.get(i) + "SPLIT");
@@ -570,12 +600,13 @@ public class MainActivity extends AppCompatActivity{
         marker.setInfoWindow(new CustomCameraMarkerInfoWindow(map));
         marker.setInfoWindowAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_TOP);
 
+        //sääkamera markerin klikin kuuntelija
         marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker m, MapView arg1) {
-                //show popup window
+                //näytä popup window
                 m.showInfoWindow();
-                //set marker to center of screen
+                ////siirrä näkymä keskelle markeria
                 mapController.setCenter(p);
                 return true;
             }
@@ -616,7 +647,7 @@ public class MainActivity extends AppCompatActivity{
         return marker;
     }
 
-    //get cameras from API
+    //hae kaikki kamerat api:sta ja laita ne arraylistiin, sekä kutsu itemien luontifunktioita
     private void getAllCameras(){
         ApolloConnector.setupApollo().query(
                 GetAllCamerasQuery
@@ -638,7 +669,7 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
-    //get weatherstations from api
+    //hae kaikki sääasemat api:sta ja laita ne arraylistiin, sekä kutsu itemien luontifunktioita
     private void getAllWeatherStations(){
         ApolloConnector.setupApollo().query(
                 GetAllWeatherStationsQuery

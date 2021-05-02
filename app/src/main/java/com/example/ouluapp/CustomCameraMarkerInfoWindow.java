@@ -34,20 +34,27 @@ public class CustomCameraMarkerInfoWindow extends MarkerInfoWindow {
     public void onOpen(Object item) {
         Marker m = (Marker) item;
 
+        //hae title textview ja laita siihen markerin title data
         TextView title = (TextView) mView.findViewById(R.id.map_popup_header);
         title.setText(m.getTitle());
 
+        //hae markerin snippet data
         dataString = m.getSnippet();
 
+        //hae markerin alateksti data
         cameraString = m.getSubDescription();
         cameraPhoto = cameraString.split("SPLIT");
         cameraPhotoLength = cameraPhoto.length-1;
 
+        //laita id:llä 0 kuva
         switchPhoto(photoID);
+
+        //kuvan klikin kuuntelija
         imageView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent touchevent) {
 
+                //pyyhkäisy switch case
                 switch (touchevent.getAction()){
                     case MotionEvent.ACTION_DOWN:
                         x1 = touchevent.getX();
@@ -82,17 +89,19 @@ public class CustomCameraMarkerInfoWindow extends MarkerInfoWindow {
     public void switchPhoto(int id){
         String dateTime;
         String finalSubTitle;
+        //kuvan laitto imageviewiin
         Picasso.get().load(cameraPhoto[id]).into(imageView);
+
         String  weather = "NULL";
         dataSplit = dataString.split("SPLIT");
         dataDT = dataSplit[id].split("dt");
 
-        //check if data contains weather data
+        //tarkista onko datassa säädataa
         if (!dataSplit[dataSplit.length-1].contains(":")){
             weather = dataSplit[dataSplit.length-1];
         }
 
-        //format date and time
+        //muotoile päivämäärästä ja ajasta järkevää
         if (dataDT[1] != null){
             String[] dateParts = dataDT[1].split("T");
             String[] timeParts = dateParts[1].split("Z");
@@ -117,33 +126,35 @@ public class CustomCameraMarkerInfoWindow extends MarkerInfoWindow {
         }else {
             dateTime = "No Time";
         }
-            //put all data on a single string
+            //laita kaikki data yhteen stringiin
             finalSubTitle = dataDT[0] + " \n" + dateTime + "\n\n" +"Kuva " +(photoID+1) + "/" +(cameraPhotoLength+1);
 
-        //if there is weather data add that data to final string
+        //jos on säädataa lisää se stringiin
         if (weather != "NULL"){
             String[] moistWindTemp = weather.split("WSPL");
 
-            //check if there is data
+            //tarkista onko lämpödataa
             String temp = "Lämpötila: " +moistWindTemp[2]+"\n";
             if (moistWindTemp[2].equals("NODATA")){
                 temp = "";
             }
 
+            //tarkista onko tuulidataa
             String wind = "Tuulen Nopeus: " +moistWindTemp[1]+"\n";
             if (moistWindTemp[1].equals("NODATA") ){
                  wind = "";
             }
 
+            //tarkista onko kosteusdataa
             String moisture = "Kosteus: " +moistWindTemp[0]+"\n" ;
             if (moistWindTemp[0].equals("NODATA") ){
                 moisture = "";
             }
-            //put all data to single string
+            //laita kaikki yhteen stringiin
             finalSubTitle = dataDT[0] + " \n" + dateTime + " \n" + temp  + wind + moisture + "\n" + "Kuva " +(photoID+1) + "/" +(cameraPhotoLength+1);
         }
 
-
+        //laita snippettiin teksti
         snippet.setText(finalSubTitle);
 
     }
